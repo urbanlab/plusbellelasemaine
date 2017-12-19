@@ -1,0 +1,87 @@
+<div class="container-fluid" id="endGame">
+    
+     <div id="winScreen">
+        <div id="winCircle" class="faCircle">
+            <i class="fa fa-trophy"></i>
+        </div>
+         <div class="titleWinLose">
+             <p>Bravo !</p>
+         </div>
+         <div class="textWinLose">
+             <p>Vous avez gardé un bon équilibre entre votre finance, votre confort et votre vie sociale !</p>
+         </div>
+     </div>
+     
+     <div  id="progressBar"><i class="fa"></i><p>{{endGameCtrl.textGauge}}</p><div id="plusGauge"><p>10</p></div></div>
+     <div id="loseScreen">
+        
+         <div class="titleWinLose">
+             <p>Perdu !</p>
+         </div>
+         <div class="textWinLose">
+             <p ng-bind-html="endGameCtrl.textLose | to_trusted"></p>
+         </div>
+     </div>
+     
+      <div id="continue">
+           <button ng-click="endGameCtrl.continueBilan()">CONTINUER</button>     
+      </div>
+     
+     <div id="loseScreen">
+         
+     </div>
+     
+   <div class="row no-margin">
+        <div class="col-xs-12">
+            <h1 class="titleBilan">Bilan</h1>
+       </div>
+    </div>
+    <div class="row no-margin">
+        
+        <div ng-if="endGameCtrl.bilan['sums1'].length != 0" id="lienSocial" class="col-xs-11 col-xs-offset-1 contentBlock">
+        <div class="faCircle">
+             <i class="fa fa-handshake-o"></i>
+        </div>
+          <p class="title">Vos relations avec les autres (amis, famille, voisins…)</p>
+          <ul> 
+              <div ng-repeat="text in endGameCtrl.bilan['sums1']">
+                    <li ng-bind-html="text | to_trusted"></li>
+              </div>
+          </ul>
+        </div>
+        
+        <div ng-if="endGameCtrl.bilan['sums2'].length != 0" id="logement" class="col-xs-11 col-xs-offset-1 contentBlock">
+        <div class="faCircle">
+             <i class="fa fa-home"></i>
+        </div>
+          <p class="title">Un logement confortable, sécurisé et agréable à vivre</p>
+          <ul> 
+              <div ng-repeat="text in endGameCtrl.bilan['sums2']">
+                    <li ng-bind-html="text | to_trusted"></li>
+              </div>
+          </ul>
+        </div>
+             
+        <div ng-if="endGameCtrl.bilan['sums3'].length != 0" id="budget" class="col-xs-11 col-xs-offset-1 contentBlock">
+        <div class="faCircle">
+             <i class="fa fa-eur"></i>
+        </div>
+          <p class="title">L’état de votre compte en banque</p>
+          <ul> 
+              <div ng-repeat="text in endGameCtrl.bilan['sums3']">
+                    <li ng-bind-html="text | to_trusted"></li>
+              </div>
+          </ul>
+        </div>
+       
+    </div>
+    
+    
+    
+    
+    <div class="row">
+        <div id="reset" class="col-xs-6 col-xs-offset-3 contentBlockStart">
+           <button ng-click="endGameCtrl.restart()">REJOUER</button>     
+        </div>
+    </div>
+</div>

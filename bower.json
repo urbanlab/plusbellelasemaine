@@ -1,0 +1,11 @@
+{
+  "name": "poc-bien-vieillir",
+  "description": "",
+  "version": "1.0.0",
+  "homepage": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "progressbar.js": "^1.0.1"
+  }
+}
