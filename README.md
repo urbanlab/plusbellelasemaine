@@ -1,4 +1,4 @@
-# plusbellelasemaine
+# Plus belle la semaine
 Seriousgame pour smartphone de prévention à l'adaptation du logement
 
 Ce jeu vise à déstigmatiser la démarche d’adaptation du domicile par les personnes âgées, en plaçant le joueur face à un enchainement de choix binaires pouvant survenir au cours de son quotidien.
