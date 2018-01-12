@@ -143,14 +143,14 @@
 		"Choices": [{
 			"id": "0_1|c1",
 			"text": "\" Pourquoi pas ! J'ai du temps cette semaine. \"",
-			"value": "trigger_pool(main)",
+			"value": "$var4+=5; trigger_pool(main)",
 			"summaryWeight": "0",
 			"summaryGauge": "0",
 			"summaryText": ""
 		}, {
 			"id": "0_1|c2",
 			"text": "\" Je ne vois pas le probl\u00e8me, occupe-toi de tes oignons ! \"",
-			"value": "trigger_pool(main)",
+			"value": "$var4-=5; trigger_pool(main)",
 			"summaryWeight": "0",
 			"summaryGauge": "0",
 			"summaryText": ""
@@ -461,7 +461,7 @@
 		"pool": "main",
 		"background": "manger.jpg",
 		"title": "Phillipe sonne \u00e0 votre porte",
-		"textEvent": "\"Ce que \u00e7a peut soulager les lombaires quand tout est \u00e0 la bonne hauteur ! Ce qui m'a fait penser\u2026\" <span class=\"ld_perso2\">Phillipe<\/span> pointe du doigt les prises de votre salon. \"Je peux t'installer des r\u00e9hausseurs de prises, si tu veux.\"",
+		"textEvent": "\" <span class=\"ld_perso2\">Phillipe<\/span> vous rend visite. \"J’ai fais installer des prises électriques plus hautes ! C’est moins de risques pour les petits-enfants et \u00e7a me soulage les lombaires. Je peux te donner l’adresse de mon artisan, il m’a fait un bon prix !\"",
 		"Choices": [{
 			"id": "2_5|c1",
 			"text": "\"Je veux bien, oui. Heureusement que tu es l\u00e0 !\"",
@@ -471,7 +471,7 @@
 			"summaryText": "Vos prises r\u00e9hauss\u00e9es sont ind\u00e9niablement plus pratiques"
 		}, {
 			"id": "2_5|c2",
-			"text": "\"Non, non, elles sont tr\u00e8s bien comme \u00e7a. Les r\u00e9hausseurs, c'est vraiment moche !\"",
+			"text": "\"Encore des travaux, non merci.\"",
 			"value": "$var6=2; $var4-=5; $var3-=10; trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "2",
@@ -587,7 +587,7 @@
 		}, {
 			"id": "3_1|c2",
 			"text": "Je vais te planquer tout \u00e7a sous le tapis, vite fait bien fait !",
-			"value": "$var3+=5;$var13-=1; trigger_pool(main)",
+			"value": "$var3-=5;$var13-=1; trigger_pool(main)",
 			"summaryWeight": "1",
 			"summaryGauge": "2",
 			"summaryText": "Votre tapis d'enfance orne votre salon"
@@ -667,18 +667,18 @@
 		"weight": "10",
 		"pool": "main",
 		"background": "manger.jpg",
-		"title": "On passe \u00e0 la fibre !",
-		"textEvent": "Votre fille, au t\u00e9l\u00e9phone, veut vous convaincre (encore) de souscrire \u00e0 une meilleure connexion internet. \"Comme \u00e7a, tu pourras enfin te servir de la bo\u00eete mail que je t'ai configur\u00e9e !\"",
+		"title": "Partir surfer... sur le net !",
+		"textEvent": "Votre fille, au t\u00e9l\u00e9phone, veut vous convaincre (encore) de souscrire \u00e0 une connexion internet. . \"Comme \u00e7a, on pourra t’envoyer les photos de famille par mail !\"",
 		"Choices": [{
 			"id": "3_5|c1",
-			"text": "C'est d'accord, je fais installer une connexion plus rapide. Au moins, je serai tranquille !",
+			"text": "C'est d'accord, comme \u00e7a je pourrais les faire d\u00e9velopper moi-m\u00eAme pour mes album-photos !",
 			"value": "$var2-=5;$var4+=5;$var14+=1; trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "1",
-			"summaryText": "Vous retrouvez vos proches sur internet gr\u00e2ce \u00e0 une connexion rapide et stable"
+			"summaryText": "Avec votre nouvelle connexion, vous voyez vos petits-enfants grandir."
 		}, {
 			"id": "3_5|c2",
-			"text": "\u00c7a co\u00fbte tout de m\u00eame cher, et pour ce que je me sers d'internet\u2026",
+			"text": "Non et encore non ! J’ai r\u00e9ussis \u00e0 me d\u00e9brouiller sans internet jusqu’\u00e0 aujourd’hui !",
 			"value": "$var4-=10; $var14+=2; trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "3",
@@ -805,7 +805,7 @@
 		"weight": "10",
 		"pool": "main",
 		"background": "bain.jpg",
-		"title": "On risque l'innondation !",
+		"title": "On risque l'inondation !",
 		"textEvent": "Il y a bel et bien une fuite dans les canalisations : des t\u00e2ches marrons ornent le plafond de votre salon. Impossible de les manquer, avec les gouttes qui tombent de l\u00e0 haut.",
 		"Choices": [{
 			"id": "3_11|c1",
@@ -855,7 +855,7 @@
 		"textEvent": "Vous n'arr\u00eatez pas une seconde en ce moment. M\u00eame votre fille n'en fait pas autant ! Peut-\u00eatre qu'un peu de tranquilit\u00e9 serait bienvenue ?",
 		"Choices": [{
 			"id": "4_2|c1",
-			"text": "Je ferais mieux d\u2019annuler mon d\u00eener de ce soir, je suis sur les r\u00f4tules...",
+			"text": "Je ferais mieux d\u2019annuler mon d\u00eener de ce soir, je suis sur les rotules...",
 			"value": "$var4-=10; trigger_pool(main)",
 			"summaryWeight": "1",
 			"summaryGauge": "1",
