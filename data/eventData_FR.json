@@ -258,7 +258,7 @@
 		"pool": "triggered",
 		"background": "esc.jpg",
 		"title": "L'anniversaire d'Edith",
-		"textEvent": "Votre amie Edith a 50 ans aujourd'hui, et tout le monde est chez vous pour f\u00eater \u00e7a ! Mais au beau milieu de la soir\u00e9e elle tr\u00e9buche et s'\u00e9croule de tout son long\u2026 !"
+		"textEvent": "Votre amie Edith a 50 ans aujourd'hui, et tout le monde est chez vous pour f\u00eater \u00e7a ! Mais au beau milieu de la soir\u00e9e elle tr\u00e9buche et s'\u00e9croule de tout son long\u2026 !",
 		"Choices": [{
 			"id": "1_7|c1",
 			"text": "\"Je suis sinc\u00e8rement d\u00e9sol\u00e9 ! C'est vrai qu'on glisse si facilement dans cette maison !\u2026\"",
