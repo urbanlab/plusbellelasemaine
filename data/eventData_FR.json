@@ -242,7 +242,7 @@
 		"pool": "triggered",
 		"background": "esc.jpg",
 		"title": "Le medecin prend de vos nouvelles",
-		"textEvent": "\"Vous avez donn\u00e9 un coup de neuf \u00e0 votre maison comme je vous l'avais conseill\u00e9 ou bien elle est toujours aussi dangereuse ?\"",
+		"textEvent": "\"D'o\u00f9 viens cette bosse que vous avez sur le font ? J'ai l'impression que vous n'avez pas suivi mes conseils pour s\u00e9curiser votre logement. N'est-ce pas ?\"",
 		"Choices": [{
 			"id": "1_6|c1",
 			"text": "\"C\u2019est vrai que je me suis cogn\u00e9 contre un mur en marchant dans le noir, l\u2019autre jour...\"",
@@ -258,10 +258,10 @@
 		"pool": "triggered",
 		"background": "esc.jpg",
 		"title": "L'anniversaire d'Edith",
-		"textEvent": "Votre amie Edith a 50 ans aujourd'hui, et tout le monde est chez vous pour f\u00eater \u00e7a ! Mais au beau milieu de la soir\u00e9e elle tr\u00e9buche et s'\u00e9croule de tout son long\u2026 !",
+		"textEvent": "Votre amie Edith a 50 ans aujourd'hui, et tout le monde est chez vous pour f\u00eater \u00e7a ! Mais au beau milieu de la soir\u00e9e elle rate une marche et manque de se faire mal.",
 		"Choices": [{
 			"id": "1_7|c1",
-			"text": "\"Je suis sinc\u00e8rement d\u00e9sol\u00e9 ! C'est vrai qu'on glisse si facilement dans cette maison !\u2026\"",
+			"text": "\"A\u00efe, c'est vrai que ces escaliers sont un peu raides !",
 			"value": "end_game(defaiteLogement_S)",
 			"summaryWeight": "0",
 			"summaryGauge": "0",
@@ -277,7 +277,7 @@
 		"textEvent": "Avec vos \u00e9conomies, vous avez pu vous programmer un voyage dans les jours qui viennent. Le d\u00e9part approche, mais vous n'avez trouv\u00e9 personne pour vous accompagner.",
 		"Choices": [{
 			"id": "1_8|c2",
-			"text": "Tant pis. Je reporte mon voyage \u00e0 plus tard.",
+			"text": "Ce ne serait pas raisonnable de partir si loin tout seul",
 			"value": "end_game(defaiteSocial_B)",
 			"summaryWeight": "0",
 			"summaryGauge": "0",
@@ -293,7 +293,7 @@
 		"textEvent": "Cela fait plusieurs fois que vous passez un coup de fil \u00e0 vos voisins pour les inviter \u00e0 venir prendre le th\u00e9, mais jusque-l\u00e0 pas de r\u00e9ponse. A la r\u00e9flexion, cela fait longtemps que votre t\u00e9l\u00e9phone n'a pas sonn\u00e9\u2026",
 		"Choices": [{
 			"id": "1_9|c1",
-			"text": "C'est vrai que je n'ai pas donn\u00e9 beaucoup de signes de vie ces derniers temps, j'esp\u00e8re qu'ils me rappellerons...",
+			"text": "C'est vrai que je n'ai pas beaucoup donn\u00e9 de nouvelles ces derniers temps...",
 			"value": "end_game(defaiteSocial_L)",
 			"summaryWeight": "0",
 			"summaryGauge": "0",
@@ -421,7 +421,7 @@
 		"pool": "main",
 		"background": "esc.jpg",
 		"title": "La derni\u00e8re id\u00e9e de Phillipe",
-		"textEvent": "<span class=\"ld_perso2\">Phillipe<\/span> a l'air surexcit\u00e9 en entrant chez vous. \"J'ai tellement la t\u00eate dans les travaux en ce moment, je ne sais m\u00eame plus ce que j'ach\u00e8te ! J'ai command\u00e9 mon kit de chemin lumineux en double. J'ai install\u00e9 le premier chez moi, \u00e7a marche du tonnerre. Tu veux qu'on pose le deuxi\u00e8me ici ?\"",
+		"textEvent": "<span class=\"ld_perso2\">Phillipe<\/span> a l'air surexcit\u00e9 en entrant chez vous. \"J'ai command\u00e9 un chemin lumineux en double. J'ai install\u00e9 le premier chez moi, c'est formidable ces rep\u00e8res lumineux lorsque je me l\u00e8ve la nuit. Tu veux qu'on pose le deuxième ici ?\"",
 		"Choices": [{
 			"id": "2_6|c1",
 			"text": "D'accord !",
@@ -444,7 +444,7 @@
 		"pool": "main",
 		"background": "esc.jpg",
 		"title": "Un nouveau voisin",
-		"textEvent": "Un petit homme, l'\u0153il au beurre noir sonne \u00e0 votre porte. \"Je me suis pris les pieds dans mon tapis pendant mon d\u00e9m\u00e9nagement ! Je suis <span class=\"ld_perso3\">Alain<\/span>, votre nouveau voisin.\"",
+		"textEvent": "Vous croisez un petit homme avec un \u0153il au beurre noir dans l'ascenseur. \"Je me suis pris les pieds dans mon tapis pendant mon d\u00e9m\u00e9nagement ! Je suis <span class=\"ld_perso3\">Alain<\/span>, votre nouveau voisin.\"",
 		"Choices": [{
 			"id": "2_7|c1",
 			"text": "Vous lui proposez de l'aide pour d\u00e9m\u00e9nager.",
@@ -540,7 +540,7 @@
 		"Choices": [{
 			"id": "3_2|c1",
 			"text": "Je l\u2019enl\u00e8ve, alors.",
-			"value": "$var3-=5;$var9+=1;$var13+=1; trigger_pool(main)",
+			"value": "$var3+=5;$var9+=1;$var13+=1; trigger_pool(main)",
 			"summaryWeight": "1",
 			"summaryGauge": "2",
 			"summaryText": "Les fils \u00e9lectriques sont toujours aussi dangereux."
@@ -562,11 +562,11 @@
 		"textEvent": "Vous avez mal au dos \u00e0 force de rester debout pour vous préparer le matin.",
 		"Choices": [{
 			"id": "3_3|c1",
-			"text": "Je fais installer un miroir qui descend plus bas et qui me permet de me m'assoir pour me pr\u00e9parer.",
+			"text": "Je fais installer un miroir qui descend plus bas et qui me permet de me m'asseoir pour me pr\u00e9parer.",
 			"value": "$var2-=5; $var3+=5; $var9+=1; $var15+=1; $var11+=1; trigger_pool(main)",
 			"summaryWeight": "3",
 			"summaryGauge": "2",
-			"summaryText": "Je peux \u00e0 nouveau me faire les yeux doux dans le reflet du mirroir."
+			"summaryText": "Je peux \u00e0 nouveau me faire les yeux doux dans le reflet du miroir."
 		}, {
 			"id": "3_3|c2",
 			"text": "Je fais en sorte de me préparer plus vite.",
@@ -628,7 +628,7 @@
 		"pool": "main",
 		"background": "manger.jpg",
 		"title": "Le club des randonneurs",
-		"textEvent": "Vous recevez un mail de la part du club randonneur. Ils vous proposent, sans surprise, de les rejoindre le temps d'une demi-journ\u00e9e pour une \"randonn\u00e9e d\u00e9couverte\".",
+		"textEvent": "Vous recevez un mail de la part du club randonneur. Ils vous proposent de les rejoindre le temps d'une demi-journ\u00e9e pour une \"randonn\u00e9e d\u00e9couverte\".",
 		"Choices": [{
 			"id": "3_6|c1",
 			"text": "Bonne id\u00e9e !",
@@ -724,7 +724,7 @@
 		"Choices": [{
 			"id": "3_10|c1",
 			"text": "Je m'ach\u00e9te une planche de bain et une brosse long manche.",
-			"value": "$var2-=5; $var18+=2; trigger_pool(main)",
+			"value": "$var2-=5; $var3+=5; $var18+=2; trigger_pool(main)",
 			"summaryWeight": "0",
 			"summaryGauge": "0",
 			"summaryText": ""
@@ -747,14 +747,14 @@
 		"Choices": [{
 			"id": "3_11|c1",
 			"text": "Je ferais plus attention la prochaine fois.",
-			"value": "$var3-=10; $var18+=2; trigger_pool(main)",
+			"value": "$var3-=15; $var18+=2; trigger_pool(main)",
 			"summaryWeight": "0",
 			"summaryGauge": "0",
 			"summaryText": ""
 		}, {
 			"id": "3_11|c2",
 			"text": "Aux grands maux les grand rem\u00e8des ! Je me fais installer une douche \u00e0 l'italienne.",
-			"value": " $var2-=15; $var3+=5; $var18+=2; trigger_pool(main)",
+			"value": " $var2-=15; $var3+=15; $var18+=2; trigger_pool(main)",
 			"summaryWeight": "0",
 			"summaryGauge": "0",
 			"summaryText": ""
@@ -789,7 +789,7 @@
 		"pool": "triggered",
 		"background": "manger.jpg",
 		"title": "A court d'\u00e9nergie",
-		"textEvent": "Vous n'arr\u00eatez pas une seconde en ce moment. Aujourd'hui c'est m\u00e9nage et d\u00eener entre amis mais vous \u00eates sur les rotules. Peut-\u00eatre qu'un peu de tranqubilit\u00e9 serait la bienvenue ?",
+		"textEvent": "Vous n'arr\u00eatez pas une seconde en ce moment. Aujourd'hui c'est m\u00e9nage et d\u00eener entre amis mais vous \u00eates sur les rotules. Peut-\u00eatre qu'un peu de tranquilit\u00e9 serait la bienvenue ?",
 		"Choices": [{
 			"id": "4_2|c1",
 			"text": "L'appartement est sans dessus-dessous. Je me concentre sur le m\u00e9nage et je d\u00e9cale mon d\u00eener de ce soir.",
@@ -823,7 +823,7 @@
 		}, {
 			"id": "4_3|c2",
 			"text": "Pffff, je n'ai pas vraiment le courage d'organiser tout \u00e7a ce soir. Et ils ont s\u00fbrement autre chose de pr\u00e9vu.",
-			"value": "$var10+=11; trigger_pool(main)",
+			"value": "$var4-=5; $var10+=11; trigger_pool(main)",
 			"summaryWeight": "1",
 			"summaryGauge": "1",
 			"summaryText": "Votre maison est d\u00e9sormais pr\u00eate \u00e0 accueillir vos proches pour un repas."
@@ -858,7 +858,7 @@
 		"pool": "main",
 		"background": "esc.jpg",
 		"title": "Une id\u00e9e de financement",
-		"textEvent": "Votre fille est ravie de voir vos nouveaux am\u00e9nagements ! \"Tu pourrais demander des aides pour compenser le prix de ces travaux. J'ai une brochure \u00e0 ce sujet chez moi.\"",
+		"textEvent": "Votre fille est ravie de voir vos nouveaux am\u00e9nagements ! \"Tu pourrais demander des aides pour financer la suite de tes am\u00e9nagements. J'ai une brochure \u00e0 ce sujet chez moi.\"",
 		"Choices": [{
 			"id": "4_5|c1",
 			"text": "Bonne id\u00e9e !",
@@ -907,7 +907,7 @@
 		"textEvent": "Depuis peu, il vous est de plus en plus p\u00e9snible de vous relever des toilettes...",
 		"Choices": [{
 			"id": "4_7|c1",
-			"text": "Je r\u00e9hausse les toilettes, et j\u2019installe une barre pour me relever - \u00e7a sert toujours.",
+			"text": "Je r\u00e9hausse les toilettes, et j\u2019installe une barre pour me relever - \u00e7a servira \u00e0 tout le monde.",
 			"value": "$var2-=5;$var3+=5;$var11+=1;$var9+=1; trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "2",
@@ -931,17 +931,17 @@
 		"Choices": [{
 			"id": "4_8|c1",
 			"text": "Il est plus que temps d\u2019installer une main courante\u00a0!",
-			"value": "$var2-=10;$var3+=5;$var12+=1; trigger_pool(main)",
+			"value": "$var2-=5;$var3+=10;$var12+=1; trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "2",
 			"summaryText": "Avec une main courante, vos murs ne craignent plus les chutes... et les traces de doigts des enfants."
 		}, {
 			"id": "4_8|c2",
 			"text": "J'ai l'habitude de ces escaliers, je ferais simplement plus attention quand les petits seront l\u00e0.",
-			"value": "$var3-=5;$var12+=1;$var9+=1; trigger_pool(main)",
+			"value": "$var3-=10;$var12+=1;$var9+=1; trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "1",
-			"summaryText": "Vous pouvez compter sur Phillipe pour vous aider \u00e0 am\u00e9nager votre domicile."
+			"summaryText": "Vos escaliers sont toujours aussi risqu\u00e9s, pour vos petits-enfants et pour vous."
 		}]
 	}, {
 		"id": "5_1",
@@ -954,7 +954,7 @@
 		"Choices": [{
 			"id": "5_1|c1",
 			"text": "Et si je faisais appel a une aide m\u00e9nag\u00e8re de temps en temps ?",
-			"value": "$var2-=5;$var3+=5; trigger_pool(main)",
+			"value": "$var2-=5;$var3+=10; trigger_pool(main)",
 			"summaryWeight": "0",
 			"summaryGauge": "0",
 			"summaryText": ""
@@ -980,14 +980,14 @@
 			"value": "$var3+=5; trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "2",
-			"summaryText": "Vos nouvelles photos \u00e9gayent votre salon."
+			"summaryText": "Ce concierge est une vraie cru\u00e8me. Vous ne manquerez pas de l'inviter \u00e0 diner pour le remercier."
 		}, {
 			"id": "5_2|c2",
-			"text": "Je ne vais pas d\u00e9ranger le concierge pour si peu, je ferai appel a lui quand j'aurais d'autres petits travaux \u00e0 faire. ",
+			"text": "Je ne vais pas dcranger le concierge pour si peu, je ferai appel \u00e0 lui quand j'aurais d'autres petits travaux \u00e0 faire. ",
 			"value": "$var3-=5; trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "2",
-			"summaryText": "Votre nouvelle plante se pla\u00eet bien chez vous."
+			"summaryText": "Depuis que l'ampoule \u00e0 grill\u00e0, votre salon est sombre et votre humeur aussi."
 		}]
 	}, {
 		"id": "5_3",
@@ -1023,14 +1023,14 @@
 		"Choices": [{
 			"id": "5_3_1|c1",
 			"text": "Chouette\u00a0!",
-			"value": "$var2+=5\u00a0; trigger_pool(main)",
+			"value": "$var2+=10\u00a0; trigger_pool(main)",
 			"summaryWeight": "0",
 			"summaryGauge": "0",
 			"summaryText": ""
 		}, {
 			"id": "5_3_1|c2",
 			"text": "Merveilleux\u00a0!",
-			"value": "$var2+=5\u00a0; trigger_pool(main)",
+			"value": "$var2+=10\u00a0; trigger_pool(main)",
 			"summaryWeight": "0",
 			"summaryGauge": "0",
 			"summaryText": ""
@@ -1093,7 +1093,7 @@
 		"id": "defaiteLogement_S",
 		"background": "0",
 		"title": "Game Over",
-		"text": "Vous vous \u00eates occup\u00e9 de vos relations sociales, mais tellement peu de votre logement\u2026 qu'il en est dangereux\u00a0!"
+		"text": "Recevoir ses amis, c'est bien, en toute sécurit\u00e9, c'est mieux !﻿ Vous vous \u00eates occup\u00e9 de vos relations sociales, mais trop peu de votre logement."
 	}, {
 		"id": "defaiteSocial_B",
 		"background": "0",
