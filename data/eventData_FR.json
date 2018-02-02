@@ -242,7 +242,7 @@
 		"pool": "triggered",
 		"background": "esc.jpg",
 		"title": "Le medecin prend de vos nouvelles",
-		"textEvent": "\"D'o\u00f9 viens cette bosse que vous avez sur le font ? J'ai l'impression que vous n'avez pas suivi mes conseils pour s\u00e9curiser votre logement. N'est-ce pas ?\"",
+		"textEvent": "\"D'o\u00f9 vient cette bosse que vous avez sur le font ? J'ai l'impression que vous n'avez pas suivi mes conseils pour s\u00e9curiser votre logement. N'est-ce pas ?\"",
 		"Choices": [{
 			"id": "1_6|c1",
 			"text": "\"C\u2019est vrai que je me suis cogn\u00e9 contre un mur en marchant dans le noir, l\u2019autre jour...\"",
@@ -398,7 +398,7 @@
 		"pool": "main",
 		"background": "manger.jpg",
 		"title": "Phillipe sonne \u00e0 votre porte",
-		"textEvent": "\" <span class=\"ld_perso2\">Phillipe<\/span> vous rend visite. \"J’ai fais installer des prises électriques plus hautes ! C’est moins de risques pour les petits-enfants et \u00e7a me soulage les lombaires. Je peux te donner l’adresse de mon artisan, il m’a fait un bon prix !\"",
+		"textEvent": "\" <span class=\"ld_perso2\">Phillipe<\/span> vous rend visite. \"J’ai fait installer des prises électriques plus hautes ! C’est moins de risques pour les petits-enfants et \u00e7a me soulage les lombaires. Je peux te donner l’adresse de mon artisan, il m’a fait un bon prix !\"",
 		"Choices": [{
 			"id": "2_5|c1",
 			"text": "D'accord !",
@@ -562,7 +562,7 @@
 		"textEvent": "Vous avez mal au dos \u00e0 force de rester debout pour vous préparer le matin.",
 		"Choices": [{
 			"id": "3_3|c1",
-			"text": "Je fais installer un miroir qui descend plus bas et qui me permet de me m'asseoir pour me pr\u00e9parer.",
+			"text": "Je fais installer un miroir qui descend plus bas et qui me permet de m'asseoir pour me pr\u00e9parer.",
 			"value": "$var2-=5; $var3+=5; $var9+=1; $var15+=1; $var11+=1; trigger_pool(main)",
 			"summaryWeight": "3",
 			"summaryGauge": "2",
@@ -615,7 +615,7 @@
 			"summaryText": "Avec votre nouvelle connexion, vous voyez vos petits-enfants grandir."
 		}, {
 			"id": "3_5|c2",
-			"text": "Non et encore non ! J’ai r\u00e9ussis \u00e0 me d\u00e9brouiller sans internet jusqu’\u00e0 aujourd’hui !",
+			"text": "Non et encore non ! J’ai r\u00e9ussi \u00e0 me d\u00e9brouiller sans internet jusqu’\u00e0 aujourd’hui !",
 			"value": "$var4-=10; $var14+=2; trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "3",
@@ -638,7 +638,7 @@
 			"summaryText": "Vous n'avez jamais \u00e9t\u00e9 aussi en forme depuis votre randonn\u00e9e."
 		}, {
 			"id": "3_6|c2",
-			"text": "Sans fa\u00e7ons...",
+			"text": "Sans fa\u00e7on...",
 			"value": "$var14+=2; trigger_pool(main)",
 			"summaryWeight": "1",
 			"summaryGauge": "2",
@@ -697,7 +697,7 @@
 		"pool": "main",
 		"background": "manger.jpg",
 		"title": "La bouteille de gaz est vide",
-		"textEvent": "Vous allez devoir aller en chercher une nouvelle bouteille. A moins que vous ne d\u00e9cidiez de changer la gazini\u00e8re, qui n'est plus aux normes.",
+		"textEvent": "Vous allez devoir aller chercher une nouvelle bouteille. A moins que vous ne d\u00e9cidiez de changer la gazini\u00e8re, qui n'est plus aux normes.",
 		"Choices": [{
 			"id": "3_9|c1",
 			"text": "Je peux bien porter une bouteille de temps en temps.",
@@ -707,7 +707,7 @@
 			"summaryText": "Les bouteilles de gaz vous ont co\u00fbt\u00e9 moins cher, mais ne sont pas pratiques."
 		}, {
 			"id": "3_9|c2",
-			"text": "J'installe un four \u00e9l\u00e9ctrique avec des plaques \u00e0 induction",
+			"text": "J'installe un four \u00e9lectrique avec des plaques \u00e0 induction",
 			"value": "$var2-=10\u00a0; $var3+=5\u00a0; $var17+=1; $var9+=1; $var10+=1;trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "2",
@@ -769,7 +769,7 @@
 		"textEvent": "Avec tous ces travaux, votre logement a bien chang\u00e9...",
 		"Choices": [{
 			"id": "4_1|c1",
-			"text": "Mon interieur est bien plus confortable, je ferais mieux passer plus de temps chez moi.",
+			"text": "Mon interieur est bien plus confortable, je ferais mieux de passer plus de temps chez moi.",
 			"value": "$var4-=10; trigger_pool(main)",
 			"summaryWeight": "1",
 			"summaryGauge": "2",
@@ -891,7 +891,7 @@
 			"summaryText": "Votre canap\u00e9 est \u00e9l\u00e9gant et terriblement confortable."
 		}, {
 			"id": "4_6|c2",
-			"text": "Pourquoi pas des chaises \u00e0 accoudoir \u00e0 mettre dans la cuisine\u00a0? C\u2019est moderne et tr\u00e8s confortable\u00a0! ",
+			"text": "Pourquoi pas des chaises \u00e0 accoudoir pour mettre dans la cuisine\u00a0? C\u2019est moderne et tr\u00e8s confortable\u00a0! ",
 			"value": "$var2-=5;$var3+=5;$var10+=1;$var9+=1; trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "2",
@@ -907,7 +907,7 @@
 		"textEvent": "Depuis peu, il vous est de plus en plus p\u00e9snible de vous relever des toilettes...",
 		"Choices": [{
 			"id": "4_7|c1",
-			"text": "Je r\u00e9hausse les toilettes, et j\u2019installe une barre pour me relever - \u00e7a servira \u00e0 tout le monde.",
+			"text": "Je rehausse les toilettes, et j\u2019installe une barre pour me relever - \u00e7a servira \u00e0 tout le monde.",
 			"value": "$var2-=5;$var3+=5;$var11+=1;$var9+=1; trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "2",
@@ -953,7 +953,7 @@
 		"textEvent": "J'ai l'impression de passer mon temps \u00e0 faire le m\u00e9nage. C'est de plus en plus p\u00e9nible.",
 		"Choices": [{
 			"id": "5_1|c1",
-			"text": "Et si je faisais appel a une aide m\u00e9nag\u00e8re de temps en temps ?",
+			"text": "Et si je faisais appel \u00e0 une aide m\u00e9nag\u00e8re de temps en temps ?",
 			"value": "$var2-=5;$var3+=10; trigger_pool(main)",
 			"summaryWeight": "0",
 			"summaryGauge": "0",
@@ -983,7 +983,7 @@
 			"summaryText": "Ce concierge est une vraie cru\u00e8me. Vous ne manquerez pas de l'inviter \u00e0 diner pour le remercier."
 		}, {
 			"id": "5_2|c2",
-			"text": "Je ne vais pas dcranger le concierge pour si peu, je ferai appel \u00e0 lui quand j'aurais d'autres petits travaux \u00e0 faire. ",
+			"text": "Je ne vais pas dcranger le concierge pour si peu, je ferai appel \u00e0 lui quand j'aurai d'autres petits travaux \u00e0 faire. ",
 			"value": "$var3-=5; trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "2",
