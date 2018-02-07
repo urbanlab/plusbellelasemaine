@@ -398,7 +398,7 @@
 		"pool": "main",
 		"background": "manger.jpg",
 		"title": "Phillipe sonne \u00e0 votre porte",
-		"textEvent": "\" <span class=\"ld_perso2\">Phillipe<\/span> vous rend visite. \"J’ai fait installer des prises électriques plus hautes ! C’est moins de risques pour les petits-enfants et \u00e7a me soulage les lombaires. Je peux te donner l’adresse de mon artisan, il m’a fait un bon prix !\"",
+		"textEvent": "<span class=\"ld_perso2\">Phillipe<\/span> vous rend visite. \"J’ai fait installer des prises électriques plus hautes ! C’est moins de risques pour les petits-enfants et \u00e7a me soulage les lombaires. Je peux te donner l’adresse de mon artisan, il m’a fait un bon prix !\"",
 		"Choices": [{
 			"id": "2_5|c1",
 			"text": "D'accord !",
@@ -723,7 +723,7 @@
 		"textEvent": "Vous avez failli glisser en vous lavant les pieds dans votre baignoire.",
 		"Choices": [{
 			"id": "3_10|c1",
-			"text": "Je m'ach\u00e9te une planche de bain et une brosse long manche.",
+			"text": "Je m'ach\u00e8te une planche de bain et une brosse long manche.",
 			"value": "$var2-=5; $var3+=5; $var18+=2; trigger_pool(main)",
 			"summaryWeight": "0",
 			"summaryGauge": "0",
@@ -980,10 +980,10 @@
 			"value": "$var3+=5; trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "2",
-			"summaryText": "Ce concierge est une vraie cru\u00e8me. Vous ne manquerez pas de l'inviter \u00e0 diner pour le remercier."
+			"summaryText": "Ce concierge est une vraie cr\u00e8me. Vous ne manquerez pas de l'inviter \u00e0 diner pour le remercier."
 		}, {
 			"id": "5_2|c2",
-			"text": "Je ne vais pas dcranger le concierge pour si peu, je ferai appel \u00e0 lui quand j'aurai d'autres petits travaux \u00e0 faire. ",
+			"text": "Je ne vais pas d\u00e9ranger le concierge pour si peu, je ferai appel \u00e0 lui quand j'aurai d'autres petits travaux \u00e0 faire. ",
 			"value": "$var3-=5; trigger_pool(main)",
 			"summaryWeight": "2",
 			"summaryGauge": "2",
