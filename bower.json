@@ -6,6 +6,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "progressbar.js": "^1.0.1"
+    "progressbar.js": "^1.0.1",
+    "angular-google-analytics": "^1.1.9"
   }
 }

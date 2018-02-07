@@ -4,7 +4,8 @@ angular.module('aperfectday', [
     'gauge',    
     'about',    
     'eventDesc',    
-    'endGame'
+    'endGame',
+    'angular-google-analytics'
 ])
 
 /*-----------------------------------------------------------------------------------
@@ -53,6 +54,15 @@ angular.module('aperfectday', [
         $urlRouterProvider.otherwise('jeu');
 
     })
+
+//////////////////////////////////////////////////////////////////////////////////////
+    
+    .config(['AnalyticsProvider', function (AnalyticsProvider) {
+        // Add configuration code as desired
+        AnalyticsProvider.setAccount('UA-910479-6');  //UU-XXXXXXX-X should be your tracking code
+    }])
+
+    .run(['Analytics', function(Analytics) { }])
 
 /*-----------------------------------------------------------------------------------
                                         Main run
