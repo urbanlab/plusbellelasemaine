@@ -1,0 +1,21 @@
+.navbar-nav>.user-menu>.dropdown-menu>li.user-header{height:auto}
+
+.form-custom-inline .control-label, .form-custom-inline .radio {display: inline-block;}
+.form-custom-inline .control-label {width: 10em;}
+.form-custom-inline .radio {padding-right: 2em;}
+
+.form-date { width: 200px; }
+
+.modal-footer {
+    text-align: center;
+}
+
+.loader {
+ position: fixed;
+ left: 0px;
+ top: 0px;
+ width: 100%;
+ height: 100%;
+ z-index: 999999;
+ background: url('/images/loader.gif') 50% 50% no-repeat rgba(255,255,255,0.7);
+ }

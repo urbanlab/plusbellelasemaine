@@ -1,0 +1,22 @@
+{
+  "name": "plusbellelasemaine",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Guillaume <g.tribut@dowino.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+	"chart.js": "2.5.0",
+    "moment": "^2.17.1",
+    "underscore": "^1.8.3"
+  }
+}
