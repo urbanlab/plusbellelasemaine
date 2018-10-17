@@ -12,6 +12,10 @@ uploads/xlsx/*
 uploads/json/*
 !uploads/json/.gitkeep
 
+# Ignore config files
+application/config/config.php
+application/config/config_specific.php
+application/config/database.php
 
 
 # Created by https://www.gitignore.io/api/node,bower,grunt
