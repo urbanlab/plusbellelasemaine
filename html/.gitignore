@@ -6,9 +6,6 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 
-/vendor/
-application/vendor/
-
 uploads/xlsx/*
 !uploads/xlsx/.gitkeep
 
@@ -20,7 +17,7 @@ uploads/json/*
 # Created by https://www.gitignore.io/api/node,bower,grunt
 
 ### Bower ###
-bower_components
+#bower_components
 .bower-cache
 .bower-registry
 .bower-tmp
@@ -67,7 +64,7 @@ coverage
 build/Release
 
 # Dependency directories
-node_modules/
+#node_modules/
 jspm_packages/
 
 # Typescript v1 declaration files
