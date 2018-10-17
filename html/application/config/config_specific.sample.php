@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-$config['site_name'] = 'POC - Plus belle la semaine';
+$config['site_name'] = '';
 $config['site_baseline'] = '';
 $config['site_meta_author'] = '';
 $config['site_meta_keywords'] = '';
@@ -18,10 +18,10 @@ $config['admin_url'] = '/admin';
 /*
 |	global constants
 */
-$config['global_email_from'] = 'no-reply@erasme.org';
-$config['global_email_from_name'] = 'Admin POC Plus belle la semaine';
-$config['contact_form_to_email'] = 'no-reply@erasme.org';
-$config['global_admin_email'] = 'no-reply@erasme.org';
+$config['global_email_from'] = '';
+$config['global_email_from_name'] = '';
+$config['contact_form_to_email'] = '';
+$config['global_admin_email'] = '';
 
 /*
 |	list / paging constants
@@ -63,9 +63,9 @@ $config['additional_js_file'] = array(
 */
 
 // Google analytics View id
-$config['googleAnalyticsViewId'] = '178245522'; 
+$config['googleAnalyticsViewId'] = ''; 
 
 // dates de démarrage des stats
-$config['googleAnalyticsStatsStart'] = '2018-01-01';
+$config['googleAnalyticsStatsStart'] = '';
 
 
