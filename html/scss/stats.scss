@@ -1,0 +1,97 @@
+/* CSS Document */
+
+#stats {
+	
+	.title {
+		font-size: 18px;
+	} 
+	
+	#startDateInput, #endDateInput {
+		padding-left:5px;
+		padding-right:5px;
+		
+		text-align: center;
+	}
+	
+	#boxDetails {
+		span.glyphicon {
+			font-size: 10px;
+		}
+		a.active {
+			font-weight: bold;
+		}
+	}
+	
+	#downloadBlock {
+		margin-bottom: 20px;
+	}
+	
+	table.dataTable thead th, table.dataTable thead td,
+	table.dataTable tfoot th, table.dataTable tfoot td {
+		padding: 8px;
+	}
+	
+	table.dataTable thead tr.total {
+		background-color: #DDD;
+	}
+		
+	.dataTables_wrapper .dataTables_paginate .paginate_button {
+		padding: 0;
+		margin-left: 0;
+		border: none;
+	}
+	
+	.table-responsive .row {
+		margin-left: 0px;
+		margin-right: 0px;
+		
+		.col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {
+			padding-left:0px;
+			padding-right:0px;
+		}
+	}
+
+
+	.bigNumbers
+	{
+		text-align: center;
+		font-size: 2em;
+	}
+	
+	.progress-description, .info-box-text {
+    	white-space: normal;
+	}
+	
+}
+
+
+#questionStatsData, #eventStatsData, #challengeStatsData
+{ 
+	height: 400px;
+	overflow-y:scroll; 
+
+	.header 
+	{ 
+		font-weight: bold; 
+	} 
+
+	.indent 
+	{ 
+		padding-left: 2em; 
+	}
+	
+	.difficulty 
+	{ 
+		display:inline-block; width:4em;font-weight: bold; 
+	}
+}
+
+
+@media (min-width: 768px) {
+	#stats {
+	
+		#startDateInput, #endDateInput {
+			width: 85px;
+		}
+	}
+}

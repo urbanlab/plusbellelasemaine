@@ -1,0 +1,16 @@
+<div class="container-fluid" id="intro">
+    <div id="introModal" class="">
+        <div class="row no-margin">
+            <div class="col-xs-12">
+                <h1 class="titleModal" ng-bind-html="introCtrl.titleIntro | to_trusted"></h1>      
+				<div class="row no-margin">
+					<div class="col-xs-8 col-xs-offset-2 contentBlock">
+						<!--<h3 ng-bind-html="titleIntro | to_trusted"></h3>-->
+						<p ng-bind-html="introCtrl.textIntro | to_trusted"></p>
+						<a id="introBtnPlay" ng-click="introCtrl.play()" >Jouer</a>
+					</div>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>

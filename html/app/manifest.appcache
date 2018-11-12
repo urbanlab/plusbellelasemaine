@@ -1,0 +1,104 @@
+CACHE MANIFEST
+# 2018-10-03
+
+
+# Explicitly cached 'master entries'.
+CACHE:
+#	CSS
+https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css
+https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+./fonts/font-awesome-4.7.0/css/font-awesome.min.css
+./fonts/font-awesome-4.7.0/fonts/FontAwesome.otf
+./fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.eot
+./fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.svg
+./fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf
+./fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff
+./fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2
+./fonts/font-awesome-4.7.0/fonts/FontAwesome.otf?v=4.7.0
+./fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.eot?v=4.7.0
+./fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.svg?v=4.7.0
+./fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0
+./fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0
+./fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0
+./fonts/myfont/myfont-regular.ttf
+./fonts/myfont/myfont-regular.woff
+./fonts/myfont/myfont-regular.woff2
+./fonts/myfont/myfont-semi.ttf
+./fonts/myfont/myfont-semi.woff
+./fonts/myfont/myfont-semi.woff2
+./fonts/myfont/stylesheet.css
+./node_modules/angular-cookie-law/angular-cookie-law.min.css
+./css/master.css
+#	JS
+https://code.jquery.com/jquery-3.2.1.slim.min.js
+https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js
+https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js
+https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js
+https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-sanitize.js
+https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.7.1/angular-local-storage.min.js
+./bower_components/progressbar.js/dist/progressbar.min.js
+./bower_components/angulartics/dist/angulartics.min.js
+./bower_components/angulartics-google-analytics/dist/angulartics-ga.min.js
+https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js
+./node_modules/angular-cookie-law/angular-cookie-law.min.js
+./js/master.js
+./app/app.js
+./app/eventDesc/eventDesc.js
+./app/endGame/endGame.js
+./app/about/about.js
+./app/intro/intro.js
+./app/gauge/gauge.js
+#	APP RESSOURCES
+./app/about/about.js
+./app/about/about.tmpl.html
+./app/app.js
+./app/endGame/endGame.js
+./app/endGame/endGame.tmpl.html
+./app/eventDesc/eventDesc.js
+./app/eventDesc/eventDesc.tmpl.html
+./app/gauge/gauge.js
+./app/gauge/gauge.tmpl.html
+./app/intro/intro.js
+./app/intro/intro.tmpl.html
+./data/eventData_FR.json
+./data/img/bain.jpg
+./data/img/bilan2.jpg
+./data/img/esc.jpg
+./data/img/info.png
+./data/img/manger.jpg
+./data/img/sparkles_1.png
+./data/img/sparkles_10.png
+./data/img/sparkles_11.png
+./data/img/sparkles_12.png
+./data/img/sparkles_13.png
+./data/img/sparkles_14.png
+./data/img/sparkles_15.png
+./data/img/sparkles_16.png
+./data/img/sparkles_17.png
+./data/img/sparkles_18.png
+./data/img/sparkles_19.png
+./data/img/sparkles_2.png
+./data/img/sparkles_20.png
+./data/img/sparkles_21.png
+./data/img/sparkles_22.png
+./data/img/sparkles_23.png
+./data/img/sparkles_24.png
+./data/img/sparkles_3.png
+./data/img/sparkles_4.png
+./data/img/sparkles_5.png
+./data/img/sparkles_6.png
+./data/img/sparkles_7.png
+./data/img/sparkles_8.png
+./data/img/sparkles_9.png
+
+
+# Resources that require the user to be online.
+NETWORK:
+*
+
+# static.html will be served if main.py is inaccessible
+# offline.jpg will be served in place of all images in images/large/
+# offline.html will be served in place of all other .html files
+FALLBACK:
+#		/main.py /static.html
+#		images/large/ images/offline.jpg
