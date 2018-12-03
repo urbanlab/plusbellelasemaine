@@ -4,9 +4,6 @@
 
 class Admin_Import extends MY_Controller {
 
-	private $mainModelUrl = 'userbo_model';
-	private $mainModel;
-
 	private $exportTplPath = "tpl/export_story_tpl.xlsx";
 
     private $lang;
@@ -528,11 +525,11 @@ class Admin_Import extends MY_Controller {
 
             // lire la ligne title $sheetData[$i] > ligne title
             $summaryWeight = empty($sheetData[$i][2])? 0 : $sheetData[$i][2];
-            if($fromOldJSON === true) {
+            //if($fromOldJSON === true) {
 				$summaryGaugeTarget = empty($sheetData[$i][3])? 0 : $gaugeTab[$sheetData[$i][3]];
-			}else{
-				$summaryGaugeTarget = empty($sheetData[$i][3])? 0 : $sheetData[$i][3];
-			}
+			//}else{
+			//	$summaryGaugeTarget = empty($sheetData[$i][3])? 0 : $sheetData[$i][3];
+			//}
             // faire etape 1 et 2 pour title
 
             Modules::run('event_choices/Admin_event_choices/_updateSummaryWeight', $choice->id, $summaryWeight);
