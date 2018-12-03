@@ -6,6 +6,7 @@
   "license": "",
   "private": true,
   "dependencies": {
-    "progressbar.js": "^1.0.1"
+    "progressbar.js": "^1.0.1",
+    "angulartics-google-analytics": "^0.5.0"
   }
 }
