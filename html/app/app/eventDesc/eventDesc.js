@@ -46,7 +46,7 @@ angular.module('eventDesc', ['ngSanitize'
     
         var eventDescCtrl = this;
         var animDelay = 0; // use to wait for the animation to end before changing data
-    
+    	var jsonData;
         //************************ properties *******************//
     
         eventDescCtrl.variable = {};
@@ -58,12 +58,14 @@ angular.module('eventDesc', ['ngSanitize'
         eventDescCtrl.isInInsert = false;
         eventDescCtrl.endInsertTrigger = {};
         eventDescCtrl.summaries = new Array(); // tab of summaries, one for each gauge
-        eventDescCtrl.summaries['summaries1'] = new Array();
-        eventDescCtrl.summaries['summaries2'] = new Array();
-        eventDescCtrl.summaries['summaries3'] = new Array();
+        //eventDescCtrl.summaries['summaries1'] = new Array();
+        //eventDescCtrl.summaries['summaries2'] = new Array();
+        //eventDescCtrl.summaries['summaries3'] = new Array();
         eventDescCtrl.days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
         eventDescCtrl.timeOut = 1000; // time of an animation 
         eventDescCtrl.day = eventDescCtrl.days[0];
+        eventDescCtrl.cntDays = 1;
+        eventDescCtrl.showTemporality = 0;
         eventDescCtrl.cntDays = 1;
         
     
@@ -82,7 +84,7 @@ angular.module('eventDesc', ['ngSanitize'
             return EventService.getMap().get('var1001');
         }, function(newVal, oldVal, scope){
 		   
-		   console.log(newVal + '/' + oldVal);
+		   
            if(newVal != oldVal){
                setTimeout(function(){updateDay();}, animDelay);
             }
@@ -90,6 +92,7 @@ angular.module('eventDesc', ['ngSanitize'
                 updateDay();
             
 				// GA tracking
+			   	ga('set', 'dimension1', jsonData.Scenario.uid);
 				$analytics.eventTrack('start', {category:'game', label:''});
 				$rootScope.gameStartTime = new Date().getTime();
            }
@@ -100,18 +103,36 @@ angular.module('eventDesc', ['ngSanitize'
         setTimeout(function(){$('#startScreen').hide();}, eventDescCtrl.timeOut+200);
         $('#dayTransition').css("opacity", "0");
         $(".background").show();
-        setEventData();
+        EventService.getJSONData().then(
+			function (data){
+				jsonData = data;
+				
+				// init
+				eventDescCtrl.showTemporality = jsonData.Scenario.showTemporality; 
+				setEventData();
+			}
+		);
     
         function displayData(event){
+			if(typeof event === 'undefined') {
+				return;
+			}
+			
+			// memorize events viewed in this game
+			var eventsViewed = localStorageService.get('eventsViewed') !== null ? JSON.parse(localStorageService.get('eventsViewed')) : [];
+			eventsViewed.push(event.id);
+			localStorageService.set('eventsViewed', JSON.stringify(eventsViewed));
+			
 			
 			// GA tracking
+			ga('set', 'dimension1', jsonData.Scenario.uid);
 			$analytics.eventTrack('event', {category:'game', label:event.id});
 			
 			
             // display the updated data
             eventDescCtrl.eventChoices = [];
             eventDescCtrl.eventData = event;
-            $(".background").css("background", "url(data/img/"+event.background+') center no-repeat');
+            $(".background").css("background", "url("+event.background+') center no-repeat');
             $(".background").css("background-size", "cover");
             
             localStorageService.set('event', event.id);
@@ -123,27 +144,28 @@ angular.module('eventDesc', ['ngSanitize'
             
         }
     
-        function containsObj (obj, nbTab){ // check if the summary already exist in summaries
-            if(eventDescCtrl.summaries['summaries'+nbTab].length > 0){
-                for (var i = 0; i < eventDescCtrl.summaries['summaries'+nbTab].length; i++) {
-                    if (eventDescCtrl.summaries['summaries'+nbTab][i].id === obj.id) {
+        function containsObj (obj, tab){ // check if the summary already exist in summaries
+            if(eventDescCtrl.summaries['summaries'+tab] && eventDescCtrl.summaries['summaries'+tab].length > 0){
+                for (var i = 0; i < eventDescCtrl.summaries['summaries'+tab].length; i++) {
+                    if (eventDescCtrl.summaries['summaries'+tab][i].id === obj.id) {
                         return true;
                     }
                 }
-                eventDescCtrl.summaries['summaries'+nbTab].push(obj);
-                 var strSum = JSON.stringify(eventDescCtrl.summaries['summaries'+nbTab]);
-                localStorageService.set('summaries'+nbTab, strSum);
+                eventDescCtrl.summaries['summaries'+tab].push(obj);
+                 var strSum = JSON.stringify(eventDescCtrl.summaries['summaries'+tab]);
+                localStorageService.set('summaries'+tab, strSum);
             }
             else{
-                eventDescCtrl.summaries['summaries'+nbTab].push(obj);
-                 strSum = JSON.stringify(eventDescCtrl.summaries['summaries'+nbTab]);
-                localStorageService.set('summaries'+nbTab, strSum);
+				eventDescCtrl.summaries['summaries'+tab] = new Array();
+                eventDescCtrl.summaries['summaries'+tab].push(obj);
+                 strSum = JSON.stringify(eventDescCtrl.summaries['summaries'+tab]);
+                localStorageService.set('summaries'+tab, strSum);
             }
 
         }
     
         function updateDay() { // animate the changes : event -> new event AND event -> next day -> new event 
-            if(eventDescCtrl.cntDays < 3 && EventService.getMap().get('var1001') != 1){
+            if(eventDescCtrl.cntDays < jsonData.Scenario.temporalityQuestionsPerPeriod && EventService.getMap().get('var1001') != 1){
               eventDescCtrl.cntDays ++;  
             }            
             else {
@@ -151,7 +173,7 @@ angular.module('eventDesc', ['ngSanitize'
             }
              localStorageService.set('cntDays',  eventDescCtrl.cntDays );
             
-            if((EventService.getMap().get('var1001')-1)%eventDescCtrl.nbEventPerDay == 0){ // check if a day has passed
+            if(eventDescCtrl.showTemporality == 1 && (EventService.getMap().get('var1001')-1)%eventDescCtrl.nbEventPerDay == 0){ // check if a day has passed
                 if((EventService.getMap().get('var1001')-1) == 0){ // if first day then set to 'Lundi'
                     $('.currentDay p').html('');
                     $('.nextDay p').html(eventDescCtrl.days[0]);
@@ -194,78 +216,78 @@ angular.module('eventDesc', ['ngSanitize'
 
 		function buttonClick(value, sumID, sumWeight, sumGauge) { 
            
+			
+			
 			// GA tracking
+			ga('set', 'dimension1', jsonData.Scenario.uid);
 			$analytics.eventTrack('event-choice', {category:'game', label:sumID});
 			
 			animDelay = 0;
             $('#noclick').addClass('no-click');
             var sum = {"id":sumID, "weight": sumWeight};            
-            switch(sumGauge){
-                case '1' : containsObj(sum, 1);
-                         break;                 
-
-                case '2' : containsObj(sum, 2);
-                         break;
-
-                case '3' : containsObj(sum, 3);
-                         break;
-            }
+            containsObj(sum, sumGauge);
 
             
             var endInsert = false;
             var trigger = '';
             var values = value.split(";");
             var isGameOver = false;
-            angular.forEach(values, function (item) {
-                
-                 if(item.match(/([$var][0-9]+([-+=][\=]?[-+]?|[<>])[0-9]+)/gm)){ 
-                    // check if gauge variable change
-                    var key = item.match(/(var[0-9]+)/gm);
-                    // si la var qui change est une des 3 jauge > animDelay = config.gaugeAnimDuration;
-                    if(key == 'var2' || key == 'var3' || key == 'var4'){
-       
-                        animDelay = config.gaugeAnimDuration;
-     
-                    }
-                    
-                    
-                    // check if a variable is in the list of command and update the variable
-                    EventService.updateVariable(item);
-                }
-                
-                else if (item.match(/end_game/gm)){ // if endGame is in the choice go to the endGame route
-                    
-                    isGameOver = true;
-                    var strEnd = item.replace(/end_game\(|\)/gm, '');                    
-                    $('.nextDay, .currentDay').css('display', 'none');
-                    $('#dayTransition').css('display', 'block');
-                    setTimeout(function(){$('#dayTransition').css("opacity", "1");}, 100);
-                    setTimeout(function(){ $state.go("aperfectday.endGame", {endID : strEnd, summaries : eventDescCtrl.summaries});
-                    }, eventDescCtrl.timeOut+200);
-                }
-                
-                else if(item.match(/\btrigger_event\b/gm)){ // fill var trigger with a trigger_event
-                    trigger = item;
-                }
-
-                else if(item.match(/\btrigger_pool\b/gm)){ // fill var trigger with a trigger_pool
-                    trigger = item;
-                }
-                
-                else if(item.match(/\bend_insert\b/gm)){ // check if insert is over
-                    endInsert = true;
-                }
-                
-                
-
-            }); 
-            if(isGameOver){
-                return;
-            }
-            // check variable after the click
+			
+			// check variable after the click
             EventService.getJSONData().then(
                 function(events){
-                    var variables = {};
+            
+					
+					angular.forEach(values, function (item) {
+
+						 if(item.match(/([$var][0-9]+([-+=][\=]?[-+]?|[<>])[0-9]+)/gm)){ 
+							// check if gauge variable change
+							var key = item.match(/(var[0-9]+)/gm);
+							// si la var qui change est une des 3 jauge > animDelay = config.gaugeAnimDuration;
+							 var keyInGauges = _.find(events.Scenario.gauges, function(gauge) {
+								return gauge.var == key;
+							});
+							if(typeof keyInGauges !== undefined){
+								animDelay = config.gaugeAnimDuration;
+							}
+
+
+							// check if a variable is in the list of command and update the variable
+							EventService.updateVariable(item);
+						}
+
+						else if (item.match(/end_game/gm)){ // if endGame is in the choice go to the endGame route
+
+							isGameOver = true;
+							var strEnd = item.replace(/end_game\(|\)/gm, '');                    
+							$('.nextDay, .currentDay').css('display', 'none');
+							$('#dayTransition').css('display', 'block');
+							setTimeout(function(){$('#dayTransition').css("opacity", "1");}, 100);
+							setTimeout(function(){ $state.go("aperfectday.endGame", {endID : strEnd, summaries : eventDescCtrl.summaries});
+							}, eventDescCtrl.timeOut+200);
+						}
+
+						else if(item.match(/\btrigger_event\b/gm)){ // fill var trigger with a trigger_event
+							trigger = item;
+						}
+
+						else if(item.match(/\btrigger_pool\b/gm)){ // fill var trigger with a trigger_pool
+							trigger = item;
+						}
+
+						else if(item.match(/\bend_insert\b/gm)){ // check if insert is over
+							endInsert = true;
+						}
+
+
+
+					}); 
+					if(isGameOver){
+						return;
+					}
+            
+			
+					var variables = {};
                     var variablesToCheck = [];
                     variables = events.Variables;
                     variables.forEach(function (variable){
@@ -274,11 +296,14 @@ angular.module('eventDesc', ['ngSanitize'
                             variablesToCheck.push(variable);
                         }
                     });
+					
+					
                     var mapTemp = new Map(EventService.getMap());
                     var insertTemp = '';                    
                     variablesToCheck.forEach(function (variableToCheck){ // find the function bound to the variables
                         
                        var compareTriggers = variableToCheck.controlEffect.split(";");
+						
                        for (var k = 0; k < compareTriggers.length; k++){ // go through all the functions
                            
                            compareTriggers[k] = compareTriggers[k].replace(/^compareTrigger\(|\)$/gm, '');
@@ -290,14 +315,17 @@ angular.module('eventDesc', ['ngSanitize'
                                
                                 conditionString = conditionString.replace('$'+varCondition[i], valueCondition);
                            }
+						   
                            if(eval(conditionString)){ // check if condition is valid
-
-                               for(var l = 1; l < commands.length; l ++){ // go through the other parameters
+							   for(var l = 1; l < commands.length; l ++){ // go through the other parameters
                                    
+								
                                    if(commands[l].match(/(var[0-9]+)/gm)){ 
-                                        // check if there are variables to update and if so put them into a temporary Map
+                                       
+                               			// check if there are variables to update and if so put them into a temporary Map
                                         var key = commands[l].match(/(var[0-9]+)/gm);
                                         key = String(key);
+									    
                                         if(commands[l].match(/(\$?var[0-9]+[+=]{2}|\(([^)]+)\)|\s)/gm)){
                                              var value = commands[l].replace(/(\$?var[0-9]+[+=]{2}|\(([^)]+)\)|\s)/gm, '')
                                              value = parseInt(value);
@@ -310,6 +338,7 @@ angular.module('eventDesc', ['ngSanitize'
                                             else {
                                                mapTemp.set(key, mapTemp.get(key)+value); 
                                             }
+											
                                         }
                                         else if(commands[l].match(/(\$?var[0-9]+[-=]{2}|\(([^)]+)\)|\s)/gm)){
                                             value = commands[l].replace(/(\$?var[0-9]+[-=]{2}|\(([^)]+)\)|\s)/gm, '')
@@ -323,19 +352,21 @@ angular.module('eventDesc', ['ngSanitize'
                                             else {
                                                mapTemp.set(key, mapTemp.get(key)-value); 
                                             }
+											
                                         }
                                         else if(commands[l].match(/(\$?var[0-9]+[=]{1}|\(([^)]+)\)|\s)/gm)){
                                             value = commands[l].replace(/(\$?var[0-9]+[=]{1}|\(([^)]+)\)|\s)/gm, '')
                                             value = parseInt(value);
                                             mapTemp.set(key, value);
+											
                                         }
                                         // si la var qui change est une des 3 jauge > animDelay = config.gaugeAnimDuration;
-                                        if(key == 'var2' || key == 'var3' || key == 'var4'){
-                                             // si oui > animDelay = config.gaugeAnimDuration;
-
-                                            animDelay = config.gaugeAnimDuration;
-   
-                                        }
+                                        var keyInGauges = _.find(events.Scenario.gauges, function(gauge) {
+											return gauge.var == key;
+										});
+										if(typeof keyInGauges !== undefined){
+											animDelay = config.gaugeAnimDuration;
+										}
                                        
 
                                     }                                   
@@ -344,7 +375,7 @@ angular.module('eventDesc', ['ngSanitize'
                                    }
                                    else if (commands[l].match(/^end_game/gm)){ // if endGame is in the choice go to the endGame route
                                        var strEnd = commands[l].replace(/end_game\(|\)/gm, '');
-                                      
+                                      	
                                         $('.nextDay, .currentDay').css('display', 'none');
                                         $('#dayTransition').css('display', 'block');
                                        // wait for animation of gauges to end before going to bilan
@@ -357,6 +388,8 @@ angular.module('eventDesc', ['ngSanitize'
                        } 
                     });                    
                     
+                    
+					
                     EventService.setMap(mapTemp); // replace the old map with the temp map
                     
                     if(eventDescCtrl.isInInsert && endInsert){ // condition to escape the insert 
@@ -380,15 +413,18 @@ angular.module('eventDesc', ['ngSanitize'
                     }
                     
                     //call the right function and pass the ID of the event/pool
-                    if(insertTemp.match(/(insert_event|trigger_event)/gm)){
-                        var eventID = insertTemp.replace(/(insert_event|trigger_event)\(|\)/gm, '');
-                        setTimeout(eventDescCtrl.triggerEvent(eventID), animDelay);
+					if(events.Scenario.type == 2) {
+						setTimeout(eventDescCtrl.triggerPool(''), animDelay);
+					}else{
+						if(insertTemp.match(/(insert_event|trigger_event)/gm)){
+							var eventID = insertTemp.replace(/(insert_event|trigger_event)\(|\)/gm, '');
+							setTimeout(eventDescCtrl.triggerEvent(eventID), animDelay);
 
-                    }else if(insertTemp.match(/(insert_pool|trigger_pool)/gm)){
-                        var poolID = insertTemp.replace(/(insert_pool|trigger_pool)\(|\)/gm, '');
-                        setTimeout(eventDescCtrl.triggerPool(poolID), animDelay);
-                    }
-                
+						}else if(insertTemp.match(/(insert_pool|trigger_pool)/gm)){
+							var poolID = insertTemp.replace(/(insert_pool|trigger_pool)\(|\)/gm, '');
+							setTimeout(eventDescCtrl.triggerPool(poolID), animDelay);
+						}
+					}
                 }
                 
             );
@@ -401,16 +437,13 @@ angular.module('eventDesc', ['ngSanitize'
             EventService.getJSONData().then(
                 function (events){
                    
-                    if(localStorageService.get('map') == ''|| localStorageService.get("map") === null){
+                    if(localStorageService.get('map') == ''|| 	localStorageService.get("map") === null){
                         EventService.getVariables();
-						
-						//console.log('start');
-                    }
-                    
-                    else {
-                        var mapLS = localStorageService.get('map');
-                        var initMap = new Map();
+                    }else {
+						var mapLS = localStorageService.get('map');
                         
+						/*
+						var initMap = new Map();
                         mapLS = mapLS.split(";");
                         mapLS.splice(mapLS.length-1, 1);
                         mapLS.forEach(function (item){
@@ -421,7 +454,8 @@ angular.module('eventDesc', ['ngSanitize'
                             value = parseInt(value);
                             initMap.set(key, value);
                         });
-                        
+						*/
+						var initMap = new Map(JSON.parse(mapLS));
                         EventService.setMap(initMap);
                         
                     }
@@ -438,13 +472,18 @@ angular.module('eventDesc', ['ngSanitize'
                         eventDescCtrl.summaries['summaries3'] = JSON.parse(localStorageService.get("summaries3"));
                     }
 
+					
+					
                      if(localStorageService.get('event') == '' || localStorageService.get("event") === null){
                         var eventTab = [];
-                         for (var i = 0; i < events.Events.length; i++) {                          
+                        for (var i = 0; i < events.Events.length; i++) {                          
                             if(checkConditions(events.Events[i]) && events.Events[i].pool == '') { // check if pool exist
                                 eventTab.push(events.Events[i]);
                             }                               
                         }
+						
+						
+						
                         getRandomEvent(eventTab);
                         displayData(eventDescCtrl.event);
                     }
@@ -462,7 +501,7 @@ angular.module('eventDesc', ['ngSanitize'
                     
                     EventService.getJSONData().then(
                         function (data){
-							console.log(data.Variables);
+							
                             //var nbEventPerDayFind = _.find(data.Variables, ['title', 'nbEventPerDay']);
                             var nbEventPerDayFind = _.find(data.Variables, ['id', 'var1000']);
                             eventDescCtrl.nbEventPerDay = nbEventPerDayFind.initialisation;
@@ -481,7 +520,7 @@ angular.module('eventDesc', ['ngSanitize'
                     for (var i = 0; i < events.Events.length; i++) {
                         if (events.Events[i].id == eventID) {
                             eventDescCtrl.event = events.Events[i];
-                            if((EventService.getMap().get('var1001')-1)%eventDescCtrl.nbEventPerDay == 0){ // check if a day has passed to wait the correct time 
+                            if(eventDescCtrl.showTemporality == 1 && (EventService.getMap().get('var1001')-1)%eventDescCtrl.nbEventPerDay == 0){ // check if a day has passed to wait the correct time 
                                 $rootScope.idTimeout = setTimeout(function(){displayData(eventDescCtrl.event);}, eventDescCtrl.timeOut+100+animDelay);
                             }
                             else {
@@ -496,24 +535,35 @@ angular.module('eventDesc', ['ngSanitize'
     
         function triggerPool(choiceValue){ // find the ID of the pool and change the data
             var poolID = choiceValue.replace(/\btrigger_pool\(\b|\)|\s/gm, '' );
-            EventService.getJSONData().then(
+            
+			EventService.getJSONData().then(
                 function(events){                    
                     var poolTab = [];
-                    for (var i = 0; i < events.Events.length; i++) {
-                        if (events.Events[i].pool == poolID) {                           
-                            if(checkConditions(events.Events[i])) {
-                                if(eventDescCtrl.eventData.id != events.Events[i].id){
-                                    poolTab.push(events.Events[i]); 
-                                }
-                                      
-                            }
-                        }                
-                    }
-                    
+                    if(events.Scenario.type == 2) {
+						var eventsViewed = localStorageService.get('eventsViewed') !== null ? JSON.parse(localStorageService.get('eventsViewed')) : [];
+						for (var i = 0; i < events.Events.length; i++) {
+							if(_.findIndex(eventsViewed, function(eventId){ return eventId == events.Events[i].id; }) == -1) {
+								poolTab.push(events.Events[i]);                 
+							}
+						}
+					}else{
+						for (var i = 0; i < events.Events.length; i++) {
+							if (events.Events[i].pool == poolID) {                           
+								if(checkConditions(events.Events[i])) {
+									if(eventDescCtrl.eventData.id != events.Events[i].id){
+										poolTab.push(events.Events[i]); 
+									}
+
+								}
+							}                
+						}
+					}
+					
+					
 
                     eventDescCtrl.event = getRandomEvent(poolTab); // random on all the event of the pool passed
 
-                    if((EventService.getMap().get('var1001')-1)%eventDescCtrl.nbEventPerDay == 0){ // check if a day has passed to wait the correct time 
+                    if(eventDescCtrl.showTemporality == 1 && (EventService.getMap().get('var1001')-1)%eventDescCtrl.nbEventPerDay == 0){ // check if a day has passed to wait the correct time 
                        $rootScope.idTimeout = setTimeout(function(){displayData(eventDescCtrl.event);}, eventDescCtrl.timeOut+100+animDelay);
                     }
                     else {
@@ -530,6 +580,8 @@ angular.module('eventDesc', ['ngSanitize'
             }
             else {
                 var conditionString = event.condition;
+                
+                
                 var varArray = conditionString.match(/([var]+[0-9]+)/gm);
 
                 for (var i = 0; i < varArray.length; i++) {
@@ -566,20 +618,21 @@ angular.module('eventDesc', ['ngSanitize'
         }
     
         function printMap() { // displays the map after the update of the variables
+			
               EventService.getJSONData().then(
-                function (events){
-                    var str = '';
-                    var strLS = '';
+                function (data){
+                    
+					var str = '';
                     var variable = '';
                     var variables = {};
-                    variables = events.Variables;
+                    variables = data.Variables;
                     EventService.getMap().forEach(function (value, key){
                         variable = _.find(variables, ['id', key]);
                         str +=  variable.title + " : " + value + "<br>\n";
-                       strLS +=  variable.id + ":" + value + ";";
                     });
-                    localStorageService.set('map', strLS);
                     eventDescCtrl.map = $sce.trustAsHtml(str);
+					
+					
                 }
             );        
         }
@@ -589,6 +642,7 @@ angular.module('eventDesc', ['ngSanitize'
 			// GA tracking
 			if($rootScope.gameStartTime > 0) {
 				var gameDuration = parseInt( (new Date().getTime() - $rootScope.gameStartTime) / 1000 );
+				ga('set', 'dimension1', jsonData.Scenario.uid);
 				$analytics.eventTrack('end', {category:'game', label:'resetAvantFin', value:gameDuration});
 			}
 
@@ -599,8 +653,9 @@ angular.module('eventDesc', ['ngSanitize'
             $(".background").show();
             localStorageService.clearAll();
             eventDescCtrl.eventChoices = [];
+            eventDescCtrl.event = null;
             eventDescCtrl.day = eventDescCtrl.days[0];
-            setEventData();
+            //setEventData();
 			
 			$state.go("aperfectday.intro");
 			

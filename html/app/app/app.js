@@ -8,7 +8,8 @@ angular.module('aperfectday', [
     'endGame',
 	
 	'angulartics', 'angulartics.google.analytics',
-	'angular-cookie-law'
+	'angular-cookie-law',
+	'ng-appcache'
 ])
 
 /*-----------------------------------------------------------------------------------
@@ -64,11 +65,16 @@ angular.module('aperfectday', [
 		$analyticsProvider.virtualPageviews(false);
 	})
 
+	.config(function ($locationProvider) {
+		//$locationProvider.html5Mode(true);
+		//$locationProvider.hashPrefix('!');
+	})
+
 /*-----------------------------------------------------------------------------------
                                         Main run
 -----------------------------------------------------------------------------------*/
 
-    .run(function (config, $rootScope, $http, EventService) {
+    .run(function (config, $rootScope, $http, $stateParams, $location, EventService, localStorageService, appcache) {
         
         //************************ properties *******************//
     
@@ -84,10 +90,48 @@ angular.module('aperfectday', [
         
         $rootScope.showMap = false;
 		$rootScope.gameStartTime = 0;
+    	
+	
+		// listen on appcache updates, and reload data 
+		appcache.addEventListener('updateready', function(e) {
+			
+			//loadData();
+			if (confirm('Une nouvelle version des données est disponible. Voulez-vous recharger la page ?')) {
+				window.location.reload();
+			}
+		});
+	
+		// get scenarioUid in url or keep the default
+		
+		var sPageURL = window.location.search.substring(1);
+		var sURLVariables = sPageURL.split('&');
+		for (var i = 0; i < sURLVariables.length; i++) {
+			var sParameterName = sURLVariables[i].split('=');
+			if (sParameterName[0] == 'sid') {
+				EventService.setScenarioUid(sParameterName[1]);
+			}
+		}
+	
+	
+		// load data
+        loadData();
     
 	
-        EventService.getJSONData().then( // load images on run
+	
+        //******************* public functions ******************//
+        function loadData() {
+			EventService.getJSONData().then( // load images on run
                 function(data){
+					console.log(data);
+					
+					// check localstorage data is valid with loaded data
+					if(localStorageService.get('scenarioUid') != data.Scenario.uid || localStorageService.get('scenarioLastUpdateDate') != data.Scenario.lastUpdateDate) {
+						localStorageService.clearAll();
+						localStorageService.set('scenarioUid', data.Scenario.uid);
+						localStorageService.set('scenarioLastUpdateDate', data.Scenario.lastUpdateDate);
+					}
+
+					// pre-load medias (background)
                     var events = data.Events;
                     var images = [];
                     var img = '';
@@ -101,7 +145,7 @@ angular.module('aperfectday', [
                         if($.inArray(el, ImgToLoad) === -1) ImgToLoad.push(el);
                     });
                     for(var i = 0; i < ImgToLoad.length; i ++){
-                        new Image().src = "data/img/"+ImgToLoad[i];
+                        new Image().src = ImgToLoad[i];
                     }
                     for(var i = 1; i <= 24; i ++){
                         new Image().src = "data/img/sparkles_"+i+".png";
@@ -115,10 +159,7 @@ angular.module('aperfectday', [
                      }, 1000);
                 }
             );
-    
-        //******************* public functions ******************//
-        ///////////////////////////////////////////////////////////     
-    
+		}
     
         //******************** private functions ****************//
     
@@ -131,7 +172,7 @@ angular.module('aperfectday', [
  
      .factory('EventService', function ($rootScope, $http, $q, $sce, $filter, config, localStorageService) {
     
-    
+    	var DEFAULT_SCENARIO_UID = "9CR73H"; // scenario complexe de base
         var URLS = {
                 GET_EVENT: 'data/eventData_FR.json',
                 //GET_EVENT: 'data/eventData_FR.json?rnd='+Math.random(),
@@ -140,9 +181,12 @@ angular.module('aperfectday', [
         var events = false,
             event = {},
             varMap = new Map(),
-            varObj = {};
+            varObj = {},
+			scenario,
+			scenarioUid;
     
     
+		scenarioUid = DEFAULT_SCENARIO_UID;
     
         var factory = {
             
@@ -150,7 +194,8 @@ angular.module('aperfectday', [
             getVariables: getVariables,
             updateVariable: updateVariable,
             getMap: getMap,
-            setMap: setMap
+            setMap: setMap,
+			setScenarioUid: setScenarioUid
         };
     
         return factory;
@@ -167,9 +212,8 @@ angular.module('aperfectday', [
                 return $q.when(events);
                 }else {
                    
-                       return $http.get($sce.trustAsResourceUrl(URLS.GET_EVENT)).then(cacheEvents);
-
-               
+                       //return $http.get($sce.trustAsResourceUrl(URLS.GET_EVENT)).then(cacheEvents);
+                       return $http.get($sce.trustAsResourceUrl('data/'+scenarioUid+'/scenarioData_FR.json')).then(cacheEvents);
                 }
     
             function cacheEvents(result) {
@@ -190,13 +234,15 @@ angular.module('aperfectday', [
                     varObj = event.Variables;
                     angular.forEach(varObj, function (item){
                         varMap.set(item.id, parseInt(item.initialisation));
-                    })                    
+                    });
+					localStorageService.set('map', JSON.stringify(Array.from(varMap)));
                 }
             );
         }
     
         function updateVariable (buttonValue){
-            // Update the variable in the Map
+            
+			// Update the variable in the Map
             var key = buttonValue.replace(/([\$]|[-+=]+[0-9]+|\(([^)]+)\)|\s)/gm, '');
             if(buttonValue.match(/(\$?var[0-9]+[+=]{2}|\(([^)]+)\))/gm)){
                  var value = buttonValue.replace(/(\$?var[0-9]+[+=]{2}|\(([^)]+)\)|\s)/gm, '')
@@ -230,7 +276,7 @@ angular.module('aperfectday', [
                 value = parseInt(value);
                 varMap.set(key, value);
             }
-            localStorageService.set('map', JSON.stringify(varMap));
+			localStorageService.set('map', JSON.stringify(Array.from(varMap)));
         }
     
         function getMap() {
@@ -239,7 +285,12 @@ angular.module('aperfectday', [
     
         function setMap(map){
             varMap = new Map(map);
-        }   
+			localStorageService.set('map', JSON.stringify(Array.from(varMap)));
+        } 
+	
+		function setScenarioUid(uid) {
+			scenarioUid = uid;
+		}
         
     })
 
@@ -278,7 +329,7 @@ angular.module('aperfectday', [
             }
 
 
-            //********************** private functions *****************************//
+            //********************** private functions ***************************** //
 
             function cacheData(result) {
                 data = result.data;

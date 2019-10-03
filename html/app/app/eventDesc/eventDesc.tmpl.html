@@ -1,6 +1,6 @@
 <div class="container-fluid" id="eventDesc">
     <div id="startScreen"></div>
-    <div id="dayTransition" class="">
+    <div id="dayTransition" class="" >
 
            <div class="currentDay">
                 <p></p>
@@ -11,7 +11,7 @@
 
     </div>
     <div id="toggle-anime" class="">
-        <div id="cntDays">
+        <div id="cntDays" ng-if="eventDescCtrl.showTemporality == 1">
             <p><span id="nbCntDays">{{eventDescCtrl.cntDays}}</span> <span id="slashDays">/</span><span id="denominator">{{eventDescCtrl.nbEventPerDay}}</span></p>
         </div>
         <div id="titleEvent" class="titleBlock contentBlock">
@@ -32,7 +32,7 @@
        </div>
 
     </div>
-    <h3 class="day" ng-bind-html="eventDescCtrl.day | to_trusted"></h3>
+    <h3 class="day" ng-bind-html="eventDescCtrl.day | to_trusted" ng-if="eventDescCtrl.showTemporality == 1"></h3>
     <div class="choiceBlockB reset">
             <button type="submit" ng-click="eventDescCtrl.resetData()"><i class="glyphicon glyphicon-chevron-left"></i></button>
     </div>

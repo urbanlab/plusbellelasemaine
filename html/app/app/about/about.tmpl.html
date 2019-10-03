@@ -6,8 +6,21 @@
                 <h1 class="titleModal" >&Agrave; PROPOS</h1>      
                     <div class="row no-margin">
                        <div class="col-xs-8 col-xs-offset-2 contentBlock">
-                               <h3 ng-bind-html="titleAbout | to_trusted"></h3>
+                            <h3 ng-bind-html="titleAbout | to_trusted"></h3>
                             <p ng-bind-html="textAbout | to_trusted"></p>
+                            <div class="companyBlock">
+                            	Moteur narratif commandé par
+                            	<a href="https://www.grandlyon.com" title="Métropole de Lyon" target="_blank"><img src="data/img/logo_grandLyonMetropole.png" alt="Métropole de Lyon" ></a>
+								<a href="https://www.grandlyon.com" title="Métropole de Lyon" target="_blank">https://www.grandlyon.com</a>
+                           		<br>et
+                           		<a href="https://www.erasme.org" title="Erasme" target="_blank"><img src="data/img/logo_erasme.png" alt="Erasme" ></a>
+								<a href="https://www.erasme.org" title="Erasme" target="_blank">https://www.erasme.org</a>
+                            </div>
+                            <div class="companyBlock">
+                            	Moteur narratif conçu et développé par
+                            	<a href="http://www.dowino.com" title="DOWiNO" target="_blank"><img src="data/img/logo_dowino.png" alt="DOWiNO" ></a>
+								<a href="http://www.dowino.com" title="DOWiNO" target="_blank">http://www.dowino.com</a>
+                            </div>
                             <a id="introBtnPlay" ng-click="modal()" >Fermer</a>
                         </div>
                     </div>
