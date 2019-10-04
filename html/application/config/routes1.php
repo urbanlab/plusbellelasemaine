@@ -65,6 +65,12 @@ $route['admin/import'] = 'imports/Admin_import';
 
 $route['admin/import/importValidate'] = 'imports/Admin_import/importValidate';
 $route['admin/import/importJson'] = 'imports/Admin_import/importJson';
+$route['admin/import/exportScenarioSimple'] = 'imports/Admin_import/exportScenarioSimple';
+$route['admin/import/exportScenarioSimple/(.+)'] = 'imports/Admin_import/exportScenarioSimple/$1';
 
 $route['admin/export'] = 'imports/Admin_import/export';
+
+// gestion des scenrios
+$route['admin/scenarios'] = 'scenario/Admin_scenario';
+$route['admin/scenarios/(.+)'] = 'scenario/Admin_scenario/$1';
 

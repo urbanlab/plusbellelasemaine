@@ -12,6 +12,19 @@ class Emailer extends MY_Controller {
     }
 
 
+	public function test() {
+		$data = array(
+			'newPassword' => 'newpass'
+		);
+		$this->email->from($this->config->item('global_email_from'), $this->config->item('global_email_from_name'));
+        $this->email->to('g.tribut@dowino.com');
+        $this->email->subject( mb_convert_encoding("Renouvellement de votre mot de passe", "UTF-8") );
+        $message = mb_convert_encoding($this->load->view('emailer/forgotAdminPassword_view', $data, TRUE), "UTF-8");
+
+        $this->email->message($message);
+        $this->email->send();
+	}
+	
     public function _sendNewAdminPassword($data)
     {
         $this->email->from($this->config->item('global_email_from'), $this->config->item('global_email_from_name'));

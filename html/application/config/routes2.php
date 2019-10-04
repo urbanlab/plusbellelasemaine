@@ -50,6 +50,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
+$route['admin/autoConnect/(:any)'] = 'userbo/Admin_Userbo/autoConnect/$1';
+
+
 $route['admin/stats'] = 'stats/Admin_stats/usage';
 $route['admin/statistiques_utilisation'] = 'stats/Admin_stats/usage';
 $route['admin/statistiques_utilisation/setDateRange'] = 'stats/Admin_stats/usage_setDateRange';
@@ -57,5 +60,8 @@ $route['admin/statistiques_utilisation/setDataType'] = 'stats/Admin_stats/usage_
 $route['admin/statistiques_utilisation/setDetails'] = 'stats/Admin_stats/usage_setDetails';
 $route['admin/statistiques_utilisation/setChartPeriod'] = 'stats/Admin_stats/usage_setChartPeriod';
 $route['admin/statistiques_utilisation/export'] = 'stats/Admin_stats/usage_export';
+//$route['admin/statistiques_utilisation/(:any)'] = 'stats/Admin_stats/$1';
 $route['admin/taux_retention'] = 'stats/Admin_stats/retention';
+//$route['admin/taux_retention/(:any)'] = 'stats/Admin_stats/$1';
 $route['admin/statistiques_specifiques'] = 'stats/Admin_stats/specific';
+//$route['admin/statistiques_specifiques/(:any)'] = 'stats/Admin_stats/$1';

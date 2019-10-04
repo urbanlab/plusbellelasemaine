@@ -112,8 +112,11 @@ Class GAReporting
         $data = array();
 
         $dimensions = $row->getDimensions();
-        for ($i = 0; $i < count($dimensionHeaders) && $i < count($dimensions); $i++) 
-          $data[] = $dimensions[$i];
+		if(isset($dimensions) && isset($dimensionHeaders) && is_array($dimensions) && is_array($dimensionHeaders)) {
+			for ($i = 0; $i < count($dimensionHeaders) && $i < count($dimensions); $i++) {
+				$data[] = $dimensions[$i];
+			}
+		}
 
         $metrics = $row->getMetrics();
         for ($j = 0; $j < count( $metricHeaders ) && $j < count( $metrics ); $j++) 

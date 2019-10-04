@@ -281,7 +281,7 @@ class Admin_Userbo extends MY_Controller {
 	public function _addItem() {
 		
 		
-		$check = $this->_checkLoginUnique($this->input->post('login'), NULL);
+		$check = $this->_checkLoginUnique($this->input->post('loginInput'), NULL);
 		
 		if($check == FALSE) {
 			$this->view(NULL, 'duplicateLoginError');
@@ -292,8 +292,8 @@ class Admin_Userbo extends MY_Controller {
 			'userType' => is_section_user_admins()?'1':'2',
 			'firstname' => $this->input->post('firstname'),
 			'lastname' => $this->input->post('lastname'),
-			'login' => $this->input->post('login'),
-			'password' => Modules::run('security/_encodePassword', $this->input->post('password')),
+			'login' => $this->input->post('loginInput'),
+			'password' => Modules::run('security/_encodePassword', $this->input->post('passwordInput')),
 		);
 		$itemId = $this->userbo_model->addItem($data);
 		
@@ -353,7 +353,7 @@ class Admin_Userbo extends MY_Controller {
 		
 		$item = $this->userbo_model->getItem($itemId);
 		
-		$check = $this->_checkLoginUnique($this->input->post('login'), $itemId);
+		$check = $this->_checkLoginUnique($this->input->post('loginInput'), $itemId);
 		
 		if($check == FALSE) {
 			$this->view($item, 'duplicateLoginError');
@@ -361,15 +361,15 @@ class Admin_Userbo extends MY_Controller {
 		}
 		
 		$password = NULL;
-		if($this->input->post('password')) {
-			$password = Modules::run('security/_encodePassword', $this->input->post('password'));
+		if($this->input->post('passwordInput')) {
+			$password = Modules::run('security/_encodePassword', $this->input->post('passwordInput'));
 		}
 		$data = array(
 			'id' => $itemId,
 			'userType' => is_section_user_admins()?'1':'2',
 			'firstname' => $this->input->post('firstname'),
 			'lastname' => $this->input->post('lastname'),
-			'login' => $this->input->post('login'),
+			'login' => $this->input->post('loginInput'),
 			'password' => $password,
 		);
 		$this->userbo_model->updateItem($data);

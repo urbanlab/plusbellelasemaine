@@ -31,13 +31,37 @@ var userbos = {
 		var ok = true;
 		var email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
 		
-		if($('#login').val() === '' || !email_regex.test($('#login').val())) {
-			$('#login').closest('.form-group').addClass('has-error').focus();
-			
+		if($('#firstname').val() === '') {
+			$('#firstname').closest('.form-group').addClass('has-error').focus();
 			ok = false;
 		}else{
-			$('#login').closest('.form-group').removeClass('has-error');
+			$('#firstname').closest('.form-group').removeClass('has-error');
 		}
+		
+		if($('#lastname').val() === '') {
+			$('#lastname').closest('.form-group').addClass('has-error').focus();
+			ok = false;
+		}else{
+			$('#lastname').closest('.form-group').removeClass('has-error');
+		}
+		
+		if($('#loginInput').val() === '' || !email_regex.test($('#loginInput').val())) {
+			$('#loginInput').closest('.form-group').addClass('has-error').focus();
+			ok = false;
+		}else{
+			$('#loginInput').closest('.form-group').removeClass('has-error');
+		}
+		// at least one number, one lowercase and one uppercase letter
+		// at least 8 characters
+    	var pass_regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+    	if($('#editedItemId').val() === '-1' && ($('#passwordInput').val() === '' || !pass_regex.test($('#passwordInput').val()))) {
+			$('#passwordInput').closest('.form-group').addClass('has-error').focus();
+			ok = false;
+			alert("Vous devez spécifier un mot de passe complexe, comprenant au moins 8 caractères, et avec au moins une lettre minuscule, une lettre majuscule et un chiffre.")
+		}else{
+			$('#passwordInput').closest('.form-group').removeClass('has-error');
+		}
+		
 		if(ok === true) {
 			$('#userForm').submit();
 		}
@@ -62,10 +86,19 @@ var userbos = {
 			$('#changePasswordForm #savePasswordBtn').click(function(e) {
 				e.preventDefault();
 				
+				// check if strong passowrd
+				var pass_regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+				if($('#changePasswordForm #newPassword1').val() === '' || !pass_regex.test($('#changePasswordForm #newPassword1').val())) {
+					alert("Vous devez spécifier un mot de passe complexe, comprenant au moins 8 caractères, et avec au moins une lettre minuscule, une lettre majuscule et un chiffre.");
+					
+					return false;
+				}
+				
+				// send pass modification
 				$.post($('#changePasswordForm').attr('action'),
 					'currentPassword='+$('#changePasswordForm #currentPassword').val()+'&newPassword1='+$('#changePasswordForm #newPassword1').val()+'&newPassword2='+$('#changePasswordForm #newPassword2').val()+'',
 					function (data) {
-						console.log(data);
+						//console.log(data);
 						if(data === '-1000') {
 							
 						}

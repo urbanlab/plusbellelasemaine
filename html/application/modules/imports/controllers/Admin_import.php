@@ -2,7 +2,7 @@
 
 
 
-class Admin_Import extends MY_Controller {
+class Admin_Import extends Admin_Controller {
 
 	private $exportTplPath = "tpl/export_story_tpl.xlsx";
 
@@ -716,7 +716,7 @@ class Admin_Import extends MY_Controller {
             'Ends' => array()
         );
 
-        $sql = $this->db->get('_variables');
+        $sql = $this->db->query('SELECT * FROM `_variables` WHERE `scenario_FK`= 1');
 
         foreach ($sql->result() as $row){
 
@@ -730,7 +730,7 @@ class Admin_Import extends MY_Controller {
         }
 
 
-        $sqlEvents = $this->db->query('SELECT * from _events');
+        $sqlEvents = $this->db->query('SELECT * FROM `_events` WHERE `scenario_FK`= 1');
 
         $sqlChoices = "SELECT ec.`id`, ec.`id_choice`, ec.`command`, ec.`summary_weight`,  ec.`summary_gauge_target`,  t.`content`, ec.`event_FK`
                         FROM `_event_choice` AS ec INNER JOIN
@@ -781,7 +781,7 @@ class Admin_Import extends MY_Controller {
 
         }
 
-        $sqlEnds = $this->db->get('_ends');
+        $sqlEnds = $this->db->query('SELECT * FROM `_ends` WHERE `scenario_FK`= 1');
 
         foreach($sqlEnds->result() as $row){
 
@@ -813,12 +813,17 @@ class Admin_Import extends MY_Controller {
         fclose($fp);
 
 
-        /*$JSONtab['Variables'] = $sql;
-
-        foreach($JSONtab['Variables'] as $json){
-            var_dump($json);
-        }*/
-
+		// update cache manifest
+		$this->load->helper('file');
+		$manifest = read_file(FCPATH.'/tpl/manifest_tpl.appcache');
+		$manifest = str_replace('[DATE]', date('Y-m-d H:i:s'), $manifest);
+		
+		if(ENVIRONMENT != 'development') {
+            write_file('app/manifest.appcache', $manifest);
+        }else {
+            write_file('../../Client/App/www/manifest.appcache', $manifest);
+        }
+		
     }
 
     public function export(){
@@ -1047,6 +1052,7 @@ class Admin_Import extends MY_Controller {
             }
         }
 
+		PhpOffice\PhpSpreadsheet\Shared\File::setUseUploadTempDirectory(TRUE);
         $writer =  new PhpOffice\PhpSpreadsheet\Writer\Xlsx($this->excel);
 //
 //
@@ -1060,5 +1066,238 @@ class Admin_Import extends MY_Controller {
 
         $writer->save('php://output');
 
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	public function exportScenarioSimple($scenarioId = 2){
+		
+		$l = 1; // pas de multi langues dans les scénarios simples, on reste sur la langue 1 (FR)
+		
+		$sql = 'SELECT `id`, `uid`, `scenario_type`, `title_FK`, `intro_title_FK`, `intro_text_FK`, `about_title_FK`, `about_text_FK`, `show_temporality`, `temporality_labels_FK`, `temporality_questions_per_period`, `temporality_periods_to_win`, `creation_date`, `last_update_date` 
+				FROM `scenario` 
+				WHERE `id` = ?';
+		$row = $this->db->query($sql, array($scenarioId))->row();
+		$scenario = array(
+			'id' => intval($row->id),
+			'uid' => $row->uid,
+			'type' => intval($row->scenario_type),
+			'title' => Modules::run('translation/_getTranslation', $row->title_FK, $l),
+			'introTitle' => Modules::run('translation/_getTranslation', $row->intro_title_FK, $l),
+			'introText' => Modules::run('translation/_getTranslation', $row->intro_text_FK, $l),
+			'aboutTitle' => Modules::run('translation/_getTranslation', $row->about_title_FK, $l),
+			'aboutText' => Modules::run('translation/_getTranslation', $row->about_text_FK, $l),
+			'showTemporality' => intval($row->show_temporality),
+			'temporalityLabels' => Modules::run('translation/_getTranslation', $row->temporality_labels_FK, $l),
+			'temporalityQuestionsPerPeriod' => intval($row->temporality_questions_per_period),
+			'temporalityPeriodsToWin' => intval($row->temporality_periods_to_win),
+			'creationDate' => intval($row->creation_date),
+			'lastUpdateDate' => intval($row->last_update_date),
+			'gauges' =>  array()
+		);
+		
+        $JSONtab = array(
+			'Scenario' => $scenario,
+            'Variables' => array(),
+            'Events' => array(),
+            'Ends' => array()
+        );
+
+        // Variables : generated from scenario gauge
+		$varTranspositions = array();
+		
+		$sql = 'SELECT `id`, `scenario_FK`, `position`, `var`, `label_FK`, `summary_title_FK`, `picto`, `initial_value`, `min_value_to_loose`, `victory_title_FK`, `victory_text_FK`, `defeat_title_FK`, `defeat_text_FK` 
+				FROM `scenario_gauge` 
+				WHERE `scenario_FK`= ?
+				ORDER BY `position` ASC';
+		$query = $this->db->query($sql, array($scenarioId));
+
+        foreach ($query->result() as $row){
+			$label = Modules::run('translation/_getTranslation', $row->label_FK, $l);
+            $summaryTitle = Modules::run('translation/_getTranslation', $row->summary_title_FK, $l);
+            $victoryTitle = Modules::run('translation/_getTranslation', $row->victory_title_FK, $l);
+            $victoryText = Modules::run('translation/_getTranslation', $row->victory_text_FK, $l);
+            $defeatTitle = Modules::run('translation/_getTranslation', $row->defeat_title_FK, $l);
+            $defeatText = Modules::run('translation/_getTranslation', $row->defeat_text_FK, $l);
+
+			$JSONtab['Scenario']['gauges'][] =  array(
+				'var' => 'var'.$row->id,//$row->var,
+				'label' => $label,
+				'summaryTitle' => $summaryTitle,
+				'picto' => $row->picto,
+				'initialValue' => intval($row->initial_value),
+				'minValueToLoose' => intval($row->min_value_to_loose),
+				/*'victoryTitle' => $victoryTitle,
+				'victoryText' => $victoryText,
+				'defeatTitle' => $defeatTitle,
+				'defeatText' => $defeatText,*/
+			);
+			
+            $JSONtab['Variables'][] =  array(
+                'id' => 'var'.$row->id,
+                'title' => $row->var,
+                'initialisation' => intval($row->initial_value),
+                'control' => 'eachEvent',
+                //'controlEffect' => 'compareTrigger($var'.$row->id.'<='.intval($row->min_value_to_loose).' && $var1003==0, $var1003=1, insert_event(2_'.$row->id.'))'
+                'controlEffect' => 'compareTrigger($var'.$row->id.'<='.intval($row->min_value_to_loose).' && $var1003==0, $var1003=1, endGame(defaite_var'.$row->id.'))'
+            );
+			$varTranspositions['$'.$row->var] = '$var'.$row->id;
+			
+			$JSONtab['Ends'][] = array(
+				'id' => 'defaite_var'.$row->id,
+				'background' => 0,
+				'title' => $defeatTitle,
+				'text' => $defeatText
+			);
+			
+			$JSONtab['Ends'][] = array(
+				'id' => 'victoire_var'.$row->id,
+				'background' => 0,
+				'title' => $victoryTitle,
+				'text' => $victoryText
+			);
+        }
+		// Ajout variables fixes
+		$JSONtab['Variables'][] = array(
+			'id' => 'var1000',
+			'title' => 'nbEventPerDay',
+			'initialisation' => $scenario['temporalityQuestionsPerPeriod'],
+			'control' => '',
+			'controlEffect' => ''
+		);
+		$JSONtab['Variables'][] = array(
+			'id' => 'var1001',
+			'title' => 'nbEvent',
+			'initialisation' => 1,
+			'control' => 'eachEvent',
+			'controlEffect' => 'compareTrigger($var1001<='.($scenario['temporalityQuestionsPerPeriod'] * $scenario['temporalityPeriodsToWin']).', $var1001+=1)'
+		);
+		$JSONtab['Variables'][] = array(
+			'id' => 'var1003',
+			'title' => 'gameOver',
+			'initialisation' => 0,
+			'control' => '',
+			'controlEffect' => ''
+		);
+		
+		// Récupération des contextes (medias)
+		$sqlScenarioMedias = 'SELECT `id`, `scenario_FK`, `label`, `image_url`
+			FROM `scenario_media` 
+			WHERE `scenario_FK` = ?
+			ORDER BY `id` ASC';
+        $queryScenarioMedias = $this->db->query($sqlScenarioMedias, array($scenarioId));
+		$scenarioMedias = array();
+		foreach($queryScenarioMedias->result() as $row) {
+			$scenarioMedias[$row->label] = $row->image_url;
+		}
+		
+		// Ajout events
+		$sqlEvents = 'SELECT * 
+			FROM `_events` 
+			WHERE `scenario_FK` = ?
+			ORDER BY `id` ASC';
+        $queryEvents = $this->db->query($sqlEvents, array($scenarioId));
+
+        $sqlChoices = "SELECT ec.`id`, ec.`id_choice`, ec.`command`, ec.`summary_weight`,  ec.`summary_gauge_target`,  t.`content`, ec.`event_FK`
+                        FROM `_event_choice` AS ec INNER JOIN
+                            `_translation_object` AS tro ON tro.`id` = ec.`content_FK` INNER JOIN
+                            `_translation` AS t ON t.`translation_object_FK` = tro.`id`
+                        WHERE ec.`event_FK` = ? AND t.`lang_FK` = ? 
+						ORDER BY ec.`id` ASC";
+
+        $sqlSummary = "SELECT ec.`id`, ec.`id_choice`, t.`content`, ec.`summary_text_FK`
+                        FROM `_event_choice` AS ec INNER JOIN
+                            `_translation_object` AS tro ON tro.`id` = ec.`summary_text_FK` INNER JOIN
+                            `_translation` AS t ON t.`translation_object_FK` = tro.`id`
+                        WHERE ec.`event_FK` = ? AND t.`lang_FK` = ? AND ec.`id_choice` = ? ";
+
+
+        foreach ($queryEvents->result() as $row){
+
+            $title = Modules::run('translation/_getTranslation', $row->title_FK, $l);
+            $desc = Modules::run('translation/_getTranslation', $row->description_FK, $l);
+
+            $choices = array();
+
+            $query = $this->db->query($sqlChoices, array($row->id, $l));
+
+            foreach($query->result() as $line){
+
+                $summaryText = $this->db->query($sqlSummary, array($row->id, $l, $line->id_choice))->row()->content;
+
+                array_push($choices, array(
+                    'id' => $row->id_event . '|' . $line->id_choice,
+                    'text' => $line->content,
+                    'value' => strtr($line->command, $varTranspositions),
+                    'summaryWeight' => $line->summary_weight,
+                    'summaryGauge' => $line->summary_gauge_target,
+                    'summaryText' => ($summaryText != NULL ? $summaryText : '')
+                ));
+            }
+
+            $JSONtab['Events'][] = array(
+                'id' => $row->id_event,
+                'condition' => ($row->condition != NULL ? $row->condition : ''),
+                'weight' => ($row->weight != NULL ? $row->weight : ''),
+                'pool' => ($row->pool != NULL ? $row->pool : ''),
+                'background' => base_url('medias/'.$scenario['uid'].'/'.$scenarioMedias[$row->background]),
+                'title' => $title,
+                'textEvent' => $desc,
+                'Choices' => $choices
+            );
+
+        }
+
+		/*
+        $sqlEnds = $this->db->query('SELECT * FROM `_ends` WHERE `scenario_FK`= 1');
+
+        foreach($sqlEnds->result() as $row){
+
+            $title = Modules::run('translation/_getTranslation', $row->end_title_FK, $l);
+            $desc = Modules::run('translation/_getTranslation', $row->end_description_FK, $l);
+
+
+            array_push($JSONtab['Ends'], array(
+                'id' => $row->id_end,
+                'background' => $row->background,
+                'title' => $title,
+                'text' => $desc
+            ));
+
+        }
+		*/
+		$this->load->helper('ajax');
+		setAjaxHeaders();
+		echo json_encode($JSONtab, JSON_PRETTY_PRINT);
+        
+		/*
+		if(ENVIRONMENT != 'development') {
+            $fp = fopen('app/data/eventData_'.$c.'.json', 'w');
+        }else {
+            $fp = fopen('../../Client/App/www/data/eventData_'.$c.'.json', 'w');
+        }
+
+        //$fp = fopen('data/eventData_'.$c.'.json', 'w');
+        fwrite($fp, json_encode($JSONtab));
+        fclose($fp);
+
+
+		// update cache manifest
+		$this->load->helper('file');
+		$manifest = read_file(FCPATH.'/tpl/manifest_tpl.appcache');
+		$manifest = str_replace('[DATE]', date('Y-m-d H:i:s'), $manifest);
+		
+		if(ENVIRONMENT != 'development') {
+            write_file('app/manifest.appcache', $manifest);
+        }else {
+            write_file('../../Client/App/www/manifest.appcache', $manifest);
+        }
+		*/
+		
     }
 }

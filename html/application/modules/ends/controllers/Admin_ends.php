@@ -2,7 +2,6 @@
 
 class Admin_ends extends Admin_Controller {
 
-
     private $mainModel;
 
 
@@ -33,8 +32,8 @@ class Admin_ends extends Admin_Controller {
 		return $item;
 	}
 
-    public function _getItemList(){
-        $list = $this->mainModel->getItemList();
+    public function _getItemList($scenarioId){
+        $list = $this->mainModel->getItemList($scenarioId);
         return $list;
     }
 

@@ -25,6 +25,7 @@
 					<div class="form-group">
 						<label for="newPassword1">Votre nouveau mot de passe</label>
 						<input type="password" class="form-control" id="newPassword1" name="newPassword1" value="" required="">
+						<div class="help-block">Le mot de passe doit avoir au moins 8 caractères, et comprendre au moins une lettre minuscule, une lettre majuscule et un chiffre.</div>
 					</div>
 					<div class="form-group">
 						<label for="newPassword2">Retapez votre nouveau mot de passe</label>

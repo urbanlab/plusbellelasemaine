@@ -42,7 +42,7 @@
 
 class End_model extends CI_Model {
 
-	private $mainTable = '_ends';
+	private $mainTable = '`_ends`';
 	
 	function __construct()
     {
@@ -82,10 +82,12 @@ class End_model extends CI_Model {
 		return $item;
 	}
 
-    public function getItemList() {
+    public function getItemList($scenarioId) {
         $sql = 'SELECT `id_end`, `background`, `end_title_FK`, `end_description_FK`
-				FROM '.$this->mainTable;
-        $query = $this->db->query($sql, array());
+				FROM '.$this->mainTable.'
+				WHERE `scenario_FK` = ? 
+				ORDER BY `id` ASC';
+        $query = $this->db->query($sql, array($scenarioId));
         return $query;
     }
 

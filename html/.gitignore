@@ -6,11 +6,16 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 
+medias/*
+!medias/.gitkeep
+
 uploads/xlsx/*
 !uploads/xlsx/.gitkeep
 
 uploads/json/*
 !uploads/json/.gitkeep
+
+
 
 # Ignore config files
 application/config/config.php
