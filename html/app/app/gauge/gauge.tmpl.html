@@ -1,7 +1,7 @@
 <div class="container-fluid" id="gauge">
-       <div class="progressBarContainer">
-           <div  id="progressBar1"><i class="fa fa-eur"></i><p>Argent</p><div id="plusGauge1"><p>{{gaugeCtrl.val1}}</p></div><div id="sparkle1" class="spark"></div></div>
-        <div  id="progressBar2"><i class="fa fa-handshake-o"></i><p>Social</p><div id="plusGauge2"><p>{{gaugeCtrl.val2}}</p></div><div id="sparkle2" class="spark"></div></div>
-        <div  id="progressBar3"><i class="fa fa-home"></i><p>Confort</p><div id="plusGauge3"><p>{{gaugeCtrl.val3}}</p></div><div id="sparkle3" class="spark"></div></div>
+	<div class="progressBarContainer">
+       <div  id="progressBar1" ng-show="gaugeCtrl.gauges[0]"><i class="fa {{gaugeCtrl.gauges[0].picto}}"></i><p>{{gaugeCtrl.gauges[0].label}}</p><div id="plusGauge1"><p>{{gaugeCtrl.gauges[0].val}}</p></div><div id="sparkle1" class="spark"></div></div>
+       <div  id="progressBar2" ng-show="gaugeCtrl.gauges[1]"><i class="fa {{gaugeCtrl.gauges[1].picto}}"></i><p>{{gaugeCtrl.gauges[1].label}}</p><div id="plusGauge2"><p>{{gaugeCtrl.gauges[1].val}}</p></div><div id="sparkle2" class="spark"></div></div>
+       <div  id="progressBar3" ng-show="gaugeCtrl.gauges[2]"><i class="fa {{gaugeCtrl.gauges[2].picto}}"></i><p>{{gaugeCtrl.gauges[2].label}}</p><div id="plusGauge3"><p>{{gaugeCtrl.gauges[2].val}}</p></div><div id="sparkle3" class="spark"></div></div>
     </div>
 </div>

@@ -43,6 +43,11 @@ class Admin_event_choices extends Admin_Controller {
         return $list;
     }
 
+    public function _getItemListByEventInLang($id_event, $id_lang){
+        $list = $this->mainModel->getItemListByEventInLang($id_event, $id_lang);
+        return $list;
+    }
+
     public function _getByEventAndChoice($scenarioId, $id_event, $id_choice) {
         $item = $this->mainModel->getByEventAndChoice($scenarioId, $id_event, $id_choice);
         return $item;

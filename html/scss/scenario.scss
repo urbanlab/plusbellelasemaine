@@ -1,0 +1,69 @@
+/* CSS Document */
+
+#scenarioFormBlock
+{
+    .flash_error, .check_error
+    {
+        color: #dd4b39;
+    }
+
+    .form-group.flash_error
+    {
+        margin-bottom: 1em;
+    }
+
+    hr
+    {
+        margin-top: 1.5em;
+        margin-bottom: 0.2em;
+    }
+
+    hr.final
+    {
+        margin-top: 3em;
+    }
+
+    h4 
+    {
+        text-align:center;
+        margin-top: 0em;
+        margin-bottom: 1em;
+    }
+
+    .nav-tabs>li>a, .nav-tabs>li>a:focus, .nav-tabs>li>a:hover {
+        color: #888;
+    }
+
+    .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+        color: #000;
+    }
+
+    .nav-tabs>li>a.has-error, .nav-tabs>li>a.has-error:focus, .nav-tabs>li>a.has-error:hover {
+        color: #dd4b39;
+    }
+
+}
+
+#itemViewEventsModal {
+	li {
+		margin-bottom:10px;
+		font-size: 18px;
+		
+		ul {
+			margin-top: 10px;
+		}
+		
+		li {
+			font-size: 16px;
+			
+			ul {
+				margin-top: 0px;
+			}
+			
+			li {
+				font-size: 14px;
+				margin-bottom: 0px;
+			}
+		}
+	}
+}

@@ -112,9 +112,9 @@ class Event_choice_model extends CI_Model {
 					`_event_choice` AS ec ON e.`id` = ec.`event_FK`
 				WHERE e.`scenario_FK` = ? 
 				ORDER BY ec.`id` ASC";
-        $item = $this->db->query($sql, array($scenarioId));
+        $query = $this->db->query($sql, array($scenarioId));
 
-        return $item;
+        return $query;
     }
 
     public function getItemListByEvent($id_event){
@@ -122,9 +122,21 @@ class Event_choice_model extends CI_Model {
                 FROM `_events` AS e INNER JOIN `_event_choice` AS ec ON e.`id` = ec.`event_FK`
 				WHERE ec.`event_FK` = ? 
 				ORDER BY ec.`id` ASC';
-        $item = $this->db->query($sql, array($id_event));
+        $query = $this->db->query($sql, array($id_event));
 
-        return $item;
+        return $query;
+    }
+
+    public function getItemListByEventInLang($id_event, $id_lang){
+        $sql = 'SELECT ec.`id`, ec.`id_choice`, ec.`command`, ec.`summary_weight`,  ec.`summary_gauge_target`, t1.`content` AS content, ec.`event_FK`, t2.`content` AS summary_text
+				FROM `_event_choice` AS ec INNER JOIN
+					`_translation` AS t1 ON t1.`translation_object_FK` = ec.`content_FK` AND t1.`lang_FK` = ? INNER JOIN
+					`_translation` AS t2 ON t2.`translation_object_FK` = ec.`summary_text_FK` AND t2.`lang_FK` = ? 
+				WHERE ec.`event_FK` = ? 
+				ORDER BY ec.`id` ASC';
+        $query = $this->db->query($sql, array($id_lang, $id_lang, $id_event));
+
+        return $query;
     }
 
 	public function getByEventAndChoice($scenarioId, $id_event, $id_choice){

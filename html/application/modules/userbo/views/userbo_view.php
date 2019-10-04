@@ -51,7 +51,7 @@
 			<div class="box-header"><h3 class="box-title"><i class="fa fa-edit"></i> <?php echo(isset($itemData) ? 'Editer' : 'Ajouter'); ?> un admin</h3></div>
 			<div class="box-body">
 				<form id="userForm" action="<?php echo(base_admin_url(current_section().'/saveForm')); ?>" method="post" enctype="multipart/form-data" role="form">
-					<input type="hidden" name="editedItemId" value="<?php echo(isset($itemData) ? $itemData->id : '-1'); ?>" />
+					<input type="hidden" id="editedItemId" name="editedItemId" value="<?php echo(isset($itemData) ? $itemData->id : '-1'); ?>" />
 					
 					<div class="form-group">
 						<label class="control-label" for="firstname">Prénom</label>
@@ -66,8 +66,8 @@
 					<p>&nbsp;</p>
 					
 					<div class="form-group">
-						<label class="control-label" for="login">Identifiant / email</label>
-						<input type="email" class="form-control " id="login" name="login" value="<?php echo(set_value('login', isset($itemData) ? $itemData->login : '')); ?>" required />
+						<label class="control-label" for="loginInput">Identifiant / email</label>
+						<input type="email" class="form-control " id="loginInput" name="loginInput" value="<?php echo(set_value('loginInput', isset($itemData) ? $itemData->login : '')); ?>" required />
 						<?php
 							if(!empty($error) && $error == 'duplicateLoginError') {
 						?>
@@ -83,8 +83,9 @@
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label" for="password"><?php echo(isset($itemData) ? 'Changer le mot de passe' : 'Mot de passe'); ?></label>
-						<input type="text" class="form-control " id="password" name="password" value="<?php echo(set_value('password','')); ?>" <?php if(!isset($itemData)) { echo('required'); } ?> />
+						<label class="control-label" for="passwordInput"><?php echo(isset($itemData) ? 'Changer le mot de passe' : 'Mot de passe'); ?></label>
+						<input type="text" class="form-control " id="passwordInput" name="passwordInput" value="<?php echo(set_value('password','')); ?>" <?php if(!isset($itemData)) { echo('required'); } ?> restrict="" />
+						<div class="help-block">Le mot de passe doit avoir au moins 8 caractères, et comprendre au moins une lettre minuscule, une lettre majuscule et un chiffre.</div>
 					</div>					
 					
 					

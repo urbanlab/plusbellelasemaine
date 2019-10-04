@@ -3,7 +3,7 @@ angular.module('about', [
 ])
 
 
-.controller('AboutCtrl', function AboutCtrl($rootScope, $scope, $analytics) {
+.controller('AboutCtrl', function AboutCtrl($rootScope, $scope, $analytics, EventService) {
     
     
     $scope.modal = modal;
@@ -14,6 +14,15 @@ angular.module('about', [
     $scope.infoImg = 'data/img/info.png';
     $("#aboutModal").css("background", "url(data/img/bilan2.jpg) center center / cover no-repeat");
     
+	
+	
+	EventService.getJSONData().then(
+		function (data){
+			$scope.titleAbout = data.Scenario.aboutTitle;
+			$scope.textAbout = data.Scenario.aboutText;
+		}
+	);
+	
     
     function modal() {
         if($('#aboutModal').hasClass('transparent')){
