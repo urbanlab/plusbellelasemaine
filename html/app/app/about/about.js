@@ -12,9 +12,10 @@ angular.module('about', [
     
     
     $scope.infoImg = 'data/img/info.png';
-    $("#aboutModal").css("background", "url(data/img/bilan2.jpg) center center / cover no-repeat");
-    
-	
+	// $("#aboutModal").css("background", "url(data/img/bilan2.jpg) center center / cover no-repeat");
+	$("#aboutModal").css("background", "unset");
+	$("#aboutModal").css("background-image", "linear-gradient(142deg, #105ec7, #72efaf)");
+	// $("#gaugeContainer").css("display", "none");
 	
 	EventService.getJSONData().then(
 		function (data){
@@ -32,8 +33,10 @@ angular.module('about', [
 			}, 100);
 			
 			$('#contentContainer').addClass('transparent'); 
+			$('#gaugeContainer').addClass('transparent'); 
             setTimeout(function(){
 				$('#contentContainer').css('display', 'none');
+				$('#gaugeContainer').css('display', 'none');
 			}, 500);
             
 			// GA tracking
@@ -49,6 +52,11 @@ angular.module('about', [
             setTimeout(function(){
 				$('#contentContainer').removeClass('transparent');
 			}, 100);
+
+			$('#gaugeContainer').css('display', 'block');
+            setTimeout(function(){
+				$('#gaugeContainer').removeClass('transparent'); 
+			}, 500);
         }
     }
     

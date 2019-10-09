@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1093" viewBox="0 0 1024 1093">
+    <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:rgb(16,94,199);stop-opacity:1" />
+        <stop offset="100%" style="stop-color:rgb(114,239,175);stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    <path fill="url(#grad1)" fill-rule="evenodd" d="M0 40c53.77 17.966 154.436 22.3 302 13C523.345 39.05 570.874 4.252 722 1c100.75-2.168 201.417 10.832 302 39v1053H0V40z"/>
+</svg>
+
+
+<!-- <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1093" viewBox="0 0 1024 1093">
+    <g transform="rotate(180) translate(-1024 -1000)">
+    <path fill="#FFFFFF" fill-rule="evenodd" d="M0 40c53.77 17.966 154.436 22.3 302 13C523.345 39.05 570.874 4.252 722 1c100.75-2.168 201.417 10.832 302 39v1053H0V40z"/>
+    </g>
+</svg> -->

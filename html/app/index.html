@@ -40,8 +40,9 @@
     
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="./fonts/myfont/stylesheet.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+    <!-- <link href="./fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="./fonts/myfont/stylesheet.css" rel="stylesheet"> -->
 
     <!-- Angular cookie law -->
     <link rel="stylesheet" href="./node_modules/angular-cookie-law/angular-cookie-law.min.css">
@@ -61,15 +62,16 @@
     <div id="appContainer" class="background hidden" >
         <div id="no-landscape"><div class="content-landscape"><i class="glyphicon glyphicon-refresh"></i><br><p>Veuillez retourner l'écran</p></div></div>
         
-        <div id="introContainer" ui-view="intro"></div>
-		
+        <div id="introContainer" ui-view="intro"></div>		
         <div id="error"> <span class="screenLabel2"></span> </div>
         <div id="loading"> <span class="screenLabel2"></span> </div>
         <div id="gaugeContainer" ui-view="gauge"></div>
         <div id="contentContainer" ui-view="content"></div>
         <div id="aboutContainer" ui-view="about"></div>
-
+        <!-- <div ng-include="'app/footer/footer.tmpl.html'" class="footer"></div> -->
+        <div id="footerContainer" ng-include="'app/footer/footer.tmpl.html'" class="footer-container"></div>
     </div>
+
 
      
     <!-- Jquery -->
@@ -108,6 +110,7 @@
     <script src="./app/about/about.js"></script>
     <script src="./app/intro/intro.js"></script>
     <script src="./app/gauge/gauge.js"></script>
+    <script src="./app/footer/footer.js"></script>
     
     
 <!-- Google Analytics -->

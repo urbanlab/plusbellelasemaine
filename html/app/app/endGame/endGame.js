@@ -56,7 +56,7 @@ angular.module('endGame', [
         endGameCtrl.endTitle = '';
 		endGameCtrl.endText = '';
 		endGameCtrl.gaugeEnd = localStorageService.get('gaugeEnd') != null ? localStorageService.get('gaugeEnd') : null;
-		endGameCtrl.adviceLink = 'https://goo.gl/forms/g8T87HXzEvSiHnNB3';
+		// endGameCtrl.adviceLink = 'https://goo.gl/forms/g8T87HXzEvSiHnNB3';
 		
 	
 		if($stateParams.endID != '') {
@@ -67,7 +67,7 @@ angular.module('endGame', [
 		}
 		
         var background = {};
-        $(".background").css("background", "url(data/img/bilan2.jpg) center no-repeat");
+        $("#appContainer").css("background", "linear-gradient(114deg, #105ec7, #72efaf)");
     
         clearTimeout($rootScope.idTimeout);
 	

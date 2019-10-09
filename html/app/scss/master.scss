@@ -4,6 +4,8 @@
 @import "compass/support";
 @import "compass/css3/transition";
 
+@import "color";
+@import "typography";
 
 html, body{
     min-height: 100%;
@@ -11,10 +13,40 @@ html, body{
 }
 
 body {
-    color: white;
+    color: white;    
     background-color: #161616
 }
 
+.content {    
+    padding: 0 3vw;
+    &.bottom{        
+        background-size: cover;
+        background-image: url(../images/white.svg);
+        background-color: white;
+    }
+}
+
+.footer-container {
+    background-color: white;    
+    color: #474747;
+    width: 100%;
+}
+
+.footer {
+    flex-direction: row;
+    display: flex;
+    height: 6vh;
+    align-items: center;
+    justify-content: space-between;
+    p {        
+        font-size: 1em;
+        margin-right: 5vw;
+    }
+    img {
+        height: 3vh;
+    }
+}
+  
 .row.no-margin {
 	margin-left: 0;
 	margin-right: 0;
@@ -44,6 +76,30 @@ span.ld_perso3 {
     color : #6ca4ea;
 }
 
+button {
+    cursor: pointer;
+    color: $white;
+    border-radius: 3em;
+    background-color: $weird-green;
+    border: solid $weird-green;
+    font-size: 1em;
+    font-weight: 800;
+    width: 7.5em;
+    height: 6vh;
+    margin: 2vh 0;
+    // @media #{$large-phone} {
+    //     font-size: 5vw;
+    //     width: 80vw;
+    //     height: unset;
+    // }
+}
+button:focus {
+  outline:0;
+}
+
+.center {    
+    text-align: center;
+}
 
 #eventDesc {
     color:#333;
@@ -81,11 +137,9 @@ span.ld_perso3 {
         position: relative;
         overflow: hidden;
         padding: 20px;
-        font-family: 'myfont';
         font-size: 17px;
     }
     h1{
-       font-family: 'myfont-semi';
         font-size: 28px;
     }
     
@@ -112,7 +166,6 @@ span.ld_perso3 {
         a {
             text-decoration: none;
             font-weight: 600;
-            font-family: 'myfont';
             color: #333;
             padding: 12px;
             width: 100%;
@@ -185,12 +238,13 @@ span.ld_perso3 {
 .day {
     @include transition(opacity, 0.5s);
     position: absolute;
-    top: 12px;
+    top: 0px;
     left: 50%;
     @include translateX(-50%);
     color: white;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: uppercase;    
+    font-size: 38px;
 }
 
 .transparent{
@@ -198,9 +252,6 @@ span.ld_perso3 {
 }
 
 #endGame {
-    
-    
-    font-family : 'myfont';
     .contentBlockStart {
         text-align: center;
         margin-top: 25px;
@@ -287,7 +338,6 @@ span.ld_perso3 {
             border-radius: 7px;
             margin-top: 7px;
             text-transform: uppercase;
-            font-family:'myfont-semi';
 
         }
         
@@ -514,15 +564,14 @@ span.ld_perso3 {
     
     p {
         font-size: 15px;
+        font-weight: 900;
         top: 100%;
         width: 100%;
         padding: 2px;
         background-color: rgba(0, 0, 0, 0.8);
         border-radius: 7px;
         margin-top: 7px;
-        text-transform: uppercase;
-        font-family:'myfont-semi';
-        
+        text-transform: uppercase;        
     }
     
     #plusGauge1,  #plusGauge2, #plusGauge3{
@@ -555,8 +604,25 @@ span.ld_perso3 {
     
 }
 
+.home-background {
+    color: black;
+}
 
+.home-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
 
+.white.wave {
+    background-color: white;
+    color: #474747;
+}
+
+.align-left {
+    text-align: left;
+}
 
 .progressBarContainer {
     text-align: center;
@@ -568,15 +634,15 @@ span.ld_perso3 {
     #aboutModal, #introModal {
         display: none;
         @include transition(opacity, 0.5s);
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        min-height: 100%;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // right: 0;
+        // min-height: 100%;
         /*bottom: 0;*/
         z-index: 998;
         text-align: center;
-        background-color: #161616 ;
+        // background-color: #161616 ;
         background-size: cover !important;
     }
 	
@@ -596,9 +662,10 @@ span.ld_perso3 {
     }
 
     .contentBlock {
-		margin-bottom: 30px;
+        // margin-bottom: 30px;        
+        margin-bottom: 3.5vh;
         padding: 18px 25px 25px 25px;
-        background-color: rgba(0, 0, 0, 0.8);
+        // background-color: rgba(0, 0, 0, 0.8);
         font-size: 17px;
     }
 
@@ -607,26 +674,26 @@ span.ld_perso3 {
         margin-bottom: 30px;
     }
 	
-	#introBtnPlay {
-        text-decoration: none;
-		font-weight: 600;
-		font-family: 'myfont';
-		color: #333;
-		padding: 10px 30px 12px 30px;
-		width: auto;
-		display: inline-block;
-		background-color: white;
-		border: 0px;
-		margin: 15px 0;
-		border-radius: 10px;
-		box-shadow: 1px 0px 10px #333;
-		cursor: pointer;
-		font-size: 17px;
+	// #introBtnPlay {
+    //     text-decoration: none;
+	// 	font-weight: 600;
+	// 	font-family: 'myfont';
+	// 	color: #333;
+	// 	padding: 10px 30px 12px 30px;
+	// 	width: auto;
+	// 	display: inline-block;
+	// 	background-color: white;
+	// 	border: 0px;
+	// 	margin: 15px 0;
+	// 	border-radius: 10px;
+	// 	box-shadow: 1px 0px 10px #333;
+	// 	cursor: pointer;
+	// 	font-size: 17px;
         
-        &:active {
-            @include scale(0.95);
-        }
-    }
+    //     &:active {
+    //         @include scale(0.95);
+    //     }
+    // }
 	
 	.companyBlock {
 		margin-top: 20px;

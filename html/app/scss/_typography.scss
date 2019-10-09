@@ -1,0 +1,23 @@
+
+$text-font: 'Nunito', sans-serif;
+$title-font: 'Nunito', sans-serif;
+
+* {
+    font-family: $text-font;
+    // color: $greyish-brown;
+}
+
+h1, h2, h3 {
+    font-size: 48px;
+    font-weight: 900;
+    padding: 0 0 3vh 0;
+}
+
+p {
+    font-size: 20px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+}

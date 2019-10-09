@@ -6,7 +6,7 @@ angular.module('aperfectday', [
     'intro',    
     'eventDesc',    
     'endGame',
-	
+    'footer',	
 	'angulartics', 'angulartics.google.analytics',
 	'angular-cookie-law',
 	'ng-appcache'

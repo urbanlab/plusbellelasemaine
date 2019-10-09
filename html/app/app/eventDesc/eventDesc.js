@@ -102,6 +102,9 @@ angular.module('eventDesc', ['ngSanitize'
         $('#startScreen').show();
         setTimeout(function(){$('#startScreen').hide();}, eventDescCtrl.timeOut+200);
         $('#dayTransition').css("opacity", "0");
+        $('#footerContainer').css("position","absolute");
+        $('#footerContainer').css("bottom","0");        
+	    $("#gaugeContainer").css("display", "inherit");
         $(".background").show();
         EventService.getJSONData().then(
 			function (data){
