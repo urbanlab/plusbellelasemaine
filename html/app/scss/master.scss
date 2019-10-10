@@ -6,6 +6,7 @@
 
 @import "color";
 @import "typography";
+@import "breakpoint";
 
 html, body{
     min-height: 100%;
@@ -24,12 +25,23 @@ body {
         background-image: url(../images/white.svg);
         background-color: white;
     }
+
+    @media #{$large-phone} {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .footer-container {
     background-color: white;    
     color: #474747;
     width: 100%;
+    bottom:0;
+    @media #{$large-phone} {
+        bottom: unset;
+    }
 }
 
 .footer {
@@ -44,6 +56,33 @@ body {
     }
     img {
         height: 3vh;
+    }
+    @media #{$large-phone} {
+        p {
+            font-size: 0.7em;
+            margin-right: 1vw;
+            text-align: left;
+        }
+        img {
+            height: 2.5vh;
+        }
+    }
+}
+
+.app-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        width: 1vw;
+    }
+    @media #{$large-phone} {
+        img {
+            display:none;
+        }
+        h1 {            
+            padding: 0 10vw;
+        }
     }
 }
   
@@ -84,7 +123,7 @@ button {
     border: solid $weird-green;
     font-size: 1em;
     font-weight: 800;
-    width: 7.5em;
+    width: 9.5em;
     height: 6vh;
     margin: 2vh 0;
     // @media #{$large-phone} {
@@ -245,6 +284,9 @@ button:focus {
     font-weight: bold;
     text-transform: uppercase;    
     font-size: 38px;
+    @media #{$large-phone} {
+        font-size: unset;
+    }
 }
 
 .transparent{
@@ -301,6 +343,9 @@ button:focus {
         p {
             font-size: 17px;
         }
+        @media #{$large-phone} {
+            text-align: left;
+        }
     }
     
     
@@ -334,7 +379,7 @@ button:focus {
             top: 100%;
             width: 100%;
             padding: 5px;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: #4be79f;
             border-radius: 7px;
             margin-top: 7px;
             text-transform: uppercase;
@@ -365,7 +410,8 @@ button:focus {
     .contentBlock {
         text-align: left;
         position: relative;
-        background-color: rgba(255,255,255,0.8);
+        background-color: white;
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25);
         color: #333;
         margin-top: 25px;
         margin-bottom: 25px;
@@ -374,22 +420,29 @@ button:focus {
         @include transition(all, 0.5s);
         opacity: 0;
         display: none;
+        @media #{$large-phone} {
+            margin-left: 0;
+            width: unset;
+        }
     }
     
     p.title{
         z-index: 10;
         font-size: 20px;
         position: relative;
-        font-weight: 200;
+        font-weight: 600;
+        @media #{$large-phone} {
+            margin-top: 3vh;
+        }
     }
     
     button, #adviceBtn {
         width: 100%;
-        padding: 5px;
-        border-radius: 7px;
-        background-color: white;
-        border: 0px;
-        color: #333;
+        // padding: 5px;
+        // border-radius: 7px;
+        // background-color: white;
+        // border: 0px;
+        // color: #333;
     }
 	#adviceBtn {
         display: inline-block;
@@ -398,7 +451,7 @@ button:focus {
     }
     i{
         font-size: 25px;
-        color: #333;
+        color: white;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -413,18 +466,22 @@ button:focus {
     .titleBilan {
         text-align: center;
         text-transform: uppercase;
-        font-size: 26px;
     }
     
     .faCircle {        
-        background-color: #fff;
-        border-radius: 50%;
+        background-color: $weird-green;
+        border-radius: 50%;        
+        border: 3px solid white;
         position: absolute;
         top: 2px;
         width: 60px;
         height: 60px;
-        left: -32px;
+        left: 45%;
         @include translateY(-50%);
+        @media #{$large-phone} {
+            left: 43%;
+            margin-top: 3vh;
+        }
     }
     #winCircle {
         top: -22px;
@@ -568,7 +625,7 @@ button:focus {
         top: 100%;
         width: 100%;
         padding: 2px;
-        background-color: rgba(0, 0, 0, 0.8);
+        // background-color: rgba(55, 55, 55, 0.35);
         border-radius: 7px;
         margin-top: 7px;
         text-transform: uppercase;        
@@ -577,13 +634,17 @@ button:focus {
     #plusGauge1,  #plusGauge2, #plusGauge3{
         p {
           background: none;
-          top: 36.5%;
+          top: 41%;
           left: 60%;
-          font-size: 35px;          
+          font-size: 30px;        
           opacity: 0;    
         }
     }
     
+   path{
+        fill: #004370;
+        fill-opacity: 1;
+    }
    path:first-child {
         fill-opacity : 0.8;
     }
@@ -612,7 +673,11 @@ button:focus {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-end;    
+    margin-top: -15vh;
+    @media #{$large-phone} {
+        margin-top: 0;
+    }
 }
 
 .white.wave {
@@ -648,7 +713,20 @@ button:focus {
 	
 	#introModal {
 		display: block;
-	}
+    }
+    
+    .left-icon {
+        @media #{$large-phone} {
+            display: none;
+        }
+    }
+    .right-icon {
+        @media #{$large-phone} {
+            img {
+                width: 40vw;
+            }
+        }
+    }
 
     .iabout {
         padding: 5px;
@@ -662,38 +740,21 @@ button:focus {
     }
 
     .contentBlock {
-        // margin-bottom: 30px;        
         margin-bottom: 3.5vh;
         padding: 18px 25px 25px 25px;
-        // background-color: rgba(0, 0, 0, 0.8);
         font-size: 17px;
+                
+        @media #{$large-phone} {
+            padding: 0px 25px;
+        }
     }
 
     .titleModal{
-        margin-top: 40px;
-        margin-bottom: 30px;
+        margin-top: 3vh;
+        @media #{$large-phone} {
+            margin-bottom: 0;
+        }
     }
-	
-	// #introBtnPlay {
-    //     text-decoration: none;
-	// 	font-weight: 600;
-	// 	font-family: 'myfont';
-	// 	color: #333;
-	// 	padding: 10px 30px 12px 30px;
-	// 	width: auto;
-	// 	display: inline-block;
-	// 	background-color: white;
-	// 	border: 0px;
-	// 	margin: 15px 0;
-	// 	border-radius: 10px;
-	// 	box-shadow: 1px 0px 10px #333;
-	// 	cursor: pointer;
-	// 	font-size: 17px;
-        
-    //     &:active {
-    //         @include scale(0.95);
-    //     }
-    // }
 	
 	.companyBlock {
 		margin-top: 20px;

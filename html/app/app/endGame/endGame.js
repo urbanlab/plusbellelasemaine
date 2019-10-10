@@ -67,8 +67,9 @@ angular.module('endGame', [
 		}
 		
         var background = {};
-        $("#appContainer").css("background", "linear-gradient(114deg, #105ec7, #72efaf)");
-    
+        $("#appContainer").css("background", "linear-gradient(to bottom, #8ed0ff, #1483d1)");
+		$('#footerContainer').css("bottom","0");
+
         clearTimeout($rootScope.idTimeout);
 	
 		
@@ -102,9 +103,10 @@ angular.module('endGame', [
 						// prevent clipping
 						strokeWidth: 16,
 						trailWidth: 8,
-						trailColor : 'rgba(0, 0, 0, 0.8)',
+						trailColor: '#FFFFFF',
 						easing: 'easeInOut',
 						duration: 500,
+						fill: '#4be79f',
 						text: {
 						autoStyleContainer: false
 						},
@@ -230,20 +232,20 @@ angular.module('endGame', [
 	
 
 		function continueBilan (){   
-
 			$('#loseScreen').css('opacity', 0);
 			$('#winScreen').css('opacity', 0);
 			$('#continue').css('opacity', 0);
 			$('#progressBar').css('display', 'none');
 			setTimeout(function(){
-			   $('#loseScreen').css('display', 'none');
-			   $('#winScreen').css('display', 'none');
-			   $('#continue').css('display', 'none'); 
+				$('#loseScreen').css('display', 'none');
+				$('#winScreen').css('display', 'none');
+				$('#continue').css('display', 'none'); 
 			}, 600);
-
+			
 			$("#endGame .contentBlock").css("display", "block");
 			$("#endGame .contentBlock").css("transform", "translateX(100px)");
 			$("#reset").css("transform", "translateX(100px)");
+			$('#footerContainer').css("bottom","unset");
 			var index = 0;
 			_.forEach(endGameCtrl.bilan, function(texts, key) {
 				setTimeout(function(){

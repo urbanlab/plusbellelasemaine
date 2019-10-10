@@ -1,56 +1,86 @@
-/* line 5, ../scss/_typography.scss */
+/* line 6, ../scss/_typography.scss */
 * {
   font-family: "Nunito", sans-serif;
 }
 
-/* line 10, ../scss/_typography.scss */
+/* line 11, ../scss/_typography.scss */
 h1, h2, h3 {
-  font-size: 48px;
+  font-size: 2em;
   font-weight: 900;
   padding: 0 0 3vh 0;
 }
+@media only screen and (max-width: 768px) {
+  /* line 11, ../scss/_typography.scss */
+  h1, h2, h3 {
+    font-size: 1.5em;
+    padding: 0;
+    margin: 4vh 0;
+  }
+}
 
-/* line 16, ../scss/_typography.scss */
+/* line 22, ../scss/_typography.scss */
 p {
-  font-size: 20px;
+  font-size: 1.5vw;
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
 }
+@media only screen and (max-width: 768px) {
+  /* line 22, ../scss/_typography.scss */
+  p {
+    font-size: 1.2em;
+  }
+}
 
-/* line 10, ../scss/master.scss */
+/* line 11, ../scss/master.scss */
 html, body {
   min-height: 100%;
   height: 100%;
 }
 
-/* line 15, ../scss/master.scss */
+/* line 16, ../scss/master.scss */
 body {
   color: white;
   background-color: #161616;
 }
 
-/* line 20, ../scss/master.scss */
+/* line 21, ../scss/master.scss */
 .content {
   padding: 0 3vw;
 }
-/* line 22, ../scss/master.scss */
+/* line 23, ../scss/master.scss */
 .content.bottom {
   background-size: cover;
   background-image: url(../images/white.svg);
   background-color: white;
 }
+@media only screen and (max-width: 768px) {
+  /* line 21, ../scss/master.scss */
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
 
-/* line 29, ../scss/master.scss */
+/* line 37, ../scss/master.scss */
 .footer-container {
   background-color: white;
   color: #474747;
   width: 100%;
+  bottom: 0;
+}
+@media only screen and (max-width: 768px) {
+  /* line 37, ../scss/master.scss */
+  .footer-container {
+    bottom: unset;
+  }
 }
 
-/* line 35, ../scss/master.scss */
+/* line 47, ../scss/master.scss */
 .footer {
   flex-direction: row;
   display: flex;
@@ -58,52 +88,85 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-/* line 41, ../scss/master.scss */
+/* line 53, ../scss/master.scss */
 .footer p {
   font-size: 1em;
   margin-right: 5vw;
 }
-/* line 45, ../scss/master.scss */
+/* line 57, ../scss/master.scss */
 .footer img {
   height: 3vh;
 }
+@media only screen and (max-width: 768px) {
+  /* line 61, ../scss/master.scss */
+  .footer p {
+    font-size: 0.7em;
+    margin-right: 1vw;
+    text-align: left;
+  }
+  /* line 66, ../scss/master.scss */
+  .footer img {
+    height: 2.5vh;
+  }
+}
 
-/* line 50, ../scss/master.scss */
+/* line 72, ../scss/master.scss */
+.app-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* line 76, ../scss/master.scss */
+.app-title img {
+  width: 1vw;
+}
+@media only screen and (max-width: 768px) {
+  /* line 80, ../scss/master.scss */
+  .app-title img {
+    display: none;
+  }
+  /* line 83, ../scss/master.scss */
+  .app-title h1 {
+    padding: 0 10vw;
+  }
+}
+
+/* line 89, ../scss/master.scss */
 .row.no-margin {
   margin-left: 0;
   margin-right: 0;
 }
 
-/* line 55, ../scss/master.scss */
+/* line 94, ../scss/master.scss */
 .cl-banner {
   background: rgba(80, 80, 80, 0.9);
 }
-/* line 58, ../scss/master.scss */
+/* line 97, ../scss/master.scss */
 .cl-banner .cl-accept {
   color: #333;
   background-color: #fff;
 }
-/* line 62, ../scss/master.scss */
+/* line 101, ../scss/master.scss */
 .cl-banner .cl-accept:hover {
   background: #eee;
 }
 
-/* line 68, ../scss/master.scss */
+/* line 107, ../scss/master.scss */
 span.ld_perso1 {
   color: #de8729;
 }
 
-/* line 72, ../scss/master.scss */
+/* line 111, ../scss/master.scss */
 span.ld_perso2 {
   color: #cf5dd0;
 }
 
-/* line 75, ../scss/master.scss */
+/* line 114, ../scss/master.scss */
 span.ld_perso3 {
   color: #6ca4ea;
 }
 
-/* line 79, ../scss/master.scss */
+/* line 118, ../scss/master.scss */
 button {
   cursor: pointer;
   color: #FFFFFF;
@@ -112,42 +175,42 @@ button {
   border: solid #4be79f;
   font-size: 1em;
   font-weight: 800;
-  width: 7.5em;
+  width: 9.5em;
   height: 6vh;
   margin: 2vh 0;
 }
 
-/* line 96, ../scss/master.scss */
+/* line 135, ../scss/master.scss */
 button:focus {
   outline: 0;
 }
 
-/* line 100, ../scss/master.scss */
+/* line 139, ../scss/master.scss */
 .center {
   text-align: center;
 }
 
-/* line 104, ../scss/master.scss */
+/* line 143, ../scss/master.scss */
 #eventDesc {
   color: #333;
 }
-/* line 107, ../scss/master.scss */
+/* line 146, ../scss/master.scss */
 #eventDesc #cntDays {
   position: absolute;
   bottom: 10px;
   right: 30px;
 }
-/* line 113, ../scss/master.scss */
+/* line 152, ../scss/master.scss */
 #eventDesc #cntDays p {
   color: white;
   font-size: 17px;
   font-weight: bold;
 }
-/* line 118, ../scss/master.scss */
+/* line 157, ../scss/master.scss */
 #eventDesc #cntDays p #nbCtnDays {
   position: absolute;
 }
-/* line 121, ../scss/master.scss */
+/* line 160, ../scss/master.scss */
 #eventDesc #cntDays p #slashDays {
   position: absolute;
   top: 0%;
@@ -155,13 +218,13 @@ button:focus {
   font-size: 24px;
   font-weight: 100;
 }
-/* line 128, ../scss/master.scss */
+/* line 167, ../scss/master.scss */
 #eventDesc #cntDays p #denominator {
   position: absolute;
   top: 34%;
   left: 170%;
 }
-/* line 135, ../scss/master.scss */
+/* line 174, ../scss/master.scss */
 #eventDesc .contentBlock {
   text-align: left;
   position: relative;
@@ -169,20 +232,20 @@ button:focus {
   padding: 20px;
   font-size: 17px;
 }
-/* line 142, ../scss/master.scss */
+/* line 181, ../scss/master.scss */
 #eventDesc h1 {
   font-size: 28px;
 }
-/* line 146, ../scss/master.scss */
+/* line 185, ../scss/master.scss */
 #eventDesc .titleBlock {
   text-align: center;
 }
-/* line 150, ../scss/master.scss */
+/* line 189, ../scss/master.scss */
 #eventDesc #textEvent {
   color: #e4e4e4;
   font-size: 18px;
 }
-/* line 155, ../scss/master.scss */
+/* line 194, ../scss/master.scss */
 #eventDesc .mapBlock {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 10px;
@@ -194,11 +257,11 @@ button:focus {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/* line 164, ../scss/master.scss */
+/* line 203, ../scss/master.scss */
 #eventDesc .choiceLink {
   width: 100%;
 }
-/* line 166, ../scss/master.scss */
+/* line 205, ../scss/master.scss */
 #eventDesc .choiceLink a {
   text-decoration: none;
   font-weight: 600;
@@ -214,14 +277,14 @@ button:focus {
   cursor: pointer;
   font-size: 17px;
 }
-/* line 182, ../scss/master.scss */
+/* line 221, ../scss/master.scss */
 #eventDesc .choiceLink a:active {
   -moz-transform: scale(0.95, 0.95);
   -ms-transform: scale(0.95, 0.95);
   -webkit-transform: scale(0.95, 0.95);
   transform: scale(0.95, 0.95);
 }
-/* line 187, ../scss/master.scss */
+/* line 226, ../scss/master.scss */
 #eventDesc .reset {
   top: 13px;
   position: absolute;
@@ -229,7 +292,7 @@ button:focus {
   width: 50px;
   height: 50px;
 }
-/* line 193, ../scss/master.scss */
+/* line 232, ../scss/master.scss */
 #eventDesc .reset button {
   width: 65%;
   padding: 1px;
@@ -241,16 +304,16 @@ button:focus {
   font-size: 28px;
   outline: none;
 }
-/* line 206, ../scss/master.scss */
+/* line 245, ../scss/master.scss */
 #eventDesc #textEvent {
   padding-top: 11px;
 }
-/* line 210, ../scss/master.scss */
+/* line 249, ../scss/master.scss */
 #eventDesc #titleEvent {
   padding-bottom: 0px;
 }
 
-/* line 215, ../scss/master.scss */
+/* line 254, ../scss/master.scss */
 #toggle-anime {
   -moz-transition: opacity, 0.5s;
   -o-transition: opacity, 0.5s;
@@ -265,12 +328,12 @@ button:focus {
   text-align: center;
   border-radius: 7px;
 }
-/* line 226, ../scss/master.scss */
+/* line 265, ../scss/master.scss */
 #toggle-anime h1 {
   margin-top: 0;
 }
 
-/* line 231, ../scss/master.scss */
+/* line 270, ../scss/master.scss */
 .no-click {
   width: 100%;
   height: 250px;
@@ -278,7 +341,7 @@ button:focus {
   position: absolute;
 }
 
-/* line 238, ../scss/master.scss */
+/* line 277, ../scss/master.scss */
 .day {
   -moz-transition: opacity, 0.5s;
   -o-transition: opacity, 0.5s;
@@ -296,23 +359,29 @@ button:focus {
   text-transform: uppercase;
   font-size: 38px;
 }
+@media only screen and (max-width: 768px) {
+  /* line 277, ../scss/master.scss */
+  .day {
+    font-size: unset;
+  }
+}
 
-/* line 250, ../scss/master.scss */
+/* line 292, ../scss/master.scss */
 .transparent {
   opacity: 0;
 }
 
-/* line 254, ../scss/master.scss */
+/* line 296, ../scss/master.scss */
 #endGame {
   padding: 40px;
 }
-/* line 255, ../scss/master.scss */
+/* line 297, ../scss/master.scss */
 #endGame .contentBlockStart {
   text-align: center;
   margin-top: 25px;
   font-weight: bold;
 }
-/* line 263, ../scss/master.scss */
+/* line 305, ../scss/master.scss */
 #endGame #winScreen, #endGame #loseScreen {
   position: absolute;
   top: 40%;
@@ -333,7 +402,7 @@ button:focus {
   border-radius: 15px;
   padding: 18px 25px 18px 32px;
 }
-/* line 278, ../scss/master.scss */
+/* line 320, ../scss/master.scss */
 #endGame #continue {
   position: absolute;
   top: 60%;
@@ -353,16 +422,22 @@ button:focus {
   font-weight: bold;
   width: 33%;
 }
-/* line 294, ../scss/master.scss */
+/* line 336, ../scss/master.scss */
 #endGame .titleWinLose p {
   font-size: 25px;
   text-transform: uppercase;
 }
-/* line 301, ../scss/master.scss */
+/* line 343, ../scss/master.scss */
 #endGame .textWinLose p {
   font-size: 17px;
 }
-/* line 308, ../scss/master.scss */
+@media only screen and (max-width: 768px) {
+  /* line 342, ../scss/master.scss */
+  #endGame .textWinLose {
+    text-align: left;
+  }
+}
+/* line 353, ../scss/master.scss */
 #endGame #progressBar {
   width: 175px;
   height: 175px;
@@ -381,7 +456,7 @@ button:focus {
   -webkit-transition: opacity, 0.5s;
   transition: opacity, 0.5s;
 }
-/* line 321, ../scss/master.scss */
+/* line 366, ../scss/master.scss */
 #endGame #progressBar i, #endGame #progressBar p {
   font-size: 40px;
   position: absolute;
@@ -398,18 +473,18 @@ button:focus {
   -webkit-transition: all, 0.3s;
   transition: all, 0.3s;
 }
-/* line 332, ../scss/master.scss */
+/* line 377, ../scss/master.scss */
 #endGame #progressBar p {
   font-size: 22px;
   top: 100%;
   width: 100%;
   padding: 5px;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #4be79f;
   border-radius: 7px;
   margin-top: 7px;
   text-transform: uppercase;
 }
-/* line 345, ../scss/master.scss */
+/* line 390, ../scss/master.scss */
 #endGame #progressBar #plusGauge p {
   background: none;
   top: 44%;
@@ -418,7 +493,7 @@ button:focus {
   opacity: 0;
   color: #990000;
 }
-/* line 357, ../scss/master.scss */
+/* line 402, ../scss/master.scss */
 #endGame #reset {
   -moz-transition: all, 0.5s;
   -o-transition: all, 0.5s;
@@ -426,15 +501,16 @@ button:focus {
   transition: all, 0.5s;
   opacity: 0;
 }
-/* line 361, ../scss/master.scss */
+/* line 406, ../scss/master.scss */
 #endGame #reset #btnRestart {
   background-color: #6feaac;
 }
-/* line 365, ../scss/master.scss */
+/* line 410, ../scss/master.scss */
 #endGame .contentBlock {
   text-align: left;
   position: relative;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: white;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25);
   color: #333;
   margin-top: 25px;
   margin-bottom: 25px;
@@ -447,32 +523,40 @@ button:focus {
   opacity: 0;
   display: none;
 }
-/* line 379, ../scss/master.scss */
+@media only screen and (max-width: 768px) {
+  /* line 410, ../scss/master.scss */
+  #endGame .contentBlock {
+    margin-left: 0;
+    width: unset;
+  }
+}
+/* line 429, ../scss/master.scss */
 #endGame p.title {
   z-index: 10;
   font-size: 20px;
   position: relative;
-  font-weight: 200;
+  font-weight: 600;
 }
-/* line 386, ../scss/master.scss */
+@media only screen and (max-width: 768px) {
+  /* line 429, ../scss/master.scss */
+  #endGame p.title {
+    margin-top: 3vh;
+  }
+}
+/* line 439, ../scss/master.scss */
 #endGame button, #endGame #adviceBtn {
   width: 100%;
-  padding: 5px;
-  border-radius: 7px;
-  background-color: white;
-  border: 0px;
-  color: #333;
 }
-/* line 394, ../scss/master.scss */
+/* line 447, ../scss/master.scss */
 #endGame #adviceBtn {
   display: inline-block;
   margin-top: 50px;
   text-decoration: none;
 }
-/* line 399, ../scss/master.scss */
+/* line 452, ../scss/master.scss */
 #endGame i {
   font-size: 25px;
-  color: #333;
+  color: white;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -482,31 +566,38 @@ button:focus {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/* line 409, ../scss/master.scss */
+/* line 462, ../scss/master.scss */
 #endGame .no-margin {
   margin: 0;
 }
-/* line 413, ../scss/master.scss */
+/* line 466, ../scss/master.scss */
 #endGame .titleBilan {
   text-align: center;
   text-transform: uppercase;
-  font-size: 26px;
 }
-/* line 419, ../scss/master.scss */
+/* line 471, ../scss/master.scss */
 #endGame .faCircle {
-  background-color: #fff;
+  background-color: #4be79f;
   border-radius: 50%;
+  border: 3px solid white;
   position: absolute;
   top: 2px;
   width: 60px;
   height: 60px;
-  left: -32px;
+  left: 45%;
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 429, ../scss/master.scss */
+@media only screen and (max-width: 768px) {
+  /* line 471, ../scss/master.scss */
+  #endGame .faCircle {
+    left: 43%;
+    margin-top: 3vh;
+  }
+}
+/* line 486, ../scss/master.scss */
 #endGame #winCircle {
   top: -22px;
   transform: translate(-50%, -50%);
@@ -514,20 +605,20 @@ button:focus {
   width: 75px;
   height: 75px;
 }
-/* line 436, ../scss/master.scss */
+/* line 493, ../scss/master.scss */
 #endGame #winCircle i {
   font-size: 35px;
 }
-/* line 441, ../scss/master.scss */
+/* line 498, ../scss/master.scss */
 #endGame li {
   font-weight: 200;
 }
-/* line 445, ../scss/master.scss */
+/* line 502, ../scss/master.scss */
 #endGame ul {
   padding-left: 15px;
 }
 
-/* line 451, ../scss/master.scss */
+/* line 508, ../scss/master.scss */
 .background {
   z-index: 0 !important;
   -moz-transition: background, 0.5s;
@@ -538,7 +629,7 @@ button:focus {
   text-align: center;
 }
 
-/* line 459, ../scss/master.scss */
+/* line 516, ../scss/master.scss */
 #contentContainer {
   z-index: 10;
   -moz-transition: opacity, 0.5s;
@@ -547,22 +638,22 @@ button:focus {
   transition: opacity, 0.5s;
 }
 
-/* line 464, ../scss/master.scss */
+/* line 521, ../scss/master.scss */
 #no-landscape {
   padding-top: 0;
 }
-/* line 465, ../scss/master.scss */
+/* line 522, ../scss/master.scss */
 #no-landscape i {
   font-size: 100px;
   color: white;
 }
-/* line 470, ../scss/master.scss */
+/* line 527, ../scss/master.scss */
 #no-landscape p {
   font-size: 25px;
   color: white;
 }
 
-/* line 478, ../scss/master.scss */
+/* line 535, ../scss/master.scss */
 #dayTransition {
   display: none;
   padding-top: 0;
@@ -581,7 +672,7 @@ button:focus {
   background-color: #161616;
 }
 
-/* line 494, ../scss/master.scss */
+/* line 551, ../scss/master.scss */
 .currentDay {
   position: absolute;
   top: 45%;
@@ -596,13 +687,13 @@ button:focus {
   -webkit-transition: all, 1s;
   transition: all, 1s;
 }
-/* line 502, ../scss/master.scss */
+/* line 559, ../scss/master.scss */
 .currentDay p {
   font-weight: bold;
   font-size: 35px;
 }
 
-/* line 509, ../scss/master.scss */
+/* line 566, ../scss/master.scss */
 .nextDay {
   position: absolute;
   top: 55%;
@@ -617,13 +708,13 @@ button:focus {
   -webkit-transition: all, 1s;
   transition: all, 1s;
 }
-/* line 517, ../scss/master.scss */
+/* line 574, ../scss/master.scss */
 .nextDay p {
   font-weight: bold;
   font-size: 35px;
 }
 
-/* line 524, ../scss/master.scss */
+/* line 581, ../scss/master.scss */
 #loading, #error, #no-landscape, #startScreen {
   position: absolute;
   top: 0;
@@ -638,17 +729,17 @@ button:focus {
   background-color: #161616;
 }
 
-/* line 538, ../scss/master.scss */
+/* line 595, ../scss/master.scss */
 #startScreen {
   padding-top: 0% !important;
 }
 
-/* line 542, ../scss/master.scss */
+/* line 599, ../scss/master.scss */
 #gauge {
   padding: 0;
 }
 
-/* line 546, ../scss/master.scss */
+/* line 603, ../scss/master.scss */
 #progressBar1, #progressBar2, #progressBar3 {
   margin: 0px 15px 10px 15px;
   width: 110px;
@@ -657,7 +748,7 @@ button:focus {
   display: inline-block;
   padding: 15px;
 }
-/* line 554, ../scss/master.scss */
+/* line 611, ../scss/master.scss */
 #progressBar1 i, #progressBar1 p, #progressBar2 i, #progressBar2 p, #progressBar3 i, #progressBar3 p {
   font-size: 25px;
   position: absolute;
@@ -674,38 +765,42 @@ button:focus {
   -webkit-transition: all, 0.3s;
   transition: all, 0.3s;
 }
-/* line 565, ../scss/master.scss */
+/* line 622, ../scss/master.scss */
 #progressBar1 p, #progressBar2 p, #progressBar3 p {
   font-size: 15px;
   font-weight: 900;
   top: 100%;
   width: 100%;
   padding: 2px;
-  background-color: rgba(0, 0, 0, 0.8);
   border-radius: 7px;
   margin-top: 7px;
   text-transform: uppercase;
 }
-/* line 578, ../scss/master.scss */
+/* line 635, ../scss/master.scss */
 #progressBar1 #plusGauge1 p, #progressBar1 #plusGauge2 p, #progressBar1 #plusGauge3 p, #progressBar2 #plusGauge1 p, #progressBar2 #plusGauge2 p, #progressBar2 #plusGauge3 p, #progressBar3 #plusGauge1 p, #progressBar3 #plusGauge2 p, #progressBar3 #plusGauge3 p {
   background: none;
-  top: 36.5%;
+  top: 41%;
   left: 60%;
-  font-size: 35px;
+  font-size: 30px;
   opacity: 0;
 }
-/* line 587, ../scss/master.scss */
+/* line 644, ../scss/master.scss */
+#progressBar1 path, #progressBar2 path, #progressBar3 path {
+  fill: #004370;
+  fill-opacity: 1;
+}
+/* line 648, ../scss/master.scss */
 #progressBar1 path:first-child, #progressBar2 path:first-child, #progressBar3 path:first-child {
   fill-opacity: 0.8;
 }
-/* line 591, ../scss/master.scss */
+/* line 652, ../scss/master.scss */
 #progressBar1 svg, #progressBar2 svg, #progressBar3 svg {
   -moz-transition: all, 0.3s;
   -o-transition: all, 0.3s;
   -webkit-transition: all, 0.3s;
   transition: all, 0.3s;
 }
-/* line 595, ../scss/master.scss */
+/* line 656, ../scss/master.scss */
 #progressBar1 .spark, #progressBar2 .spark, #progressBar3 .spark {
   position: absolute;
   bottom: 0;
@@ -716,38 +811,45 @@ button:focus {
   z-index: 50;
 }
 
-/* line 607, ../scss/master.scss */
+/* line 668, ../scss/master.scss */
 .home-background {
   color: black;
 }
 
-/* line 611, ../scss/master.scss */
+/* line 672, ../scss/master.scss */
 .home-icon {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
+  margin-top: -15vh;
+}
+@media only screen and (max-width: 768px) {
+  /* line 672, ../scss/master.scss */
+  .home-icon {
+    margin-top: 0;
+  }
 }
 
-/* line 618, ../scss/master.scss */
+/* line 683, ../scss/master.scss */
 .white.wave {
   background-color: white;
   color: #474747;
 }
 
-/* line 623, ../scss/master.scss */
+/* line 688, ../scss/master.scss */
 .align-left {
   text-align: left;
 }
 
-/* line 627, ../scss/master.scss */
+/* line 692, ../scss/master.scss */
 .progressBarContainer {
   text-align: center;
   margin-top: 55px;
   position: relative;
 }
 
-/* line 634, ../scss/master.scss */
+/* line 699, ../scss/master.scss */
 #about #aboutModal, #about #introModal, #intro #aboutModal, #intro #introModal {
   display: none;
   -moz-transition: opacity, 0.5s;
@@ -759,11 +861,23 @@ button:focus {
   text-align: center;
   background-size: cover !important;
 }
-/* line 649, ../scss/master.scss */
+/* line 714, ../scss/master.scss */
 #about #introModal, #intro #introModal {
   display: block;
 }
-/* line 653, ../scss/master.scss */
+@media only screen and (max-width: 768px) {
+  /* line 718, ../scss/master.scss */
+  #about .left-icon, #intro .left-icon {
+    display: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  /* line 725, ../scss/master.scss */
+  #about .right-icon img, #intro .right-icon img {
+    width: 40vw;
+  }
+}
+/* line 731, ../scss/master.scss */
 #about .iabout, #intro .iabout {
   padding: 5px;
   color: white;
@@ -774,18 +888,29 @@ button:focus {
   z-index: 999;
   cursor: pointer;
 }
-/* line 664, ../scss/master.scss */
+/* line 742, ../scss/master.scss */
 #about .contentBlock, #intro .contentBlock {
   margin-bottom: 3.5vh;
   padding: 18px 25px 25px 25px;
   font-size: 17px;
 }
-/* line 672, ../scss/master.scss */
-#about .titleModal, #intro .titleModal {
-  margin-top: 40px;
-  margin-bottom: 30px;
+@media only screen and (max-width: 768px) {
+  /* line 742, ../scss/master.scss */
+  #about .contentBlock, #intro .contentBlock {
+    padding: 0px 25px;
+  }
 }
-/* line 698, ../scss/master.scss */
+/* line 752, ../scss/master.scss */
+#about .titleModal, #intro .titleModal {
+  margin-top: 3vh;
+}
+@media only screen and (max-width: 768px) {
+  /* line 752, ../scss/master.scss */
+  #about .titleModal, #intro .titleModal {
+    margin-bottom: 0;
+  }
+}
+/* line 759, ../scss/master.scss */
 #about .companyBlock, #intro .companyBlock {
   margin-top: 20px;
   border-top: 1px solid #333333;
@@ -793,19 +918,19 @@ button:focus {
   font-size: 12px;
   color: #CCCCCC;
 }
-/* line 706, ../scss/master.scss */
+/* line 767, ../scss/master.scss */
 #about .companyBlock img, #intro .companyBlock img {
   display: block;
   margin: 5px auto;
   width: 100%;
   max-width: 180px;
 }
-/* line 713, ../scss/master.scss */
+/* line 774, ../scss/master.scss */
 #about .companyBlock a, #about .companyBlock a:focus, #about .companyBlock a:hover, #about .companyBlock a:visited, #intro .companyBlock a, #intro .companyBlock a:focus, #intro .companyBlock a:hover, #intro .companyBlock a:visited {
   color: #70ced4;
 }
 
-/* line 719, ../scss/master.scss */
+/* line 780, ../scss/master.scss */
 .content-landscape {
   position: absolute;
   top: 50%;
@@ -817,7 +942,7 @@ button:focus {
 }
 
 @media screen and (min-width: 1024px) {
-  /* line 729, ../scss/master.scss */
+  /* line 790, ../scss/master.scss */
   #appContainer {
     color: white;
     text-align: center;
@@ -833,55 +958,55 @@ button:focus {
   }
 }
 @media screen and (max-width: 1024px) and (min-width: 571px) {
-  /* line 744, ../scss/master.scss */
+  /* line 805, ../scss/master.scss */
   #appContainer {
     color: white;
     width: 100%;
     min-height: 100%;
   }
 
-  /* line 750, ../scss/master.scss */
+  /* line 811, ../scss/master.scss */
   #progressBar1, #progressBar2, #progressBar3 {
     margin: 30px 40px;
     width: 15%;
     height: 100%;
     padding: 0 10px;
   }
-  /* line 756, ../scss/master.scss */
+  /* line 817, ../scss/master.scss */
   #progressBar1 p, #progressBar2 p, #progressBar3 p {
     top: 115%;
   }
 }
 @media screen and (max-width: 570px) {
-  /* line 764, ../scss/master.scss */
+  /* line 825, ../scss/master.scss */
   #progressBar1, #progressBar2, #progressBar3 {
     margin: 30px 20px;
     width: 20%;
     height: 100%;
     padding: 0 10px;
   }
-  /* line 771, ../scss/master.scss */
+  /* line 832, ../scss/master.scss */
   #progressBar1 i, #progressBar2 i, #progressBar3 i {
     font-size: 25px;
   }
-  /* line 775, ../scss/master.scss */
+  /* line 836, ../scss/master.scss */
   #progressBar1 p, #progressBar2 p, #progressBar3 p {
     top: 115%;
   }
 
-  /* line 780, ../scss/master.scss */
+  /* line 841, ../scss/master.scss */
   #toggle-anime {
     width: 85%;
   }
 
-  /* line 784, ../scss/master.scss */
+  /* line 845, ../scss/master.scss */
   #appContainer {
     color: white;
     width: 100%;
     min-height: 100%;
   }
 
-  /* line 791, ../scss/master.scss */
+  /* line 852, ../scss/master.scss */
   #eventDesc .mapBlock {
     display: none;
   }

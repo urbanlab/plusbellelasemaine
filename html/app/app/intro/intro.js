@@ -58,7 +58,7 @@ angular.module('intro', [
 	
     // $("#introModal").css("background", "url(data/img/intro.jpg) center center / cover no-repeat");    
     $('#footerContainer').css("position","unset");
-    $('#footerContainer').css("bottom","unset");
+    // $('#footerContainer').css("bottom","unset");
     $('#appContainer').css("background-color","#161616");
     $('#appContainer').css("background-image","unset");
     

@@ -27,35 +27,31 @@ angular.module('about', [
     
     function modal() {
         if($('#aboutModal').hasClass('transparent')){
-            $('#aboutModal').css('display', 'block');
-            setTimeout(function(){
+			setTimeout(function(){
+				$('#aboutModal').css('display', 'block');
 				$('#aboutModal').removeClass('transparent');
-			}, 100);
-			
-			$('#contentContainer').addClass('transparent'); 
-			$('#gaugeContainer').addClass('transparent'); 
-            setTimeout(function(){
+				$('#contentContainer').addClass('transparent'); 
+				$('#gaugeContainer').addClass('transparent'); 
 				$('#contentContainer').css('display', 'none');
 				$('#gaugeContainer').css('display', 'none');
-			}, 500);
-            
+			}, 100);            
 			// GA tracking
 			$analytics.pageTrack('/a-propos', {title:'A propos'});
         }
         else {
-            $('#aboutModal').addClass('transparent'); 
-            setTimeout(function(){
+			setTimeout(function(){
+				$('#aboutModal').addClass('transparent'); 
 				$('#aboutModal').css('display', 'none');
+				$('#contentContainer').css('display', 'block');
+				$('#contentContainer').removeClass('transparent');
+				$('#gaugeContainer').css('display', 'block');
+				$('#gaugeContainer').removeClass('transparent'); 
 			}, 500);
             
-			 $('#contentContainer').css('display', 'block');
             setTimeout(function(){
-				$('#contentContainer').removeClass('transparent');
 			}, 100);
 
-			$('#gaugeContainer').css('display', 'block');
             setTimeout(function(){
-				$('#gaugeContainer').removeClass('transparent'); 
 			}, 500);
         }
     }

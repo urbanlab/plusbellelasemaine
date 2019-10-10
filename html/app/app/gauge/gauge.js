@@ -7,9 +7,9 @@ angular.module('gauge', [
 
 	var gaugeCtrl = this;
 	var BAR_COLORS = [
-		'rgb(111, 234, 172)',
-		'rgb(255, 206, 68)',
-		'rgb(228, 90, 96)'
+		'rgb(75,231,159)',
+		'rgb(255,108,233)',
+		'rgb(255,215,130)'
 	];
 	
 	gaugeCtrl.gauges = [];
@@ -40,7 +40,8 @@ angular.module('gauge', [
 					// This has to be the same size as the maximum width to
 					// prevent clipping
 					strokeWidth: 10,
-					trailWidth: 0,
+                    trailWidth: 4,
+                    trailColor: '#FFFFFF',
 					easing: 'easeInOut',
 					duration: 3400, //1400,
 					text: {
@@ -132,15 +133,15 @@ angular.module('gauge', [
 					 if(oldVal-newVal > 0){
 						 $(progressBarId+' i').removeClass(g.picto);
 						 $(progressBarId+' i').addClass('fa-minus'); 
-						 $(progressBarId+' i').css('left', '35%')
-						 $(progressBarId+' i').css('font-size', '15px')
+						 $(progressBarId+' i').css('left', '30%')
+						 $(progressBarId+' i').css('font-size', '5px')
 						 $(progressBarId+' i, '+progressBarId+' '+plusGaugeId+' p').css('color', '#990000')
 					 }
 					 else {
 						 $(progressBarId+' i').removeClass(g.picto);
 						 $(progressBarId+' i').addClass('fa-plus'); 
-						 $(progressBarId+' i').css('left', '35%')
-						 $(progressBarId+' i').css('font-size', '15px')
+						 $(progressBarId+' i').css('left', '30%')
+						 $(progressBarId+' i').css('font-size', '5px')
 					 }
 				 }, 300);
 

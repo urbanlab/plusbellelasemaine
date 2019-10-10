@@ -1,3 +1,4 @@
+@import "breakpoint";
 
 $text-font: 'Nunito', sans-serif;
 $title-font: 'Nunito', sans-serif;
@@ -8,16 +9,24 @@ $title-font: 'Nunito', sans-serif;
 }
 
 h1, h2, h3 {
-    font-size: 48px;
+    font-size: 2em;
     font-weight: 900;
     padding: 0 0 3vh 0;
+    @media #{$large-phone} {
+        font-size: 1.5em;
+        padding: 0;        
+        margin: 4vh 0;
+    }
 }
 
-p {
-    font-size: 20px;
+p {    
+    font-size: 1.5vw;
     font-weight: 500;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
+    @media #{$large-phone} {
+        font-size: 1.2em;
+      }
 }
