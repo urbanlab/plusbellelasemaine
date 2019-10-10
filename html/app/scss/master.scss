@@ -479,8 +479,7 @@ button:focus {
         left: 45%;
         @include translateY(-50%);
         @media #{$large-phone} {
-            left: 43%;
-            margin-top: 3vh;
+            left: 38%;
         }
     }
     #winCircle {

@@ -245,7 +245,7 @@ angular.module('endGame', [
 			$("#endGame .contentBlock").css("display", "block");
 			$("#endGame .contentBlock").css("transform", "translateX(100px)");
 			$("#reset").css("transform", "translateX(100px)");
-			$('#footerContainer').css("bottom","unset");
+			$('#footerContainer').css("bottom","");
 			var index = 0;
 			_.forEach(endGameCtrl.bilan, function(texts, key) {
 				setTimeout(function(){
