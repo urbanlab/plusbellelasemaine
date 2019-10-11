@@ -151,7 +151,7 @@ button:focus {
 
         
         p {
-            color: white;
+            color: $brown-grey;
             font-size: 17px;
             font-weight: bold;
             
@@ -188,7 +188,7 @@ button:focus {
     }
     
     #textEvent {
-        color: #e4e4e4;
+        color: $weird-blue;
         font-size: 18px;
     }
 
@@ -214,7 +214,7 @@ button:focus {
             border: 0px;
             margin: 15px 0;
             border-radius: 10px;
-            box-shadow: 1px 0px 10px #333;
+            box-shadow: 0 1px 7px 0 rgba(59, 59, 59, 0.21);
             cursor: pointer;
             font-size: 17px;
         }
@@ -244,7 +244,8 @@ button:focus {
     }
     
     #textEvent{
-        padding-top: 11px
+        padding-top: 11px;        
+        font-weight: 800;
     }
     
     #titleEvent {
@@ -255,8 +256,8 @@ button:focus {
 #toggle-anime {
     @include transition(opacity, 0.5s);
     padding: 10px 20px 35px 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color:white;
+    background-color: white;
+    color: $weird-blue;
     position: relative;
     width:66%;
     margin : 23px auto 30px auto;
@@ -305,6 +306,12 @@ button:focus {
         font-weight: bold;
     }    
     
+    #winScreen {
+        margin-top: 4vh;
+        @media #{$large-phone} {
+            margin-top: 10vh;
+        }
+    }
     #winScreen, #loseScreen {
         // position: absolute;
         // top: 40%;
@@ -335,16 +342,17 @@ button:focus {
     }
     
     .titleWinLose {
-        
         p {
             font-size: 25px;
             text-transform: uppercase;
+            padding: 2vh 0 0 0;
         }
     }
     
     .textWinLose {
         p {
             font-size: 17px;
+            padding: 0 0 2vh 0;
         }
         @media #{$large-phone} {
             text-align: left;
@@ -366,7 +374,7 @@ button:focus {
         margin-bottom: 8vh;
         @include translate(0%, 0%);
         @include transition(opacity, 0.5s);
-    
+        display: none;
         i, p {
             font-size: 40px;
             position: absolute;
@@ -490,11 +498,11 @@ button:focus {
         }
     }
     #winCircle {
-        top: -22px;
+        // top: -22px;
         transform: translate(-50%, -50%);
         left: 50%;
-        width: 75px;
-        height: 75px;
+        // width: 75px;
+        // height: 75px;
         
         i {
             font-size: 35px;
@@ -644,8 +652,8 @@ button:focus {
     }
     #plusGauge1,  #plusGauge2, #plusGauge3{
         p {
-          background: none;
-          top: 41%;
+          background: none; 
+          top: 44%;
           left: 60%;
           font-size: 2em;
           opacity: 0;
@@ -695,6 +703,13 @@ button:focus {
     }
 }
 
+.results-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
 .white.wave {
     background-color: white;
     color: #474747;
@@ -723,11 +738,15 @@ button:focus {
         z-index: 998;
         text-align: center;
         // background-color: #161616 ;
-        background-size: cover !important;
+        background-size: cover !important;        
     }
 	
 	#introModal {
 		display: block;
+    }
+
+    #aboutModal {
+        padding-bottom: 7vh;
     }
     
     .left-icon {
@@ -765,7 +784,8 @@ button:focus {
     }
 
     .titleModal{
-        margin-top: 3vh;
+        margin-top: 4vh;        
+        font-size: 3em;
         @media #{$large-phone} {
             margin-bottom: 0;
         }

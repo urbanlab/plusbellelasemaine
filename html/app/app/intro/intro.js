@@ -61,6 +61,7 @@ angular.module('intro', [
     // $('#footerContainer').css("bottom","unset");
     $('#appContainer').css("background-color","#161616");
     $('#appContainer').css("background-image","unset");
+    $("#appContainer").css("min-height", "");
     
 	EventService.getJSONData().then(
 		function (data){

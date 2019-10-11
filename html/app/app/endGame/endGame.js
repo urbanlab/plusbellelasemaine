@@ -68,7 +68,9 @@ angular.module('endGame', [
 		
         var background = {};
         $("#appContainer").css("background", "linear-gradient(to bottom, #8ed0ff, #1483d1)");
-		$('#footerContainer').css("bottom","0");
+        $("#appContainer").css("min-height", "unset");
+        $('#footerContainer').css("position","");
+		// $('#footerContainer').css("bottom","0");
 
         clearTimeout($rootScope.idTimeout);
 	
@@ -126,6 +128,7 @@ angular.module('endGame', [
 					$('#continue').css('display', 'block');
 
 					setTimeout(function(){
+						$('#progressBar').css('display', 'block');
 						$('#progressBar').css('opacity', 1);
 					}, 300);
 
@@ -203,7 +206,7 @@ angular.module('endGame', [
 			$("#endGame .contentBlock").css("display", "block");
 			$("#endGame .contentBlock").css("transform", "translateX(100px)");
 			$("#reset").css("transform", "translateX(100px)");
-			$('#footerContainer').css("bottom","");
+			// $('#footerContainer').css("bottom","");
 			var index = 0;
 			_.forEach(endGameCtrl.bilan, function(texts, key) {
 				setTimeout(function(){
