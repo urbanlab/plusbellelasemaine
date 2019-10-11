@@ -63,6 +63,8 @@ https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js
 ./app/footer/footer.tmpl.html
 ./app/intro/intro.js
 ./app/intro/intro.tmpl.html
+./app/footer/footer.js
+./app/footer/footer.tmpl.html
 ./data/eventData_FR.json
 ./data/img/bain.jpg
 ./data/img/bilan2.jpg

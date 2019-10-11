@@ -43,7 +43,6 @@ compass watch
 Toutes modification des fichiers sass entrainera une compilation et l'actualisation des fichiers css
 
 ## Installation serveur
-
 Prérequis:
 - OS Linux
 - Mysql 5.6+
@@ -54,17 +53,36 @@ Avant de procéder a la livraison, penser a sauvegarder:
 - la BDD
 - le dossier ``html/app/data``
 - le dossier ``html/application/config``
+  
+```bash
+# BDD
+mysqldump -u root -p bienvieillir > ~/plusbellelasemaine.erasme.org/bdd_save
 
-1) Pousser les sources sur le serveur de production
+# App data
+cp -r ~/plusbellelasemaine.erasme.org/www/html/app/data ~/plusbellelasemaine.erasme.org/tmp/
+
+# App config
+cp -r ~/plusbellelasemaine.erasme.org/www/html/application/config ~/plusbellelasemaine.erasme.org/tmp/
+```
+
+1) Récuperer les sources sur le serveur de production
+
+```
+cd ~/plusbellelasemaine.erasme.org/www/html/app
+git pull
+```
 
 ATTENTION, le vhost du projet doit pointer sur le répertoire "html" du repository, le dossier "CI_system" du repository ne doit pas être accessible depuis un navigateur pour des raisons de sécurité, si il le faut il peut être remonté dans l'arborescence de dossiers, à ce moment là il faut ajuster son chemin d'accès dans le fichier "html/index.php", ligne 113
 
-2) Dans le dossier ``html/``, passer les permissions du dossier "uploads" pour que PHP puisse lire et écrire dedans.
+2) Dans le dossier ``html/``, passer les permissions du dossier "uploads" pour que PHP puisse lire et écrire dedans (ou vérifier qu'elle sont toujours bonnes).
 ```
 cd ****
 chmod 775
 ```
 
-3) Vérifier que les dossier ``html/application/config`` et ``html/app/data`` sont inchangés.
+3) Vérifier que les dossier ``html/application/config`` et ``html/app/data`` sont inchangés. Si ce n'est pas le cas restaurer avec la sauvegarde.
 
 Note: le dossier config contient la configuration globale du projet (BDD, googleAnalytics, mail...). Le dossier data contient toutes les images et scénarios uploader.
+
+### Gestion du cache
+Le cache est actualisé automatiquement lorsqu'une modification est faite au fichier ``manifest.appcache``. Voir le lien suivant: [Cache doc](https://www.html5rocks.com/en/tutorials/appcache/beginner/)
