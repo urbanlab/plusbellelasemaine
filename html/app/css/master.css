@@ -92,81 +92,82 @@ body {
 .footer p {
   font-size: 1em;
   margin-right: 5vw;
+  margin-bottom: 0;
 }
-/* line 57, ../scss/master.scss */
+/* line 58, ../scss/master.scss */
 .footer img {
   height: 3vh;
 }
 @media only screen and (max-width: 768px) {
-  /* line 61, ../scss/master.scss */
+  /* line 62, ../scss/master.scss */
   .footer p {
     font-size: 0.7em;
     margin-right: 1vw;
     text-align: left;
   }
-  /* line 66, ../scss/master.scss */
+  /* line 67, ../scss/master.scss */
   .footer img {
     height: 2.5vh;
   }
 }
 
-/* line 72, ../scss/master.scss */
+/* line 73, ../scss/master.scss */
 .app-title {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-/* line 76, ../scss/master.scss */
+/* line 77, ../scss/master.scss */
 .app-title img {
   width: 1vw;
 }
 @media only screen and (max-width: 768px) {
-  /* line 80, ../scss/master.scss */
+  /* line 81, ../scss/master.scss */
   .app-title img {
     display: none;
   }
-  /* line 83, ../scss/master.scss */
+  /* line 84, ../scss/master.scss */
   .app-title h1 {
     padding: 0 10vw;
   }
 }
 
-/* line 89, ../scss/master.scss */
+/* line 90, ../scss/master.scss */
 .row.no-margin {
   margin-left: 0;
   margin-right: 0;
 }
 
-/* line 94, ../scss/master.scss */
+/* line 95, ../scss/master.scss */
 .cl-banner {
   background: rgba(80, 80, 80, 0.9);
 }
-/* line 97, ../scss/master.scss */
+/* line 98, ../scss/master.scss */
 .cl-banner .cl-accept {
   color: #333;
   background-color: #fff;
 }
-/* line 101, ../scss/master.scss */
+/* line 102, ../scss/master.scss */
 .cl-banner .cl-accept:hover {
   background: #eee;
 }
 
-/* line 107, ../scss/master.scss */
+/* line 108, ../scss/master.scss */
 span.ld_perso1 {
   color: #de8729;
 }
 
-/* line 111, ../scss/master.scss */
+/* line 112, ../scss/master.scss */
 span.ld_perso2 {
   color: #cf5dd0;
 }
 
-/* line 114, ../scss/master.scss */
+/* line 115, ../scss/master.scss */
 span.ld_perso3 {
   color: #6ca4ea;
 }
 
-/* line 118, ../scss/master.scss */
+/* line 119, ../scss/master.scss */
 button {
   cursor: pointer;
   color: #FFFFFF;
@@ -180,37 +181,37 @@ button {
   margin: 2vh 0;
 }
 
-/* line 135, ../scss/master.scss */
+/* line 136, ../scss/master.scss */
 button:focus {
   outline: 0;
 }
 
-/* line 139, ../scss/master.scss */
+/* line 140, ../scss/master.scss */
 .center {
   text-align: center;
 }
 
-/* line 143, ../scss/master.scss */
+/* line 144, ../scss/master.scss */
 #eventDesc {
   color: #333;
 }
-/* line 146, ../scss/master.scss */
+/* line 147, ../scss/master.scss */
 #eventDesc #cntDays {
   position: absolute;
   bottom: 10px;
   right: 30px;
 }
-/* line 152, ../scss/master.scss */
+/* line 153, ../scss/master.scss */
 #eventDesc #cntDays p {
   color: white;
   font-size: 17px;
   font-weight: bold;
 }
-/* line 157, ../scss/master.scss */
+/* line 158, ../scss/master.scss */
 #eventDesc #cntDays p #nbCtnDays {
   position: absolute;
 }
-/* line 160, ../scss/master.scss */
+/* line 161, ../scss/master.scss */
 #eventDesc #cntDays p #slashDays {
   position: absolute;
   top: 0%;
@@ -218,13 +219,13 @@ button:focus {
   font-size: 24px;
   font-weight: 100;
 }
-/* line 167, ../scss/master.scss */
+/* line 168, ../scss/master.scss */
 #eventDesc #cntDays p #denominator {
   position: absolute;
   top: 34%;
   left: 170%;
 }
-/* line 174, ../scss/master.scss */
+/* line 175, ../scss/master.scss */
 #eventDesc .contentBlock {
   text-align: left;
   position: relative;
@@ -232,20 +233,20 @@ button:focus {
   padding: 20px;
   font-size: 17px;
 }
-/* line 181, ../scss/master.scss */
+/* line 182, ../scss/master.scss */
 #eventDesc h1 {
   font-size: 28px;
 }
-/* line 185, ../scss/master.scss */
+/* line 186, ../scss/master.scss */
 #eventDesc .titleBlock {
   text-align: center;
 }
-/* line 189, ../scss/master.scss */
+/* line 190, ../scss/master.scss */
 #eventDesc #textEvent {
   color: #e4e4e4;
   font-size: 18px;
 }
-/* line 194, ../scss/master.scss */
+/* line 195, ../scss/master.scss */
 #eventDesc .mapBlock {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 10px;
@@ -257,11 +258,11 @@ button:focus {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/* line 203, ../scss/master.scss */
+/* line 204, ../scss/master.scss */
 #eventDesc .choiceLink {
   width: 100%;
 }
-/* line 205, ../scss/master.scss */
+/* line 206, ../scss/master.scss */
 #eventDesc .choiceLink a {
   text-decoration: none;
   font-weight: 600;
@@ -277,14 +278,14 @@ button:focus {
   cursor: pointer;
   font-size: 17px;
 }
-/* line 221, ../scss/master.scss */
+/* line 222, ../scss/master.scss */
 #eventDesc .choiceLink a:active {
   -moz-transform: scale(0.95, 0.95);
   -ms-transform: scale(0.95, 0.95);
   -webkit-transform: scale(0.95, 0.95);
   transform: scale(0.95, 0.95);
 }
-/* line 226, ../scss/master.scss */
+/* line 227, ../scss/master.scss */
 #eventDesc .reset {
   top: 13px;
   position: absolute;
@@ -292,7 +293,7 @@ button:focus {
   width: 50px;
   height: 50px;
 }
-/* line 232, ../scss/master.scss */
+/* line 233, ../scss/master.scss */
 #eventDesc .reset button {
   width: 65%;
   padding: 1px;
@@ -304,16 +305,16 @@ button:focus {
   font-size: 28px;
   outline: none;
 }
-/* line 245, ../scss/master.scss */
+/* line 246, ../scss/master.scss */
 #eventDesc #textEvent {
   padding-top: 11px;
 }
-/* line 249, ../scss/master.scss */
+/* line 250, ../scss/master.scss */
 #eventDesc #titleEvent {
   padding-bottom: 0px;
 }
 
-/* line 254, ../scss/master.scss */
+/* line 255, ../scss/master.scss */
 #toggle-anime {
   -moz-transition: opacity, 0.5s;
   -o-transition: opacity, 0.5s;
@@ -328,12 +329,12 @@ button:focus {
   text-align: center;
   border-radius: 7px;
 }
-/* line 265, ../scss/master.scss */
+/* line 266, ../scss/master.scss */
 #toggle-anime h1 {
   margin-top: 0;
 }
 
-/* line 270, ../scss/master.scss */
+/* line 271, ../scss/master.scss */
 .no-click {
   width: 100%;
   height: 250px;
@@ -341,7 +342,7 @@ button:focus {
   position: absolute;
 }
 
-/* line 277, ../scss/master.scss */
+/* line 278, ../scss/master.scss */
 .day {
   -moz-transition: opacity, 0.5s;
   -o-transition: opacity, 0.5s;
@@ -357,40 +358,38 @@ button:focus {
   color: white;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 38px;
+  font-size: 3em;
 }
 @media only screen and (max-width: 768px) {
-  /* line 277, ../scss/master.scss */
+  /* line 278, ../scss/master.scss */
   .day {
-    font-size: unset;
+    font-size: 2em;
   }
 }
 
-/* line 292, ../scss/master.scss */
+/* line 293, ../scss/master.scss */
 .transparent {
   opacity: 0;
 }
 
-/* line 296, ../scss/master.scss */
-#endGame {
-  padding: 40px;
-}
 /* line 297, ../scss/master.scss */
+#endGame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* line 302, ../scss/master.scss */
 #endGame .contentBlockStart {
   text-align: center;
   margin-top: 25px;
   font-weight: bold;
 }
-/* line 305, ../scss/master.scss */
+/* line 308, ../scss/master.scss */
 #endGame #winScreen, #endGame #loseScreen {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  width: 75%;
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
+  -moz-transform: translateX(0%);
+  -ms-transform: translateX(0%);
+  -webkit-transform: translateX(0%);
+  transform: translateX(0%);
   background-color: rgba(255, 255, 255, 0.8);
   color: #333;
   display: none;
@@ -402,15 +401,8 @@ button:focus {
   border-radius: 15px;
   padding: 18px 25px 18px 32px;
 }
-/* line 320, ../scss/master.scss */
+/* line 323, ../scss/master.scss */
 #endGame #continue {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
   -moz-transition: opacity, 0.5s;
   -o-transition: opacity, 0.5s;
   -webkit-transition: opacity, 0.5s;
@@ -418,45 +410,40 @@ button:focus {
   display: none;
   opacity: 0;
   text-align: center;
-  margin-top: 25px;
   font-weight: bold;
-  width: 33%;
 }
-/* line 336, ../scss/master.scss */
+/* line 339, ../scss/master.scss */
 #endGame .titleWinLose p {
   font-size: 25px;
   text-transform: uppercase;
 }
-/* line 343, ../scss/master.scss */
+/* line 346, ../scss/master.scss */
 #endGame .textWinLose p {
   font-size: 17px;
 }
 @media only screen and (max-width: 768px) {
-  /* line 342, ../scss/master.scss */
+  /* line 345, ../scss/master.scss */
   #endGame .textWinLose {
     text-align: left;
   }
 }
-/* line 353, ../scss/master.scss */
+/* line 356, ../scss/master.scss */
 #endGame #progressBar {
   width: 175px;
   height: 175px;
-  position: absolute;
-  display: none;
   padding: 15px;
-  top: 40%;
-  left: 50%;
   opacity: 0;
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  margin-bottom: 8vh;
+  -moz-transform: translate(0%, 0%);
+  -ms-transform: translate(0%, 0%);
+  -webkit-transform: translate(0%, 0%);
+  transform: translate(0%, 0%);
   -moz-transition: opacity, 0.5s;
   -o-transition: opacity, 0.5s;
   -webkit-transition: opacity, 0.5s;
   transition: opacity, 0.5s;
 }
-/* line 366, ../scss/master.scss */
+/* line 370, ../scss/master.scss */
 #endGame #progressBar i, #endGame #progressBar p {
   font-size: 40px;
   position: absolute;
@@ -473,7 +460,7 @@ button:focus {
   -webkit-transition: all, 0.3s;
   transition: all, 0.3s;
 }
-/* line 377, ../scss/master.scss */
+/* line 381, ../scss/master.scss */
 #endGame #progressBar p {
   font-size: 22px;
   top: 100%;
@@ -484,7 +471,7 @@ button:focus {
   margin-top: 7px;
   text-transform: uppercase;
 }
-/* line 390, ../scss/master.scss */
+/* line 394, ../scss/master.scss */
 #endGame #progressBar #plusGauge p {
   background: none;
   top: 44%;
@@ -493,19 +480,21 @@ button:focus {
   opacity: 0;
   color: #990000;
 }
-/* line 402, ../scss/master.scss */
+/* line 406, ../scss/master.scss */
 #endGame #reset {
   -moz-transition: all, 0.5s;
   -o-transition: all, 0.5s;
   -webkit-transition: all, 0.5s;
   transition: all, 0.5s;
   opacity: 0;
+  display: none;
+  margin: 0;
 }
-/* line 406, ../scss/master.scss */
+/* line 412, ../scss/master.scss */
 #endGame #reset #btnRestart {
   background-color: #6feaac;
 }
-/* line 410, ../scss/master.scss */
+/* line 416, ../scss/master.scss */
 #endGame .contentBlock {
   text-align: left;
   position: relative;
@@ -524,13 +513,13 @@ button:focus {
   display: none;
 }
 @media only screen and (max-width: 768px) {
-  /* line 410, ../scss/master.scss */
+  /* line 416, ../scss/master.scss */
   #endGame .contentBlock {
     margin-left: 0;
     width: unset;
   }
 }
-/* line 429, ../scss/master.scss */
+/* line 435, ../scss/master.scss */
 #endGame p.title {
   z-index: 10;
   font-size: 20px;
@@ -538,22 +527,22 @@ button:focus {
   font-weight: 600;
 }
 @media only screen and (max-width: 768px) {
-  /* line 429, ../scss/master.scss */
+  /* line 435, ../scss/master.scss */
   #endGame p.title {
     margin-top: 3vh;
   }
 }
-/* line 439, ../scss/master.scss */
+/* line 445, ../scss/master.scss */
 #endGame button, #endGame #adviceBtn {
-  width: 100%;
+  width: 25vh;
 }
-/* line 447, ../scss/master.scss */
+/* line 454, ../scss/master.scss */
 #endGame #adviceBtn {
   display: inline-block;
   margin-top: 50px;
   text-decoration: none;
 }
-/* line 452, ../scss/master.scss */
+/* line 459, ../scss/master.scss */
 #endGame i {
   font-size: 25px;
   color: white;
@@ -566,16 +555,16 @@ button:focus {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/* line 462, ../scss/master.scss */
+/* line 469, ../scss/master.scss */
 #endGame .no-margin {
   margin: 0;
 }
-/* line 466, ../scss/master.scss */
+/* line 473, ../scss/master.scss */
 #endGame .titleBilan {
   text-align: center;
   text-transform: uppercase;
 }
-/* line 471, ../scss/master.scss */
+/* line 478, ../scss/master.scss */
 #endGame .faCircle {
   background-color: #4be79f;
   border-radius: 50%;
@@ -591,12 +580,12 @@ button:focus {
   transform: translateY(-50%);
 }
 @media only screen and (max-width: 768px) {
-  /* line 471, ../scss/master.scss */
+  /* line 478, ../scss/master.scss */
   #endGame .faCircle {
     left: 38%;
   }
 }
-/* line 485, ../scss/master.scss */
+/* line 492, ../scss/master.scss */
 #endGame #winCircle {
   top: -22px;
   transform: translate(-50%, -50%);
@@ -604,20 +593,20 @@ button:focus {
   width: 75px;
   height: 75px;
 }
-/* line 492, ../scss/master.scss */
+/* line 499, ../scss/master.scss */
 #endGame #winCircle i {
   font-size: 35px;
 }
-/* line 497, ../scss/master.scss */
+/* line 504, ../scss/master.scss */
 #endGame li {
   font-weight: 200;
 }
-/* line 501, ../scss/master.scss */
+/* line 508, ../scss/master.scss */
 #endGame ul {
   padding-left: 15px;
 }
 
-/* line 507, ../scss/master.scss */
+/* line 513, ../scss/master.scss */
 .background {
   z-index: 0 !important;
   -moz-transition: background, 0.5s;
@@ -628,7 +617,7 @@ button:focus {
   text-align: center;
 }
 
-/* line 515, ../scss/master.scss */
+/* line 521, ../scss/master.scss */
 #contentContainer {
   z-index: 10;
   -moz-transition: opacity, 0.5s;
@@ -637,22 +626,22 @@ button:focus {
   transition: opacity, 0.5s;
 }
 
-/* line 520, ../scss/master.scss */
+/* line 526, ../scss/master.scss */
 #no-landscape {
   padding-top: 0;
 }
-/* line 521, ../scss/master.scss */
+/* line 527, ../scss/master.scss */
 #no-landscape i {
   font-size: 100px;
   color: white;
 }
-/* line 526, ../scss/master.scss */
+/* line 532, ../scss/master.scss */
 #no-landscape p {
   font-size: 25px;
   color: white;
 }
 
-/* line 534, ../scss/master.scss */
+/* line 540, ../scss/master.scss */
 #dayTransition {
   display: none;
   padding-top: 0;
@@ -671,7 +660,7 @@ button:focus {
   background-color: #161616;
 }
 
-/* line 550, ../scss/master.scss */
+/* line 556, ../scss/master.scss */
 .currentDay {
   position: absolute;
   top: 45%;
@@ -686,13 +675,13 @@ button:focus {
   -webkit-transition: all, 1s;
   transition: all, 1s;
 }
-/* line 558, ../scss/master.scss */
+/* line 564, ../scss/master.scss */
 .currentDay p {
   font-weight: bold;
   font-size: 35px;
 }
 
-/* line 565, ../scss/master.scss */
+/* line 571, ../scss/master.scss */
 .nextDay {
   position: absolute;
   top: 55%;
@@ -707,13 +696,13 @@ button:focus {
   -webkit-transition: all, 1s;
   transition: all, 1s;
 }
-/* line 573, ../scss/master.scss */
+/* line 579, ../scss/master.scss */
 .nextDay p {
   font-weight: bold;
   font-size: 35px;
 }
 
-/* line 580, ../scss/master.scss */
+/* line 586, ../scss/master.scss */
 #loading, #error, #no-landscape, #startScreen {
   position: absolute;
   top: 0;
@@ -728,17 +717,17 @@ button:focus {
   background-color: #161616;
 }
 
-/* line 594, ../scss/master.scss */
+/* line 600, ../scss/master.scss */
 #startScreen {
   padding-top: 0% !important;
 }
 
-/* line 598, ../scss/master.scss */
+/* line 604, ../scss/master.scss */
 #gauge {
   padding: 0;
 }
 
-/* line 602, ../scss/master.scss */
+/* line 608, ../scss/master.scss */
 #progressBar1, #progressBar2, #progressBar3 {
   margin: 0px 15px 10px 15px;
   width: 110px;
@@ -747,7 +736,7 @@ button:focus {
   display: inline-block;
   padding: 15px;
 }
-/* line 610, ../scss/master.scss */
+/* line 616, ../scss/master.scss */
 #progressBar1 i, #progressBar1 p, #progressBar2 i, #progressBar2 p, #progressBar3 i, #progressBar3 p {
   font-size: 25px;
   position: absolute;
@@ -764,7 +753,7 @@ button:focus {
   -webkit-transition: all, 0.3s;
   transition: all, 0.3s;
 }
-/* line 621, ../scss/master.scss */
+/* line 627, ../scss/master.scss */
 #progressBar1 p, #progressBar2 p, #progressBar3 p {
   font-size: 15px;
   font-weight: 900;
@@ -775,31 +764,48 @@ button:focus {
   margin-top: 7px;
   text-transform: uppercase;
 }
-/* line 634, ../scss/master.scss */
+/* line 639, ../scss/master.scss */
+#progressBar1 .fa-minus, #progressBar1 .fa-plus, #progressBar2 .fa-minus, #progressBar2 .fa-plus, #progressBar3 .fa-minus, #progressBar3 .fa-plus {
+  font-size: 1.5em;
+}
+@media only screen and (max-width: 768px) {
+  /* line 639, ../scss/master.scss */
+  #progressBar1 .fa-minus, #progressBar1 .fa-plus, #progressBar2 .fa-minus, #progressBar2 .fa-plus, #progressBar3 .fa-minus, #progressBar3 .fa-plus {
+    font-size: 1em;
+  }
+}
+/* line 646, ../scss/master.scss */
 #progressBar1 #plusGauge1 p, #progressBar1 #plusGauge2 p, #progressBar1 #plusGauge3 p, #progressBar2 #plusGauge1 p, #progressBar2 #plusGauge2 p, #progressBar2 #plusGauge3 p, #progressBar3 #plusGauge1 p, #progressBar3 #plusGauge2 p, #progressBar3 #plusGauge3 p {
   background: none;
   top: 41%;
   left: 60%;
-  font-size: 30px;
+  font-size: 2em;
   opacity: 0;
 }
-/* line 643, ../scss/master.scss */
+@media only screen and (max-width: 768px) {
+  /* line 646, ../scss/master.scss */
+  #progressBar1 #plusGauge1 p, #progressBar1 #plusGauge2 p, #progressBar1 #plusGauge3 p, #progressBar2 #plusGauge1 p, #progressBar2 #plusGauge2 p, #progressBar2 #plusGauge3 p, #progressBar3 #plusGauge1 p, #progressBar3 #plusGauge2 p, #progressBar3 #plusGauge3 p {
+    top: 35%;
+    font-size: 1.6em;
+  }
+}
+/* line 659, ../scss/master.scss */
 #progressBar1 path, #progressBar2 path, #progressBar3 path {
   fill: #004370;
   fill-opacity: 1;
 }
-/* line 647, ../scss/master.scss */
+/* line 663, ../scss/master.scss */
 #progressBar1 path:first-child, #progressBar2 path:first-child, #progressBar3 path:first-child {
   fill-opacity: 0.8;
 }
-/* line 651, ../scss/master.scss */
+/* line 667, ../scss/master.scss */
 #progressBar1 svg, #progressBar2 svg, #progressBar3 svg {
   -moz-transition: all, 0.3s;
   -o-transition: all, 0.3s;
   -webkit-transition: all, 0.3s;
   transition: all, 0.3s;
 }
-/* line 655, ../scss/master.scss */
+/* line 671, ../scss/master.scss */
 #progressBar1 .spark, #progressBar2 .spark, #progressBar3 .spark {
   position: absolute;
   bottom: 0;
@@ -810,12 +816,12 @@ button:focus {
   z-index: 50;
 }
 
-/* line 667, ../scss/master.scss */
+/* line 683, ../scss/master.scss */
 .home-background {
   color: black;
 }
 
-/* line 671, ../scss/master.scss */
+/* line 687, ../scss/master.scss */
 .home-icon {
   display: flex;
   flex-direction: row;
@@ -824,31 +830,31 @@ button:focus {
   margin-top: -15vh;
 }
 @media only screen and (max-width: 768px) {
-  /* line 671, ../scss/master.scss */
+  /* line 687, ../scss/master.scss */
   .home-icon {
     margin-top: 0;
   }
 }
 
-/* line 682, ../scss/master.scss */
+/* line 698, ../scss/master.scss */
 .white.wave {
   background-color: white;
   color: #474747;
 }
 
-/* line 687, ../scss/master.scss */
+/* line 703, ../scss/master.scss */
 .align-left {
   text-align: left;
 }
 
-/* line 691, ../scss/master.scss */
+/* line 707, ../scss/master.scss */
 .progressBarContainer {
   text-align: center;
   margin-top: 55px;
   position: relative;
 }
 
-/* line 698, ../scss/master.scss */
+/* line 714, ../scss/master.scss */
 #about #aboutModal, #about #introModal, #intro #aboutModal, #intro #introModal {
   display: none;
   -moz-transition: opacity, 0.5s;
@@ -860,23 +866,23 @@ button:focus {
   text-align: center;
   background-size: cover !important;
 }
-/* line 713, ../scss/master.scss */
+/* line 729, ../scss/master.scss */
 #about #introModal, #intro #introModal {
   display: block;
 }
 @media only screen and (max-width: 768px) {
-  /* line 717, ../scss/master.scss */
+  /* line 733, ../scss/master.scss */
   #about .left-icon, #intro .left-icon {
     display: none;
   }
 }
 @media only screen and (max-width: 768px) {
-  /* line 724, ../scss/master.scss */
+  /* line 740, ../scss/master.scss */
   #about .right-icon img, #intro .right-icon img {
     width: 40vw;
   }
 }
-/* line 730, ../scss/master.scss */
+/* line 746, ../scss/master.scss */
 #about .iabout, #intro .iabout {
   padding: 5px;
   color: white;
@@ -887,29 +893,29 @@ button:focus {
   z-index: 999;
   cursor: pointer;
 }
-/* line 741, ../scss/master.scss */
+/* line 757, ../scss/master.scss */
 #about .contentBlock, #intro .contentBlock {
   margin-bottom: 3.5vh;
   padding: 18px 25px 25px 25px;
   font-size: 17px;
 }
 @media only screen and (max-width: 768px) {
-  /* line 741, ../scss/master.scss */
+  /* line 757, ../scss/master.scss */
   #about .contentBlock, #intro .contentBlock {
     padding: 0px 25px;
   }
 }
-/* line 751, ../scss/master.scss */
+/* line 767, ../scss/master.scss */
 #about .titleModal, #intro .titleModal {
   margin-top: 3vh;
 }
 @media only screen and (max-width: 768px) {
-  /* line 751, ../scss/master.scss */
+  /* line 767, ../scss/master.scss */
   #about .titleModal, #intro .titleModal {
     margin-bottom: 0;
   }
 }
-/* line 758, ../scss/master.scss */
+/* line 774, ../scss/master.scss */
 #about .companyBlock, #intro .companyBlock {
   margin-top: 20px;
   border-top: 1px solid #333333;
@@ -917,19 +923,19 @@ button:focus {
   font-size: 12px;
   color: #CCCCCC;
 }
-/* line 766, ../scss/master.scss */
+/* line 782, ../scss/master.scss */
 #about .companyBlock img, #intro .companyBlock img {
   display: block;
   margin: 5px auto;
   width: 100%;
   max-width: 180px;
 }
-/* line 773, ../scss/master.scss */
+/* line 789, ../scss/master.scss */
 #about .companyBlock a, #about .companyBlock a:focus, #about .companyBlock a:hover, #about .companyBlock a:visited, #intro .companyBlock a, #intro .companyBlock a:focus, #intro .companyBlock a:hover, #intro .companyBlock a:visited {
   color: #70ced4;
 }
 
-/* line 779, ../scss/master.scss */
+/* line 795, ../scss/master.scss */
 .content-landscape {
   position: absolute;
   top: 50%;
@@ -941,7 +947,7 @@ button:focus {
 }
 
 @media screen and (min-width: 1024px) {
-  /* line 789, ../scss/master.scss */
+  /* line 805, ../scss/master.scss */
   #appContainer {
     color: white;
     text-align: center;
@@ -957,55 +963,55 @@ button:focus {
   }
 }
 @media screen and (max-width: 1024px) and (min-width: 571px) {
-  /* line 804, ../scss/master.scss */
+  /* line 820, ../scss/master.scss */
   #appContainer {
     color: white;
     width: 100%;
     min-height: 100%;
   }
 
-  /* line 810, ../scss/master.scss */
+  /* line 826, ../scss/master.scss */
   #progressBar1, #progressBar2, #progressBar3 {
     margin: 30px 40px;
     width: 15%;
     height: 100%;
     padding: 0 10px;
   }
-  /* line 816, ../scss/master.scss */
+  /* line 832, ../scss/master.scss */
   #progressBar1 p, #progressBar2 p, #progressBar3 p {
     top: 115%;
   }
 }
 @media screen and (max-width: 570px) {
-  /* line 824, ../scss/master.scss */
+  /* line 840, ../scss/master.scss */
   #progressBar1, #progressBar2, #progressBar3 {
     margin: 30px 20px;
     width: 20%;
     height: 100%;
     padding: 0 10px;
   }
-  /* line 831, ../scss/master.scss */
+  /* line 847, ../scss/master.scss */
   #progressBar1 i, #progressBar2 i, #progressBar3 i {
     font-size: 25px;
   }
-  /* line 835, ../scss/master.scss */
+  /* line 851, ../scss/master.scss */
   #progressBar1 p, #progressBar2 p, #progressBar3 p {
     top: 115%;
   }
 
-  /* line 840, ../scss/master.scss */
+  /* line 856, ../scss/master.scss */
   #toggle-anime {
     width: 85%;
   }
 
-  /* line 844, ../scss/master.scss */
+  /* line 860, ../scss/master.scss */
   #appContainer {
     color: white;
     width: 100%;
     min-height: 100%;
   }
 
-  /* line 851, ../scss/master.scss */
+  /* line 867, ../scss/master.scss */
   #eventDesc .mapBlock {
     display: none;
   }

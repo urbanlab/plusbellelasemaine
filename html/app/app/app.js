@@ -121,9 +121,7 @@ angular.module('aperfectday', [
         //******************* public functions ******************//
         function loadData() {
 			EventService.getJSONData().then( // load images on run
-                function(data){
-					console.log(data);
-					
+                function(data){					
 					// check localstorage data is valid with loaded data
 					if(localStorageService.get('scenarioUid') != data.Scenario.uid || localStorageService.get('scenarioLastUpdateDate') != data.Scenario.lastUpdateDate) {
 						localStorageService.clearAll();

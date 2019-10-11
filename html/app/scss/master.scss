@@ -53,6 +53,7 @@ body {
     p {        
         font-size: 1em;
         margin-right: 5vw;
+        margin-bottom: 0;
     }
     img {
         height: 3vh;
@@ -283,9 +284,9 @@ button:focus {
     color: white;
     font-weight: bold;
     text-transform: uppercase;    
-    font-size: 38px;
-    @media #{$large-phone} {
-        font-size: unset;
+    font-size: 3em;
+    @media #{$large-phone} {        
+        font-size: 2em;
     }
 }
 
@@ -293,21 +294,23 @@ button:focus {
     opacity: 0;
 }
 
-#endGame {
+#endGame {    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
     .contentBlockStart {
         text-align: center;
         margin-top: 25px;
         font-weight: bold;
-    }
-    
-    
+    }    
     
     #winScreen, #loseScreen {
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        width: 75%;
-        @include translateX(-50%);
+        // position: absolute;
+        // top: 40%;
+        // left: 50%;
+        // width: 75%;
+        @include translateX(0%);
         background-color: rgba(255,255,255,0.8);
         color: #333;
         display: none;
@@ -318,17 +321,17 @@ button:focus {
     }
     
     #continue {
-       position: absolute;
-        top: 60%;
-        left: 50%;
-        @include translateX(-50%);
+        // position: absolute;
+        // top: 60%;
+        // left: 50%;
+        // @include translateX(-50%);
         @include transition(opacity, 0.5s);
         display: none;
         opacity: 0;
         text-align: center;
-        margin-top: 25px;
+        // margin-top: 25px;
         font-weight: bold;
-        width: 33%;
+        // width: 33%;
     }
     
     .titleWinLose {
@@ -354,13 +357,14 @@ button:focus {
 
         width: 175px;
         height: 175px;
-        position: absolute;
-        display: none;
+        // position: absolute;
+        // display: none;
         padding: 15px;
-        top: 40%;
-        left: 50%;
+        // top: 40%;
+        // left: 50%;
         opacity: 0;
-        @include translate(-50%, -50%);
+        margin-bottom: 8vh;
+        @include translate(0%, 0%);
         @include transition(opacity, 0.5s);
     
         i, p {
@@ -402,6 +406,8 @@ button:focus {
     #reset{
         @include transition(all, 0.5s);
         opacity: 0;
+        display: none;
+        margin: 0;
 		
 		#btnRestart {
 			background-color: #6feaac;
@@ -437,12 +443,13 @@ button:focus {
     }
     
     button, #adviceBtn {
-        width: 100%;
+        // width: 100%;
         // padding: 5px;
         // border-radius: 7px;
         // background-color: white;
         // border: 0px;
         // color: #333;
+        width: 25vh;
     }
 	#adviceBtn {
         display: inline-block;
@@ -501,8 +508,7 @@ button:focus {
     ul {
         padding-left: 15px;
     }
-    
-    padding: 40px;
+
 }
 .background {
     z-index: 0 !important;
@@ -630,13 +636,23 @@ button:focus {
         text-transform: uppercase;        
     }
     
+    .fa-minus, .fa-plus {
+        font-size: 1.5em;
+        @media #{$large-phone} {
+            font-size: 1em;
+        }
+    }
     #plusGauge1,  #plusGauge2, #plusGauge3{
         p {
           background: none;
           top: 41%;
           left: 60%;
-          font-size: 30px;        
-          opacity: 0;    
+          font-size: 2em;
+          opacity: 0;
+          @media #{$large-phone} {
+            top: 35%;
+            font-size: 1.6em;
+            }
         }
     }
     

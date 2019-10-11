@@ -1,63 +1,64 @@
 <div class="container-fluid" id="endGame">
-    
-     <div id="winScreen">
-        <div id="winCircle" class="faCircle">
-            <i class="fa fa-trophy"></i>
-        </div>
-         <div class="titleWinLose">
-             <p ng-bind-html="endGameCtrl.endTitle | to_trusted"></p>
-         </div>
-         <div class="textWinLose">
-             <p ng-bind-html="endGameCtrl.endText | to_trusted"></p>
-         </div>
-     </div>
-     
-     <div  id="progressBar"><i class="fa"></i><p>{{endGameCtrl.textGauge}}</p><div id="plusGauge"><p>10</p></div></div>
-     <div id="loseScreen">
-        
-         <div class="titleWinLose">
-             <p ng-bind-html="endGameCtrl.endTitle | to_trusted"></p>
-         </div>
-         <div class="textWinLose">
-             <p ng-bind-html="endGameCtrl.endText | to_trusted"></p>
-         </div>
-     </div>
-     
-      <div id="continue">
-           <button ng-click="endGameCtrl.continueBilan()">CONTINUER</button>     
+  <div class="row no-margin">
+    <div class="col-xs-12">
+      <h1 class="titleBilan">Bilan</h1>
+    </div>
+  </div>
+  <div id="winScreen">
+    <div id="winCircle" class="faCircle">
+      <i class="fa fa-trophy"></i>
+    </div>
+    <div class="titleWinLose">
+      <p ng-bind-html="endGameCtrl.endTitle | to_trusted"></p>
+    </div>
+    <div class="textWinLose">
+      <p ng-bind-html="endGameCtrl.endText | to_trusted"></p>
+    </div>
+  </div>
+
+  <div id="progressBar">
+    <i class="fa"></i>
+    <p>{{ endGameCtrl.textGauge }}</p>
+    <div id="plusGauge"><p>10</p></div>
+  </div>
+  <div id="loseScreen">
+    <div class="titleWinLose">
+      <p ng-bind-html="endGameCtrl.endTitle | to_trusted"></p>
+    </div>
+    <div class="textWinLose">
+      <p ng-bind-html="endGameCtrl.endText | to_trusted"></p>
+    </div>
+  </div>
+
+  <div id="continue">
+    <button ng-click="endGameCtrl.continueBilan()">CONTINUER</button>
+  </div>
+
+  <div class="row no-margin">
+    <div
+      ng-repeat="(key, item) in endGameCtrl.bilan"
+      ng-if="item.entries.length != 0"
+      id="{{ key }}"
+      class="col-xs-10 col-xs-offset-1 contentBlock"
+    >
+      <div class="faCircle">
+        <i class="fa {{ item.picto }}"></i>
       </div>
-     
-     <div id="loseScreen">
-         
-     </div>
-     
-   <div class="row no-margin">
-        <div class="col-xs-12">
-            <h1 class="titleBilan">Bilan</h1>
-       </div>
-    </div>
-    <div class="row no-margin">
-        
-        <div ng-repeat="(key, item) in endGameCtrl.bilan" ng-if="item.entries.length != 0" id="{{key}}" class="col-xs-10 col-xs-offset-1 contentBlock">
-			<div class="faCircle">
-				 <i class="fa {{item.picto}}"></i>
-			</div>
-			<p class="title">{{item.title}}</p>
-			<ul> 
-			  <div ng-repeat="entry in item.entries">
-					<li ng-bind-html="entry | to_trusted"></li>
-			  </div>
-			</ul>
+      <p class="title">{{ item.title }}</p>
+      <ul>
+        <div ng-repeat="entry in item.entries">
+          <li ng-bind-html="entry | to_trusted"></li>
         </div>
-        
+      </ul>
     </div>
-    
-    
-    
-    
-    <div class="row">
-        <div id="reset" class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 contentBlockStart">
-           <button id="btnRestart" ng-click="endGameCtrl.restart()">REJOUER</button>
-        </div>
+  </div>
+
+  <div class="row">
+    <div
+      id="reset"
+      class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 contentBlockStart"
+    >
+      <button id="btnRestart" ng-click="endGameCtrl.restart()">REJOUER</button>
     </div>
+  </div>
 </div>

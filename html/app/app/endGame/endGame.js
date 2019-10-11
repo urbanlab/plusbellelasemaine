@@ -170,33 +170,6 @@ angular.module('endGame', [
 
 				}
 				
-				
-				/*if($stateParams.summaries['summaries1'] == null || $stateParams.summaries['summaries2'] == null || $stateParams.summaries['summaries3'] == null){
-					if(localStorageService.get("summaries1") != null){
-						var summaries1 = JSON.parse(localStorageService.get("summaries1"));
-					}
-					else{
-						summaries1 = [];
-					}
-					if(localStorageService.get("summaries2") != null){
-						var summaries2 = JSON.parse(localStorageService.get("summaries2"));
-					}
-					else{
-						summaries2 = [];
-					}
-					if(localStorageService.get("summaries3") != null){
-						var summaries3 = JSON.parse(localStorageService.get("summaries3"));
-					}
-					else{
-						summaries3 = [];
-					}
-				}
-
-				else{    
-					summaries1 = $stateParams.summaries['summaries1'];
-					summaries2 = $stateParams.summaries['summaries2'];
-					summaries3 = $stateParams.summaries['summaries3'];
-				}*/
 				_.forEach(endGameCtrl.gauges, function(gauge, index) {
 					if(localStorageService.get('summaries'+gauge.var) != null) {
 						endGameCtrl.summaries.push(JSON.parse(localStorageService.get('summaries'+gauge.var)));
@@ -216,21 +189,6 @@ angular.module('endGame', [
 			}
 		);
 	
-    
-		
-
-		
-
-
-
-		
-	
-	
-	
-	
-	
-	
-
 		function continueBilan (){   
 			$('#loseScreen').css('opacity', 0);
 			$('#winScreen').css('opacity', 0);
@@ -269,6 +227,7 @@ angular.module('endGame', [
 			setTimeout(function(){
 				$("#reset").css("transform", "translateX(0px)");
 				$("#reset").css("opacity", "1");
+				$("#reset").css("display", "block");
 			}, endGameCtrl.animeDelay+endGameCtrl.delay*index);
 
 
