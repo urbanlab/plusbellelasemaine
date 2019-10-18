@@ -56,7 +56,7 @@ angular.module('endGame', [
         endGameCtrl.endTitle = '';
 		endGameCtrl.endText = '';
 		endGameCtrl.gaugeEnd = localStorageService.get('gaugeEnd') != null ? localStorageService.get('gaugeEnd') : null;
-		endGameCtrl.adviceLink = 'https://goo.gl/forms/g8T87HXzEvSiHnNB3';
+		// endGameCtrl.adviceLink = 'https://goo.gl/forms/g8T87HXzEvSiHnNB3';
 		
 	
 		if($stateParams.endID != '') {
@@ -67,8 +67,11 @@ angular.module('endGame', [
 		}
 		
         var background = {};
-        $(".background").css("background", "url(data/img/bilan2.jpg) center no-repeat");
-    
+        $("#appContainer").css("background", "linear-gradient(to bottom, #8ed0ff, #1483d1)");
+        $("#appContainer").css("min-height", "unset");
+        $('#footerContainer').css("position","");
+		// $('#footerContainer').css("bottom","0");
+
         clearTimeout($rootScope.idTimeout);
 	
 		
@@ -102,9 +105,10 @@ angular.module('endGame', [
 						// prevent clipping
 						strokeWidth: 16,
 						trailWidth: 8,
-						trailColor : 'rgba(0, 0, 0, 0.8)',
+						trailColor: '#FFFFFF',
 						easing: 'easeInOut',
 						duration: 500,
+						fill: '#4be79f',
 						text: {
 						autoStyleContainer: false
 						},
@@ -124,6 +128,7 @@ angular.module('endGame', [
 					$('#continue').css('display', 'block');
 
 					setTimeout(function(){
+						$('#progressBar').css('display', 'block');
 						$('#progressBar').css('opacity', 1);
 					}, 300);
 
@@ -168,33 +173,6 @@ angular.module('endGame', [
 
 				}
 				
-				
-				/*if($stateParams.summaries['summaries1'] == null || $stateParams.summaries['summaries2'] == null || $stateParams.summaries['summaries3'] == null){
-					if(localStorageService.get("summaries1") != null){
-						var summaries1 = JSON.parse(localStorageService.get("summaries1"));
-					}
-					else{
-						summaries1 = [];
-					}
-					if(localStorageService.get("summaries2") != null){
-						var summaries2 = JSON.parse(localStorageService.get("summaries2"));
-					}
-					else{
-						summaries2 = [];
-					}
-					if(localStorageService.get("summaries3") != null){
-						var summaries3 = JSON.parse(localStorageService.get("summaries3"));
-					}
-					else{
-						summaries3 = [];
-					}
-				}
-
-				else{    
-					summaries1 = $stateParams.summaries['summaries1'];
-					summaries2 = $stateParams.summaries['summaries2'];
-					summaries3 = $stateParams.summaries['summaries3'];
-				}*/
 				_.forEach(endGameCtrl.gauges, function(gauge, index) {
 					if(localStorageService.get('summaries'+gauge.var) != null) {
 						endGameCtrl.summaries.push(JSON.parse(localStorageService.get('summaries'+gauge.var)));
@@ -214,36 +192,21 @@ angular.module('endGame', [
 			}
 		);
 	
-    
-		
-
-		
-
-
-
-		
-	
-	
-	
-	
-	
-	
-
 		function continueBilan (){   
-
 			$('#loseScreen').css('opacity', 0);
 			$('#winScreen').css('opacity', 0);
 			$('#continue').css('opacity', 0);
 			$('#progressBar').css('display', 'none');
 			setTimeout(function(){
-			   $('#loseScreen').css('display', 'none');
-			   $('#winScreen').css('display', 'none');
-			   $('#continue').css('display', 'none'); 
+				$('#loseScreen').css('display', 'none');
+				$('#winScreen').css('display', 'none');
+				$('#continue').css('display', 'none'); 
 			}, 600);
-
+			
 			$("#endGame .contentBlock").css("display", "block");
 			$("#endGame .contentBlock").css("transform", "translateX(100px)");
 			$("#reset").css("transform", "translateX(100px)");
+			// $('#footerContainer').css("bottom","");
 			var index = 0;
 			_.forEach(endGameCtrl.bilan, function(texts, key) {
 				setTimeout(function(){
@@ -267,6 +230,7 @@ angular.module('endGame', [
 			setTimeout(function(){
 				$("#reset").css("transform", "translateX(0px)");
 				$("#reset").css("opacity", "1");
+				$("#reset").css("display", "block");
 			}, endGameCtrl.animeDelay+endGameCtrl.delay*index);
 
 

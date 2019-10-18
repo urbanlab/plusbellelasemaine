@@ -1,15 +1,31 @@
-<div class="container-fluid" id="intro">
-    <div id="introModal" class="">
-        <div class="row no-margin">
-            <div class="col-xs-12">
-                <h1 class="titleModal" ng-bind-html="introCtrl.titleIntro | to_trusted"></h1>      
-				<div class="row no-margin">
-					<div class="col-xs-8 col-xs-offset-2 contentBlock">
-						<!--<h3 ng-bind-html="titleIntro | to_trusted"></h3>-->
-						<p ng-bind-html="introCtrl.textIntro | to_trusted"></p>
-						<a id="introBtnPlay" ng-click="introCtrl.play()" >Jouer</a>
+<div id="intro">
+    <div id="introModal" class="home-background">
+        <div class="row no-margin content white wave">
+            <!-- <div class="no-margin content"> -->
+                <div class="app-title">
+                    <img src="images/left_parenthesis.svg">
+                    <h1 class="titleModal" ng-bind-html="introCtrl.titleIntro | to_trusted"></h1>
+                    <img src="images/right_parenthesis.svg">
+                </div>
+				<div class="row no-margin align-left">
+					<div class="contentBlock">
+						<h3>Bienvenue!</h3>
+                        <p ng-bind-html="introCtrl.textIntro | to_trusted"></p>
 					</div>
-				</div>
+                </div>
+            <!-- </div> -->
+        </div>
+        <div class="content bottom">
+            <div class="center">
+                <button id="introBtnPlay" ng-click="introCtrl.play()">JOUER</button>
+            </div>
+            <div class="home-icon">
+                <div class="left-icon">                        
+                    <img src="{{leftIcon}}">
+                </div>
+                <div class="right-icon">
+                    <img src="{{rightIcon}}">
+                </div>
             </div>
         </div>
     </div>

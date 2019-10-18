@@ -48,6 +48,7 @@ https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js
 ./app/about/about.js
 ./app/intro/intro.js
 ./app/gauge/gauge.js
+./app/footer/footer.js
 #	APP RESSOURCES
 ./app/about/about.js
 ./app/about/about.tmpl.html
@@ -58,8 +59,12 @@ https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js
 ./app/eventDesc/eventDesc.tmpl.html
 ./app/gauge/gauge.js
 ./app/gauge/gauge.tmpl.html
+./app/footer/footer.js
+./app/footer/footer.tmpl.html
 ./app/intro/intro.js
 ./app/intro/intro.tmpl.html
+./app/footer/footer.js
+./app/footer/footer.tmpl.html
 ./data/eventData_FR.json
 ./data/img/bain.jpg
 ./data/img/bilan2.jpg

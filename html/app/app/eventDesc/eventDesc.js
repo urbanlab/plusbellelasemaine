@@ -102,6 +102,9 @@ angular.module('eventDesc', ['ngSanitize'
         $('#startScreen').show();
         setTimeout(function(){$('#startScreen').hide();}, eventDescCtrl.timeOut+200);
         $('#dayTransition').css("opacity", "0");
+        $('#footerContainer').css("position","absolute");
+        // $('#footerContainer').css("bottom","0");        
+	    $("#gaugeContainer").css("display", "inherit");
         $(".background").show();
         EventService.getJSONData().then(
 			function (data){
@@ -186,7 +189,11 @@ angular.module('eventDesc', ['ngSanitize'
                 }
 
                 $('#dayTransition').css('display', 'block'); 
-                setTimeout(function(){$('#dayTransition').css("opacity", "1");}, 100); // fade to black
+                setTimeout(function(){
+                    $('#dayTransition').css("opacity", "1");
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }, 100); // fade to black
                 setTimeout(function (){
                     $('.currentDay').toggleClass('transparent');
                     $('.currentDay').css('transform', 'translate(-50%, -150px)');   // anime the current day to go up                
@@ -262,7 +269,11 @@ angular.module('eventDesc', ['ngSanitize'
 							var strEnd = item.replace(/end_game\(|\)/gm, '');                    
 							$('.nextDay, .currentDay').css('display', 'none');
 							$('#dayTransition').css('display', 'block');
-							setTimeout(function(){$('#dayTransition').css("opacity", "1");}, 100);
+							setTimeout(function(){
+                                $('#dayTransition').css("opacity", "1")
+                                document.body.scrollTop = 0;
+                                document.documentElement.scrollTop = 0;
+                            }, 100);
 							setTimeout(function(){ $state.go("aperfectday.endGame", {endID : strEnd, summaries : eventDescCtrl.summaries});
 							}, eventDescCtrl.timeOut+200);
 						}
@@ -379,7 +390,11 @@ angular.module('eventDesc', ['ngSanitize'
                                         $('.nextDay, .currentDay').css('display', 'none');
                                         $('#dayTransition').css('display', 'block');
                                        // wait for animation of gauges to end before going to bilan
-                                        setTimeout(function(){$('#dayTransition').css("opacity", "1");}, config.gaugeAnimDuration+100);
+                                        setTimeout(function(){
+                                            $('#dayTransition').css("opacity", "1");
+                                            document.body.scrollTop = 0;
+                                            document.documentElement.scrollTop = 0;
+                                        }, config.gaugeAnimDuration+100);
                                         setTimeout(function(){ $state.go("aperfectday.endGame", {endID : strEnd, summaries : eventDescCtrl.summaries});
                                         }, config.gaugeAnimDuration+eventDescCtrl.timeOut+200);
                                     }

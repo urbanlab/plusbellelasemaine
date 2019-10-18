@@ -4,6 +4,9 @@
 @import "compass/support";
 @import "compass/css3/transition";
 
+@import "color";
+@import "typography";
+@import "breakpoint";
 
 html, body{
     min-height: 100%;
@@ -11,10 +14,79 @@ html, body{
 }
 
 body {
-    color: white;
+    color: white;    
     background-color: #161616
 }
 
+.content {    
+    padding: 0 3vw;
+    &.bottom{        
+        background-size: cover;
+        background-image: url(../images/white.svg);
+        background-color: white;
+    }
+
+    @media #{$large-phone} {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.footer-container {
+    background-color: white;    
+    color: #474747;
+    width: 100%;
+    bottom:0;
+    @media #{$large-phone} {
+        bottom: unset;
+    }
+}
+
+.footer {
+    flex-direction: row;
+    display: flex;
+    height: 6vh;
+    align-items: center;
+    justify-content: space-between;
+    p {        
+        font-size: 1em;
+        margin-right: 5vw;
+        margin-bottom: 0;
+    }
+    img {
+        height: 3vh;
+    }
+    @media #{$large-phone} {
+        p {
+            font-size: 0.7em;
+            margin-right: 1vw;
+            text-align: left;
+        }
+        img {
+            height: 2.5vh;
+        }
+    }
+}
+
+.app-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+        width: 1vw;
+    }
+    @media #{$large-phone} {
+        img {
+            display:none;
+        }
+        h1 {            
+            padding: 0 10vw;
+        }
+    }
+}
+  
 .row.no-margin {
 	margin-left: 0;
 	margin-right: 0;
@@ -44,6 +116,30 @@ span.ld_perso3 {
     color : #6ca4ea;
 }
 
+button {
+    cursor: pointer;
+    color: $white;
+    border-radius: 3em;
+    background-color: $weird-green;
+    border: solid $weird-green;
+    font-size: 1em;
+    font-weight: 800;
+    width: 9.5em;
+    height: 6vh;
+    margin: 2vh 0;
+    // @media #{$large-phone} {
+    //     font-size: 5vw;
+    //     width: 80vw;
+    //     height: unset;
+    // }
+}
+button:focus {
+  outline:0;
+}
+
+.center {    
+    text-align: center;
+}
 
 #eventDesc {
     color:#333;
@@ -55,7 +151,7 @@ span.ld_perso3 {
 
         
         p {
-            color: white;
+            color: $brown-grey;
             font-size: 17px;
             font-weight: bold;
             
@@ -81,11 +177,9 @@ span.ld_perso3 {
         position: relative;
         overflow: hidden;
         padding: 20px;
-        font-family: 'myfont';
         font-size: 17px;
     }
     h1{
-       font-family: 'myfont-semi';
         font-size: 28px;
     }
     
@@ -94,7 +188,7 @@ span.ld_perso3 {
     }
     
     #textEvent {
-        color: #e4e4e4;
+        color: $weird-blue;
         font-size: 18px;
     }
 
@@ -112,7 +206,6 @@ span.ld_perso3 {
         a {
             text-decoration: none;
             font-weight: 600;
-            font-family: 'myfont';
             color: #333;
             padding: 12px;
             width: 100%;
@@ -121,7 +214,7 @@ span.ld_perso3 {
             border: 0px;
             margin: 15px 0;
             border-radius: 10px;
-            box-shadow: 1px 0px 10px #333;
+            box-shadow: 0 1px 7px 0 rgba(59, 59, 59, 0.21);
             cursor: pointer;
             font-size: 17px;
         }
@@ -151,7 +244,8 @@ span.ld_perso3 {
     }
     
     #textEvent{
-        padding-top: 11px
+        padding-top: 11px;        
+        font-weight: 800;
     }
     
     #titleEvent {
@@ -162,8 +256,8 @@ span.ld_perso3 {
 #toggle-anime {
     @include transition(opacity, 0.5s);
     padding: 10px 20px 35px 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color:white;
+    background-color: white;
+    color: $weird-blue;
     position: relative;
     width:66%;
     margin : 23px auto 30px auto;
@@ -185,36 +279,45 @@ span.ld_perso3 {
 .day {
     @include transition(opacity, 0.5s);
     position: absolute;
-    top: 12px;
+    top: 0px;
     left: 50%;
     @include translateX(-50%);
     color: white;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: uppercase;    
+    font-size: 3em;
+    @media #{$large-phone} {        
+        font-size: 2em;
+    }
 }
 
 .transparent{
     opacity: 0;
 }
 
-#endGame {
+#endGame {    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
-    
-    font-family : 'myfont';
     .contentBlockStart {
         text-align: center;
         margin-top: 25px;
         font-weight: bold;
+    }    
+    
+    #winScreen {
+        margin-top: 4vh;
+        @media #{$large-phone} {
+            margin-top: 10vh;
+        }
     }
-    
-    
-    
     #winScreen, #loseScreen {
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        width: 75%;
-        @include translateX(-50%);
+        // position: absolute;
+        // top: 40%;
+        // left: 50%;
+        // width: 75%;
+        @include translateX(0%);
         background-color: rgba(255,255,255,0.8);
         color: #333;
         display: none;
@@ -225,30 +328,34 @@ span.ld_perso3 {
     }
     
     #continue {
-       position: absolute;
-        top: 60%;
-        left: 50%;
-        @include translateX(-50%);
+        // position: absolute;
+        // top: 60%;
+        // left: 50%;
+        // @include translateX(-50%);
         @include transition(opacity, 0.5s);
         display: none;
         opacity: 0;
         text-align: center;
-        margin-top: 25px;
+        // margin-top: 25px;
         font-weight: bold;
-        width: 33%;
+        // width: 33%;
     }
     
     .titleWinLose {
-        
         p {
             font-size: 25px;
             text-transform: uppercase;
+            padding: 2vh 0 0 0;
         }
     }
     
     .textWinLose {
         p {
             font-size: 17px;
+            padding: 0 0 2vh 0;
+        }
+        @media #{$large-phone} {
+            text-align: left;
         }
     }
     
@@ -258,15 +365,16 @@ span.ld_perso3 {
 
         width: 175px;
         height: 175px;
-        position: absolute;
-        display: none;
+        // position: absolute;
+        // display: none;
         padding: 15px;
-        top: 40%;
-        left: 50%;
+        // top: 40%;
+        // left: 50%;
         opacity: 0;
-        @include translate(-50%, -50%);
+        margin-bottom: 8vh;
+        @include translate(0%, 0%);
         @include transition(opacity, 0.5s);
-    
+        display: none;
         i, p {
             font-size: 40px;
             position: absolute;
@@ -283,11 +391,10 @@ span.ld_perso3 {
             top: 100%;
             width: 100%;
             padding: 5px;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: #4be79f;
             border-radius: 7px;
             margin-top: 7px;
             text-transform: uppercase;
-            font-family:'myfont-semi';
 
         }
         
@@ -307,6 +414,8 @@ span.ld_perso3 {
     #reset{
         @include transition(all, 0.5s);
         opacity: 0;
+        display: none;
+        margin: 0;
 		
 		#btnRestart {
 			background-color: #6feaac;
@@ -315,7 +424,8 @@ span.ld_perso3 {
     .contentBlock {
         text-align: left;
         position: relative;
-        background-color: rgba(255,255,255,0.8);
+        background-color: white;
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.25);
         color: #333;
         margin-top: 25px;
         margin-bottom: 25px;
@@ -324,22 +434,30 @@ span.ld_perso3 {
         @include transition(all, 0.5s);
         opacity: 0;
         display: none;
+        @media #{$large-phone} {
+            margin-left: 0;
+            width: unset;
+        }
     }
     
     p.title{
         z-index: 10;
         font-size: 20px;
         position: relative;
-        font-weight: 200;
+        font-weight: 600;
+        @media #{$large-phone} {
+            margin-top: 3vh;
+        }
     }
     
     button, #adviceBtn {
-        width: 100%;
-        padding: 5px;
-        border-radius: 7px;
-        background-color: white;
-        border: 0px;
-        color: #333;
+        // width: 100%;
+        // padding: 5px;
+        // border-radius: 7px;
+        // background-color: white;
+        // border: 0px;
+        // color: #333;
+        width: 25vh;
     }
 	#adviceBtn {
         display: inline-block;
@@ -348,7 +466,7 @@ span.ld_perso3 {
     }
     i{
         font-size: 25px;
-        color: #333;
+        color: white;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -363,25 +481,28 @@ span.ld_perso3 {
     .titleBilan {
         text-align: center;
         text-transform: uppercase;
-        font-size: 26px;
     }
     
     .faCircle {        
-        background-color: #fff;
-        border-radius: 50%;
+        background-color: $weird-green;
+        border-radius: 50%;        
+        border: 3px solid white;
         position: absolute;
         top: 2px;
         width: 60px;
         height: 60px;
-        left: -32px;
+        left: 45%;
         @include translateY(-50%);
+        @media #{$large-phone} {
+            left: 38%;
+        }
     }
     #winCircle {
-        top: -22px;
+        // top: -22px;
         transform: translate(-50%, -50%);
         left: 50%;
-        width: 75px;
-        height: 75px;
+        // width: 75px;
+        // height: 75px;
         
         i {
             font-size: 35px;
@@ -395,8 +516,7 @@ span.ld_perso3 {
     ul {
         padding-left: 15px;
     }
-    
-    padding: 40px;
+
 }
 .background {
     z-index: 0 !important;
@@ -514,27 +634,40 @@ span.ld_perso3 {
     
     p {
         font-size: 15px;
+        font-weight: 900;
         top: 100%;
         width: 100%;
         padding: 2px;
-        background-color: rgba(0, 0, 0, 0.8);
+        // background-color: rgba(55, 55, 55, 0.35);
         border-radius: 7px;
         margin-top: 7px;
-        text-transform: uppercase;
-        font-family:'myfont-semi';
-        
+        text-transform: uppercase;        
     }
     
+    .fa-minus, .fa-plus {
+        font-size: 1.5em;
+        @media #{$large-phone} {
+            font-size: 1em;
+        }
+    }
     #plusGauge1,  #plusGauge2, #plusGauge3{
         p {
-          background: none;
-          top: 36.5%;
+          background: none; 
+          top: 44%;
           left: 60%;
-          font-size: 35px;          
-          opacity: 0;    
+          font-size: 2em;
+          opacity: 0;
+          @media #{$large-phone} {
+            top: 35%;
+            font-size: 1.6em;
+            }
         }
     }
     
+   path{
+        fill: #004370;
+        fill-opacity: 1;
+    }
    path:first-child {
         fill-opacity : 0.8;
     }
@@ -555,8 +688,36 @@ span.ld_perso3 {
     
 }
 
+.home-background {
+    color: black;
+}
 
+.home-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;    
+    margin-top: -15vh;
+    @media #{$large-phone} {
+        margin-top: 0;
+    }
+}
 
+.results-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.white.wave {
+    background-color: white;
+    color: #474747;
+}
+
+.align-left {
+    text-align: left;
+}
 
 .progressBarContainer {
     text-align: center;
@@ -568,21 +729,38 @@ span.ld_perso3 {
     #aboutModal, #introModal {
         display: none;
         @include transition(opacity, 0.5s);
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        min-height: 100%;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+        // right: 0;
+        // min-height: 100%;
         /*bottom: 0;*/
         z-index: 998;
         text-align: center;
-        background-color: #161616 ;
-        background-size: cover !important;
+        // background-color: #161616 ;
+        background-size: cover !important;        
     }
 	
 	#introModal {
 		display: block;
-	}
+    }
+
+    #aboutModal {
+        padding-bottom: 7vh;
+    }
+    
+    .left-icon {
+        @media #{$large-phone} {
+            display: none;
+        }
+    }
+    .right-icon {
+        @media #{$large-phone} {
+            img {
+                width: 40vw;
+            }
+        }
+    }
 
     .iabout {
         padding: 5px;
@@ -596,35 +774,20 @@ span.ld_perso3 {
     }
 
     .contentBlock {
-		margin-bottom: 30px;
+        margin-bottom: 3.5vh;
         padding: 18px 25px 25px 25px;
-        background-color: rgba(0, 0, 0, 0.8);
         font-size: 17px;
+                
+        @media #{$large-phone} {
+            padding: 0px 25px;
+        }
     }
 
     .titleModal{
-        margin-top: 40px;
-        margin-bottom: 30px;
-    }
-	
-	#introBtnPlay {
-        text-decoration: none;
-		font-weight: 600;
-		font-family: 'myfont';
-		color: #333;
-		padding: 10px 30px 12px 30px;
-		width: auto;
-		display: inline-block;
-		background-color: white;
-		border: 0px;
-		margin: 15px 0;
-		border-radius: 10px;
-		box-shadow: 1px 0px 10px #333;
-		cursor: pointer;
-		font-size: 17px;
-        
-        &:active {
-            @include scale(0.95);
+        margin-top: 4vh;        
+        font-size: 3em;
+        @media #{$large-phone} {
+            margin-bottom: 0;
         }
     }
 	
