@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 2018-12-03
+# 2022-03-30 10:29:20
 
 
 # Explicitly cached 'master entries'.
@@ -41,6 +41,7 @@ https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.7.1/angular-local
 ./bower_components/angulartics-google-analytics/dist/angulartics-ga.min.js
 https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js
 ./node_modules/angular-cookie-law/angular-cookie-law.min.js
+./bower_components/ng-appcache/dist/appcache.js
 ./js/master.js
 ./app/app.js
 ./app/eventDesc/eventDesc.js
@@ -63,13 +64,14 @@ https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js
 ./app/footer/footer.tmpl.html
 ./app/intro/intro.js
 ./app/intro/intro.tmpl.html
-./app/footer/footer.js
-./app/footer/footer.tmpl.html
 ./data/eventData_FR.json
 ./data/img/bain.jpg
 ./data/img/bilan2.jpg
 ./data/img/esc.jpg
 ./data/img/info.png
+./data/img/logo_dowino.png
+./data/img/logo_erasme.png
+./data/img/logo_grandLyonMetropole.png
 ./data/img/manger.jpg
 ./data/img/sparkles_1.png
 ./data/img/sparkles_10.png
@@ -95,6 +97,47 @@ https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js
 ./data/img/sparkles_7.png
 ./data/img/sparkles_8.png
 ./data/img/sparkles_9.png
+
+./data/9CR73H/scenarioData_FR.json
+./data/9CR73H/b7ffcb521e9f8386dc0900473d46b5ae.jpg
+./data/9CR73H/5afe6698e98276750c866bff56183f4d.jpg
+./data/9CR73H/d949e26a98682c98ac86123116f40f10.jpg
+./data/IEXESQ/scenarioData_FR.json
+./data/IEXESQ/4b2cb3a01f3a59a632a7d82390b8fee2.jpg
+./data/IEXESQ/9f48d59bab553d90f956ff5ca1d2dda6.jpg
+./data/IEXESQ/b27121cd403e9f65a7853f6c3d815233.jpg
+./data/IEXESQ/7c841eec44cf51d66a5c0fec071be0cc.jpg
+./data/72LGU6/scenarioData_FR.json
+./data/72LGU6/6c5b40dc48d88a64a3b5ca09560a82b7.jpg
+./data/72LGU6/2eb13d8b85a416b8adc9159fea867fbe.jpg
+./data/72LGU6/298bfd2a135ef3cc9c13ef6ef553e15e.jpg
+./data/72LGU6/c2312e8894d7612dad1ca8a3bc494fe3.jpg
+./data/72LGU6/12e7d9e5f1eea6385f06a6502d0950bd.jpg
+./data/72LGU6/f63c09781a014786bb5d7593db018eb1.jpg
+./data/72LGU6/4d5543e4ab0ec6ec0bd343405f3c6fa8.jpg
+./data/72LGU6/ba4f92a84707608aaab8fc4abdfd79fd.jpg
+./data/72LGU6/c629226652211bd3a05bb90fc9a7d211.jpg
+./data/FXYB4Z/scenarioData_FR.json
+./data/FXYB4Z/5ab641803a0bbb529d2db228ffda8c2c.jpg
+./data/FXYB4Z/110d20c2ec9bdfccb12622a56902fc27.jpg
+./data/FXYB4Z/4d5b09190362a5c0d45524c907a7afa2.jpg
+./data/FXYB4Z/e46fc29b9a03b8939e77b4d1751ee928.jpg
+./data/FXYB4Z/695b7c431052fbe3cc742e125351ab13.jpg
+./data/FXYB4Z/ba05467ffbfc122cf8dc64bcdb473cf1.jpg
+./data/FXYB4Z/1549e45cb6e27d6ea0c72b97524a898c.jpg
+./data/FXYB4Z/3a33e970884db4d6b08ae0b9d8b25a9a.jpg
+./data/FXYB4Z/8cc65eb3e93edf5a84cd510bd8dbbc0a.jpg
+./data/KTQOGG/scenarioData_FR.json
+./data/KTQOGG/107315c8d8287e4ba7799b8852f2cd0f.jpg
+./data/ED0LPN/scenarioData_FR.json
+./data/ED0LPN/426fe07e01e1f6dbda47aa2ce1f0ab35.jpg
+./data/ED0LPN/56b587aed78b9a0aac02f189c028c32a.jpg
+./data/ED0LPN/45a1234d08921c7fd72d386f3101267e.jpg
+./data/URGUFM/scenarioData_FR.json
+./data/URGUFM/58c8e9615dcce0de715578150ef2b285.jpg
+./data/URGUFM/a46a96832700fa5d54ea96c86faf81ac.jpg
+./data/URGUFM/1c03e2d0500807b49b0aa2f0031ba5f2.jpg
+
 
 
 # Resources that require the user to be online.
