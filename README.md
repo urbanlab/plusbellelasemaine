@@ -86,3 +86,15 @@ Note: le dossier config contient la configuration globale du projet (BDD, google
 
 ### Gestion du cache
 Le cache est actualisé automatiquement lorsqu'une modification est faite au fichier ``manifest.appcache``. Voir le lien suivant: [Cache doc](https://www.html5rocks.com/en/tutorials/appcache/beginner/)
+
+
+## Docker
+Copier le fichier `.env.example` en `.env` et renseigner les variables d'environnement.
+
+S'il s'agit de la première installation de plus belle la semaine assurez vous d'avoir copié votre dump sql dans le dossier db_dump.
+
+Lancer le serveur avec la commande `docker-compose up`.
+
+Vous pouvez accéder à **l'application** sur le port 8080.
+Vous pouvez accéder à **phpmyadmin** sur le port 8081.
+Vous pouvez accéder à **maildev** sur le port 8082 (pour voir les mails envoyés par l'application dans un environement de dev).
