@@ -7,7 +7,6 @@ on:
     workflow_dispatch:
 
 env:
-  IMAGE_NAME: erasme/plusbellelasemaine
   DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
@@ -33,4 +32,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ env.IMAGE_NAME }}:latest,${{ env.IMAGE_NAME }}:${{ github.sha }}
+        tags: erasme/plusbellelasemaine:latest,erasme/plusbellelasemaine:${{ github.sha }}
