@@ -986,6 +986,9 @@ class CI_Email {
 	 */
 	protected function _set_date()
 	{
+		// Set the timezone to Europe/Paris
+		date_default_timezone_set('Europe/Paris');
+
 		$timezone = date('Z');
 		$operator = ($timezone[0] === '-') ? '-' : '+';
 		$timezone = abs($timezone);
