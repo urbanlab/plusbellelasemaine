@@ -57,7 +57,8 @@
 //define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 define('ENVIRONMENT', 'production');
 
-
+// Set the timezone to Europe/Paris
+date_default_timezone_set('Europe/Paris');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

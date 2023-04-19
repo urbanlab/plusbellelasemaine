@@ -182,6 +182,9 @@ class CI_Log {
 			return FALSE;
 		}
 
+		// Set the timezone to Europe/Paris
+		date_default_timezone_set('Europe/Paris');
+
 		$filepath = $this->_log_path.'log-'.date('Y-m-d').'.'.$this->_file_ext;
 		$message = '';
 
