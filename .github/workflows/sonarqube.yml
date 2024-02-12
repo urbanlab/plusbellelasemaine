@@ -3,24 +3,45 @@ name: Sonarqube Audit
 on:
   push:
     branches:
-      - master
-
+      - main
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    permissions: read-all
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0  # Shallow clones should be disabled for better analysis relevancy
+      - name: OWASP Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'plus-belle-la-semaine'
+          path: '.'
+          format: 'HTML'
+          failBuild: true
+      - name: Upload Test results
+        uses: actions/upload-artifact@master
+        with:
+           name: Depcheck report
+           path: ${{github.workspace}}/reports/dependency-check-report.html
+
+      - name: Commit Reports
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Add reports to repository
+          branch: ${{ github.ref }}
+          file_pattern: reports/
+          commit_options: '--no-verify'
+          repository: .
+
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      # If you wish to fail your job when the Quality Gate is red, uncomment the
-      # following lines. This would typically be used to fail a deployment.
+      # Uncomment the following lines to fail the job when Quality Gate is red
       # - uses: sonarsource/sonarqube-quality-gate-action@master
       #   timeout-minutes: 5
       #   env:
