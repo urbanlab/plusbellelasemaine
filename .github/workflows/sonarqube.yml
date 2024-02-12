@@ -3,7 +3,7 @@ name: Sonarqube Audit
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
